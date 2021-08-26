@@ -4,13 +4,13 @@
     "soldierList": [
         {
             "name": "진흙병사",
-            "amount": 0,
+            "amount": 81,
             "price": 150,
             "ePs": 1
         },
         {
             "name": "바위병사",
-            "amount": 0,
+            "amount": 81,
             "price": 1200,
             "ePs": 100
         }

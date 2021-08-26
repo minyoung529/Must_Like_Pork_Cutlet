@@ -23,18 +23,32 @@ public class GameManager : MonoSingleton<GameManager>
         LoadFromJson();
     }
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.A))
+        {
+            for(int i = 0; i<user.soldierList.Count; i++)
+            {
+                user.soldierList[i].amount++;
+            }
+        }
+    }
+
     private void LoadFromJson()
     {
         string json = "";
 
         if(File.Exists(SAVE_PATH + SAVE_FILENAME))
         {
+            Debug.Log("Load");
+
             json = File.ReadAllText(SAVE_PATH + SAVE_FILENAME);
             user = JsonUtility.FromJson<User>(json);
         }
 
         else
         {
+            Debug.Log("Save, Load");
             SaveToJson();
             LoadFromJson();
         }
@@ -42,6 +56,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void SaveToJson()
     {
+        Debug.Log("SaveToJson");
+
         SAVE_PATH = Application.dataPath + "/Save";
 
         if (user == null) return;
@@ -51,7 +67,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void OnApplicationPause(bool pause)
     {
-        SaveToJson();
+        //SaveToJson();
     }
 
     private void OnApplicationQuit()

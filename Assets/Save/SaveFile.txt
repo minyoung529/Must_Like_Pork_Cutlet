@@ -1,4 +1,5 @@
 ﻿{
-    "money": 77,
+    "onClickMoney": 0,
+    "money": 493,
     "cutletList": []
 }

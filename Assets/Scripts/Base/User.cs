@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class User
 {
     private string nickname;
+    public long onClickMoney;
     public long money;
     public List<PorkCutlet> cutletList = new List<PorkCutlet>();
 

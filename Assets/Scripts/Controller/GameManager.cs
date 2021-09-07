@@ -12,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
-    private long clickMoney = 1;
+    private long clickMoney = 100;
     public long onClickMoney { get { return clickMoney; } }
 
 

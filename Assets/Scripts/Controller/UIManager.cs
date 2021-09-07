@@ -10,11 +10,15 @@ public class UIManager : MonoBehaviour
     private GameObject panelTemplate;
 
     private TextAsset testText;
-    [SerializeField]
-    private List<TestEntity> testEntities = new List<TestEntity>();
 
     [SerializeField] private Text moneyText;
     private Text countText;
+
+    private ScrollRect scrollRect;
+
+    private RectTransform hammerTransform;
+    private RectTransform cutletTransform;
+    private RectTransform staffTransform;
 
     int count = 0;
 
@@ -23,9 +27,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        FirstSetting();
         //SettingUpgradePanel();
-        LoadResources();
-        countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
+        UpdatePanel();
     }
 
     private void SettingUpgradePanel()
@@ -54,34 +58,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void LoadResources()
-    {
-        int cnt = 0;
-        testText = Resources.Load<TextAsset>("Data/Test2");
-        string test = testText.ToString();
-
-        string[] line = test.Split('\n');
-
-        for (int i = 0; i < line.Length; i++)
-        {
-            string[] row = line[i].Split('\t');
-
-            for (int j = 0; j < row.Length; j++)
-            {
-                cnt = 0;
-
-                testEntities[i].num = Int32.Parse(row[cnt]);
-                cnt++;
-                testEntities[i].name = row[cnt];
-                cnt++;
-                testEntities[i].code = Int32.Parse(row[cnt]);
-            }
-
-        }
-    }
-
     private void UpdatePanel()
     {
         moneyText.text = GameManager.Instance.CurrentUser.money.ToString();
+    }
+
+    public void SetContent(RectTransform content)
+    {
+        scrollRect.content = content;
+        hammerTransform.gameObject.SetActive(false);
+        cutletTransform.gameObject.SetActive(false);
+        staffTransform.gameObject.SetActive(false);
+        content.gameObject.SetActive(true);
+    }
+
+    private void FirstSetting()
+    {
+        scrollRect = panelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
+        hammerTransform = scrollRect.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>();
+        cutletTransform = scrollRect.transform.GetChild(0).GetChild(1).gameObject.GetComponent<RectTransform>();
+        staffTransform = scrollRect.transform.GetChild(0).GetChild(2).gameObject.GetComponent<RectTransform>();
+        countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
     }
 }

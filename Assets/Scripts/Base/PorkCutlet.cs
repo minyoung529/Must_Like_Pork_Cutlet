@@ -1,10 +1,8 @@
-
 [System.Serializable]
-
-public class Soldier
+public class PorkCutlet
 {
     public string name;
-    public int amount;
+    public int level;
+    public int click;
     public long price;
-    public long ePs;
 }

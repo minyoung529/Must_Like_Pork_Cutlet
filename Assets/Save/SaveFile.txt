@@ -1,18 +1,4 @@
 ﻿{
-    "nickname": "미녕학생",
-    "energy": 0,
-    "soldierList": [
-        {
-            "name": "진흙병사",
-            "amount": 81,
-            "price": 150,
-            "ePs": 1
-        },
-        {
-            "name": "바위병사",
-            "amount": 81,
-            "price": 1200,
-            "ePs": 100
-        }
-    ]
+    "money": 77,
+    "cutletList": []
 }

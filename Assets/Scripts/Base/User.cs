@@ -3,7 +3,12 @@ using System.Collections.Generic;
 [System.Serializable]
 public class User
 {
-    public string nickname;
-    public long energy;
-    public List<Soldier> soldierList = new List<Soldier>();
+    private string nickname;
+    public long money;
+    public List<PorkCutlet> cutletList = new List<PorkCutlet>();
+
+    public string GetNickname()
+    {
+        return nickname;
+    }
 }

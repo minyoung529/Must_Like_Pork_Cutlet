@@ -7,9 +7,14 @@ public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField]
     private User user = null;
+    public User CurrentUser { get { return user; } }
 
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
+
+    private long clickMoney = 1;
+    public long onClickMoney { get { return clickMoney; } }
+
 
     private void Start()
     {
@@ -21,17 +26,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         LoadFromJson();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKey(KeyCode.A))
-        {
-            for(int i = 0; i<user.soldierList.Count; i++)
-            {
-                user.soldierList[i].amount++;
-            }
-        }
     }
 
     private void LoadFromJson()
@@ -73,6 +67,11 @@ public class GameManager : MonoSingleton<GameManager>
     private void OnApplicationQuit()
     {
         SaveToJson();
+    }
+
+    public User GetUser()
+    {
+        return user;
     }
 
     //다른 것들(GameObject, Transform)을 저장하려면 Json 플러그인

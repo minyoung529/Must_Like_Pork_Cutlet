@@ -6,7 +6,9 @@ public class User
     private string nickname;
     public long onClickMoney;
     public long money;
-    public List<PorkCutlet> cutletList = new List<PorkCutlet>();
+    public List<PartTimer> partTimerList;
+    public List<Hammer> hammerList;
+    public List<Cutlet> cutlets;
 
     public string GetNickname()
     {

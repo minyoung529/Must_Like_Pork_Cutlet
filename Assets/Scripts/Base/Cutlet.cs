@@ -1,8 +1,8 @@
 [System.Serializable]
-public class PorkCutlet
+public class Cutlet
 {
     public string name;
+    public int addMoney;
+    public int price;
     public int level;
-    public int click;
-    public long price;
 }

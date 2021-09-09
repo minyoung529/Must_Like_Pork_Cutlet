@@ -1,5 +1,54 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 493,
-    "cutletList": []
+    "money": 384,
+    "partTimerList": [
+        {
+            "name": "코끼리 알바생",
+            "level": 6,
+            "price": 212,
+            "mps": 1
+        },
+        {
+            "name": "딱따구리 알바생",
+            "level": 0,
+            "price": 5000,
+            "mps": 3
+        },
+        {
+            "name": "고양이 알바생",
+            "level": 0,
+            "price": 13900,
+            "mps": 9
+        }
+    ],
+    "hammerList": [
+        {
+            "name": "돈가스 망치",
+            "grade": "",
+            "clickCount": 0,
+            "xp": 0,
+            "level": 0
+        },
+        {
+            "name": "뿅망치",
+            "grade": "",
+            "clickCount": 0,
+            "xp": 0,
+            "level": 0
+        },
+        {
+            "name": "망치망치망망치",
+            "grade": "",
+            "clickCount": 0,
+            "xp": 0,
+            "level": 0
+        }
+    ],
+    "cutlets": [
+        {
+            "name": "",
+            "addMoney": 0,
+            "level": 0
+        }
+    ]
 }

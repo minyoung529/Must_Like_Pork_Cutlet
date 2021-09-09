@@ -6,21 +6,31 @@ using UnityEngine;
 public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField]
-    private User user = null;
+    private User user;
     public User CurrentUser { get { return user; } }
+
+    [SerializeField]
+    private List<Hammer> hammers;
+    [SerializeField]
+    private List<Cutlet> cutlets;
 
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
+
     private long clickMoney = 100;
     public long onClickMoney { get { return clickMoney; } }
 
+    public UIManager uiManager { get; private set; }
 
-    private void Start()
+
+    private int maxCutletCnt = 10;
+
+    private void Awake()
     {
         SAVE_PATH = Application.dataPath + "/Save";
         //Application.persistentDataPath (나중에 안드로이드)
-        if(!Directory.Exists(SAVE_PATH))
+        if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
         }
@@ -28,11 +38,35 @@ public class GameManager : MonoSingleton<GameManager>
         LoadFromJson();
     }
 
+    private void Start()
+    {
+        uiManager = FindObjectOfType<UIManager>();
+        InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
+    }
+
+    public void EarnMoneyPerSecond()
+    {
+        foreach (PartTimer partTimer in user.partTimerList)
+        {
+            user.money += partTimer.mps * (long)Mathf.RoundToInt((float)partTimer.level);
+        }
+
+        uiManager.UpdatePanel();
+    }
+
+    public void ClickMoney()
+    {
+        foreach (PartTimer item in user.partTimerList)
+        {
+            //clickMoney += item.addPrice;
+        }
+    }
+
     private void LoadFromJson()
     {
         string json = "";
 
-        if(File.Exists(SAVE_PATH + SAVE_FILENAME))
+        if (File.Exists(SAVE_PATH + SAVE_FILENAME))
         {
             Debug.Log("Load");
 
@@ -59,21 +93,25 @@ public class GameManager : MonoSingleton<GameManager>
         File.WriteAllText(SAVE_PATH + SAVE_FILENAME, json, System.Text.Encoding.UTF8);
     }
 
-    private void OnApplicationPause(bool pause)
-    {
-        //SaveToJson();
-    }
-
     private void OnApplicationQuit()
     {
         SaveToJson();
     }
 
-    public User GetUser()
+    public int GetMaxCutletCnt()
     {
-        return user;
+        return maxCutletCnt;
     }
 
+    public List<Hammer> GetHammers()
+    {
+        return hammers;
+    }
+
+    public List<Cutlet> GetCutlets()
+    {
+        return cutlets;
+    }
     //다른 것들(GameObject, Transform)을 저장하려면 Json 플러그인
     //안하는 게 좋음
 }

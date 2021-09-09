@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject panelTemplate;
-
-    private TextAsset testText;
+    [SerializeField]
+    private GameObject hammerPanelTemplate;
 
     [SerializeField] private Text moneyText;
     private Text countText;
@@ -18,38 +18,51 @@ public class UIManager : MonoBehaviour
 
     private RectTransform hammerTransform;
     private RectTransform cutletTransform;
-    private RectTransform staffTransform;
+    private RectTransform itemTransform;
 
-    int count = 0;
+    private int count = 0;
 
-    //private List<PorkCutletUpgradePanel> cutletUpgradePanels = new List<PorkCutletUpgradePanel>();
-
+    private List<PartTimerPanel> upgradePanels = new List<PartTimerPanel>();
+    [SerializeField]
+    private CutletMove cutlet;
 
     private void Start()
     {
         FirstSetting();
-        //SettingUpgradePanel();
-        UpdatePanel();
+        SettingUpgradePanel();
     }
 
     private void SettingUpgradePanel()
     {
-        PorkCutletUpgradePanel panel;
-        for (int i = 0; i < GameManager.Instance.CurrentUser.cutletList.Count; i++)
+        PartTimerPanel panel;
+        GameObject obj;
+
+        for (int i = 0; i < GameManager.Instance.CurrentUser.partTimerList.Count; i++)
         {
-            Instantiate(panelTemplate, panelTemplate.transform.parent);
-            panel = panelTemplate.GetComponent<PorkCutletUpgradePanel>();
+            obj = Instantiate(panelTemplate, itemTransform);
+            panel = obj.GetComponent<PartTimerPanel>();
             panel.Init(i);
-            //cutletUpgradePanels.Add(panel);
+            upgradePanels.Add(panel);
+            obj.SetActive(true);
+        }
+
+        for(int i = 0; i< GameManager.Instance.GetCutlets().Count; i++)
+        {
+            obj = Instantiate(hammerPanelTemplate, hammerTransform);
+            panel = obj.GetComponent<HammerPanel>();
+            panel.Init(i);
+            upgradePanels.Add(panel);
+            obj.SetActive(true);
         }
     }
 
     public void OnClickPork()
     {
+        GameManager.Instance.ClickMoney();
         count++;
         countText.text = count.ToString();
-
-        if (count > 9)
+        cutlet.Move();
+        if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
             GameManager.Instance.CurrentUser.money += GameManager.Instance.onClickMoney;
             UpdatePanel();
@@ -58,9 +71,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void UpdatePanel()
+    public void UpdatePanel()
     {
-        moneyText.text = GameManager.Instance.CurrentUser.money.ToString();
+        moneyText.text = GameManager.Instance.CurrentUser.money.ToString() + "¿ø";
     }
 
     public void SetContent(RectTransform content)
@@ -68,16 +81,26 @@ public class UIManager : MonoBehaviour
         scrollRect.content = content;
         hammerTransform.gameObject.SetActive(false);
         cutletTransform.gameObject.SetActive(false);
-        staffTransform.gameObject.SetActive(false);
+        itemTransform.gameObject.SetActive(false);
         content.gameObject.SetActive(true);
     }
 
     private void FirstSetting()
     {
         scrollRect = panelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
-        hammerTransform = scrollRect.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>();
-        cutletTransform = scrollRect.transform.GetChild(0).GetChild(1).gameObject.GetComponent<RectTransform>();
-        staffTransform = scrollRect.transform.GetChild(0).GetChild(2).gameObject.GetComponent<RectTransform>();
+        itemTransform = panelTemplate.transform.parent.parent.GetChild(0).gameObject.GetComponent<RectTransform>();
+        cutletTransform = panelTemplate.transform.parent.parent.GetChild(1).gameObject.GetComponent<RectTransform>();
+        hammerTransform = panelTemplate.transform.parent.parent.GetChild(2).gameObject.GetComponent<RectTransform>();
         countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
+
+        cutletTransform.gameObject.SetActive(false);
+        itemTransform.gameObject.SetActive(true);
+        hammerTransform.gameObject.SetActive(false);
+        UpdatePanel();
+    }
+
+    public int GetCount()
+    {
+        return count;
     }
 }

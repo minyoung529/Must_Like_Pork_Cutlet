@@ -18,11 +18,9 @@ public class GameManager : MonoSingleton<GameManager>
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
 
-    private long clickMoney = 100;
-    public long onClickMoney { get { return clickMoney; } }
+    private ulong cutletMoney = 100;
 
     public UIManager uiManager { get; private set; }
-
 
     private int maxCutletCnt = 10;
 
@@ -42,23 +40,26 @@ public class GameManager : MonoSingleton<GameManager>
     {
         uiManager = FindObjectOfType<UIManager>();
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
+        SetCutletPrice();
     }
 
     public void EarnMoneyPerSecond()
     {
         foreach (PartTimer partTimer in user.partTimerList)
         {
-            user.money += partTimer.mps * (long)Mathf.RoundToInt((float)partTimer.level);
+            if (partTimer.GetIsSold())
+                user.money += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level);
         }
 
         uiManager.UpdatePanel();
     }
 
-    public void ClickMoney()
+    public void SetCutletPrice()
     {
-        foreach (PartTimer item in user.partTimerList)
+        foreach (Cutlet cutlet in user.cutlets)
         {
-            //clickMoney += item.addPrice;
+            if (cutlet.GetIsSold())
+                cutletMoney += (ulong)cutlet.addMoney;
         }
     }
 
@@ -105,13 +106,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     public List<Hammer> GetHammers()
     {
-        return hammers;
+        return user.hammerList;
     }
 
     public List<Cutlet> GetCutlets()
     {
-        return cutlets;
+        return user.cutlets;
     }
-    //다른 것들(GameObject, Transform)을 저장하려면 Json 플러그인
-    //안하는 게 좋음
+
+    public ulong GetCutletPrice()
+    {
+        return cutletMoney;
+    }
 }

@@ -7,4 +7,10 @@ public class Hammer
     public int clickCount;
     public int xp;
     public int level;
+    private bool isSold;
+
+    public bool GetIsSold()
+    {
+        return isSold;
+    }
 }

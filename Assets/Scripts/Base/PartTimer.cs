@@ -5,11 +5,19 @@ public class PartTimer
 {
     public string name;
     public int level;
-    public long price;
+    public ulong price;
     public int mps;
+    private bool isSold;
 
-    public void PlusMPS()
+    public void LevelUp()
     {
-        price = Mathf.RoundToInt(Mathf.Pow(level - 1, 2) * Mathf.Pow(level, 1.15f) - 1 * level + 22);  
+        level++;
+        price += (ulong)Mathf.RoundToInt(Mathf.Pow(level - 1, 2) * Mathf.Pow(level, 1.15f) - 1 * level + 22);
+        isSold = true;
+    }
+
+    public bool GetIsSold()
+    {
+        return isSold;
     }
 }

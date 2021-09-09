@@ -12,8 +12,8 @@ public class HammerPanel : PartTimerPanel
     public override void Init(int num)
     {
         hammer = GameManager.Instance.GetHammers()[num];
-        nameText.text = hammer.name;
-        levelText.text = hammer.level.ToString() + " Level";
-        priceText.text = hammer.grade;
+        //nameText.text = hammer.name;
+        //levelText.text = hammer.level.ToString() + " Level";
+        //priceText.text = hammer.grade;
     }
 }

@@ -1,23 +1,23 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 384,
+    "money": 176,
     "partTimerList": [
         {
             "name": "코끼리 알바생",
-            "level": 6,
-            "price": 212,
+            "level": 1,
+            "price": 301,
             "mps": 1
         },
         {
             "name": "딱따구리 알바생",
-            "level": 0,
-            "price": 5000,
+            "level": 1,
+            "price": 871,
             "mps": 3
         },
         {
             "name": "고양이 알바생",
             "level": 0,
-            "price": 13900,
+            "price": 1270,
             "mps": 9
         }
     ],
@@ -46,8 +46,27 @@
     ],
     "cutlets": [
         {
-            "name": "",
+            "name": "오리지널 돈가스",
+            "addMoney": 16,
+            "price": 329,
+            "level": 0
+        },
+        {
+            "name": "치즈돈가스",
+            "addMoney": 64,
+            "price": 800,
+            "level": 0
+        },
+        {
+            "name": "갈릭버터 돈가스",
+            "addMoney": 123,
+            "price": 3799,
+            "level": 0
+        },
+        {
+            "name": "딸기",
             "addMoney": 0,
+            "price": 0,
             "level": 0
         }
     ]

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class User
 {
     private string nickname;
-    public long onClickMoney;
-    public long money;
+    public ulong onClickMoney;
+    public ulong money;
     public List<PartTimer> partTimerList;
     public List<Hammer> hammerList;
     public List<Cutlet> cutlets;

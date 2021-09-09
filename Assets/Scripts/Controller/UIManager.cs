@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     private GameObject panelTemplate;
     [SerializeField]
     private GameObject hammerPanelTemplate;
+    [SerializeField]
+    private GameObject cutletPanelTemplate;
+
 
     [SerializeField] private Text moneyText;
     private Text countText;
@@ -46,10 +49,21 @@ public class UIManager : MonoBehaviour
             obj.SetActive(true);
         }
 
-        for(int i = 0; i< GameManager.Instance.GetCutlets().Count; i++)
+        for (int i = 0; i < GameManager.Instance.GetHammers().Count; i++)
         {
             obj = Instantiate(hammerPanelTemplate, hammerTransform);
             panel = obj.GetComponent<HammerPanel>();
+            panel.Init(i);
+            upgradePanels.Add(panel);
+            obj.SetActive(true);
+        }
+        Debug.Log(GameManager.Instance.GetCutlets().Count);
+
+        for (int i = 0; i < GameManager.Instance.GetCutlets().Count; i++)
+        {
+            Debug.Log(GameManager.Instance.GetCutlets().Count);
+            obj = Instantiate(cutletPanelTemplate, cutletTransform);
+            panel = obj.GetComponent<CutletPanel>();
             panel.Init(i);
             upgradePanels.Add(panel);
             obj.SetActive(true);
@@ -58,13 +72,12 @@ public class UIManager : MonoBehaviour
 
     public void OnClickPork()
     {
-        GameManager.Instance.ClickMoney();
         count++;
         countText.text = count.ToString();
         cutlet.Move();
         if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
-            GameManager.Instance.CurrentUser.money += GameManager.Instance.onClickMoney;
+            GameManager.Instance.CurrentUser.money += GameManager.Instance.GetCutletPrice();
             UpdatePanel();
             count = 0;
             countText.text = count.ToString();
@@ -74,6 +87,10 @@ public class UIManager : MonoBehaviour
     public void UpdatePanel()
     {
         moneyText.text = GameManager.Instance.CurrentUser.money.ToString() + "¿ø";
+        foreach (PartTimerPanel upgradePanels in upgradePanels)
+        {
+            upgradePanels.Inactive();
+        }
     }
 
     public void SetContent(RectTransform content)

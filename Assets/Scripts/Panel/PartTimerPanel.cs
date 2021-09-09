@@ -19,39 +19,80 @@ public class PartTimerPanel : MonoBehaviour
 
     private PartTimer partTimer;
 
+    protected bool isSecret;
+    protected int num;
+
+
     public void Update()
     {
         Inactive();
     }
     public virtual void Init(int num)
     {
+        this.num = num;
         partTimer = GameManager.Instance.CurrentUser.partTimerList[num];
-        Debug.Log(partTimer.name);
         SetUp();
     }
 
-    public void SetUp()
+    protected virtual void SetUp()
     {
         nameText.text = partTimer.name;
         priceText.text = partTimer.price.ToString() + "¿ø";
         levelText.text = partTimer.level.ToString() + " Level";
     }
 
+    protected virtual void SecretInfo()
+    {
+        nameText.text = "???? ???";
+        priceText.text = partTimer.price.ToString() + "¿ø";
+        levelText.text = "";
+    }
+
     public void OnPointerUp()
     {
         if (GameManager.Instance.CurrentUser.money < partTimer.price) return;
         GameManager.Instance.CurrentUser.money -= partTimer.price;
-        partTimer.level++;
-        partTimer.PlusMPS();
+        partTimer.LevelUp();
         SetUp();
         GameManager.Instance.uiManager.UpdatePanel();
     }
 
-    protected virtual void Inactive()
+    public virtual void Inactive()
     {
         if (GameManager.Instance.CurrentUser?.money < partTimer?.price)
         {
+            if (partTimer.level < 1)
+            {
+                if (num > 0)
+                {
+                    if (GameManager.Instance.CurrentUser?.money + 10 < partTimer?.price)
+                    {
+                        gameObject.SetActive(true);
+                        isSecret = true;
+                    }
+                }
+                    
+
+                if (num > 1)
+                {
+                    if (GameManager.Instance.CurrentUser?.money + 100 < partTimer?.price)
+                        gameObject.SetActive(false);
+                }
+
+            }
+
+            else
+            {
+                gameObject.SetActive(true);
+                isSecret = false;
+            }
+
             buttonImage.color = new Color32(0, 0, 0, 121);
+
+            if (isSecret)
+            {
+                SecretInfo();
+            }
         }
 
         else

@@ -6,13 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject panelTemplate;
-    [SerializeField]
-    private GameObject hammerPanelTemplate;
-    [SerializeField]
-    private GameObject cutletPanelTemplate;
-
+    #region º¯¼ö
+    [SerializeField] private GameObject partTimerpanelTemplate;
+    [SerializeField] private GameObject hammerPanelTemplate;
+    [SerializeField] private GameObject cutletPanelTemplate;
 
     [SerializeField] private Text moneyText;
     private Text countText;
@@ -21,13 +18,15 @@ public class UIManager : MonoBehaviour
 
     private RectTransform hammerTransform;
     private RectTransform cutletTransform;
-    private RectTransform itemTransform;
+    private RectTransform partTimerTransform;
 
     private int count = 0;
 
-    private List<PartTimerPanel> upgradePanels = new List<PartTimerPanel>();
-    [SerializeField]
-    private CutletMove cutlet;
+    private List<PanelBase> upgradePanels = new List<PanelBase>();
+    [SerializeField] private CutletMove cutlet;
+    #endregion
+
+    Sprite[] partTimerButtonImages;
 
     private void Start()
     {
@@ -37,37 +36,26 @@ public class UIManager : MonoBehaviour
 
     private void SettingUpgradePanel()
     {
-        PartTimerPanel panel;
+        //InstantiatePanel(cutletPanelTemplate, cutletTransform, GameManager.Instance.CurrentUser.cutlets.Count);
+        InstantiatePanel(partTimerpanelTemplate, partTimerTransform, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerButtonImages);
+        //InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count);
+    }
+
+    private void InstantiatePanel(GameObject template, RectTransform rectTransform, int count, Sprite[] sprites)
+    {
         GameObject obj;
+        PanelBase panel;
 
-        for (int i = 0; i < GameManager.Instance.CurrentUser.partTimerList.Count; i++)
+        for (int i = 0; i < count; i++)
         {
-            obj = Instantiate(panelTemplate, itemTransform);
-            panel = obj.GetComponent<PartTimerPanel>();
-            panel.Init(i);
+            obj = Instantiate(template, rectTransform);
+            panel = obj.GetComponent<PanelBase>();
+            panel.Init(i, sprites[i]);
             upgradePanels.Add(panel);
             obj.SetActive(true);
         }
 
-        for (int i = 0; i < GameManager.Instance.GetHammers().Count; i++)
-        {
-            obj = Instantiate(hammerPanelTemplate, hammerTransform);
-            panel = obj.GetComponent<HammerPanel>();
-            panel.Init(i);
-            upgradePanels.Add(panel);
-            obj.SetActive(true);
-        }
-        Debug.Log(GameManager.Instance.GetCutlets().Count);
-
-        for (int i = 0; i < GameManager.Instance.GetCutlets().Count; i++)
-        {
-            Debug.Log(GameManager.Instance.GetCutlets().Count);
-            obj = Instantiate(cutletPanelTemplate, cutletTransform);
-            panel = obj.GetComponent<CutletPanel>();
-            panel.Init(i);
-            upgradePanels.Add(panel);
-            obj.SetActive(true);
-        }
+        template.SetActive(false);
     }
 
     public void OnClickPork()
@@ -90,7 +78,7 @@ public class UIManager : MonoBehaviour
     public void UpdatePanel()
     {
         moneyText.text = GameManager.Instance.CurrentUser.money.ToString() + "¿ø";
-        foreach (PartTimerPanel upgradePanels in upgradePanels)
+        foreach (PanelBase upgradePanels in upgradePanels)
         {
             upgradePanels.Inactive();
         }
@@ -101,21 +89,24 @@ public class UIManager : MonoBehaviour
         scrollRect.content = content;
         hammerTransform.gameObject.SetActive(false);
         cutletTransform.gameObject.SetActive(false);
-        itemTransform.gameObject.SetActive(false);
+        partTimerTransform.gameObject.SetActive(false);
         content.gameObject.SetActive(true);
     }
 
     private void FirstSetting()
     {
-        scrollRect = panelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
-        itemTransform = panelTemplate.transform.parent.parent.GetChild(0).gameObject.GetComponent<RectTransform>();
-        cutletTransform = panelTemplate.transform.parent.parent.GetChild(1).gameObject.GetComponent<RectTransform>();
-        hammerTransform = panelTemplate.transform.parent.parent.GetChild(2).gameObject.GetComponent<RectTransform>();
+        scrollRect = partTimerpanelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
+        cutletTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(0).gameObject.GetComponent<RectTransform>();
+        partTimerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(1).gameObject.GetComponent<RectTransform>();
+        hammerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(2).gameObject.GetComponent<RectTransform>();
         countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
 
-        cutletTransform.gameObject.SetActive(false);
-        itemTransform.gameObject.SetActive(true);
+        scrollRect.content = cutletTransform;
+        cutletTransform.gameObject.SetActive(true);
+        partTimerTransform.gameObject.SetActive(false);
         hammerTransform.gameObject.SetActive(false);
+
+        partTimerButtonImages = Resources.LoadAll<Sprite>("Sprites/PartTimerButtonImage");
         UpdatePanel();
     }
 

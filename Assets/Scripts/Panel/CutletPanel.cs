@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutletPanel : PartTimerPanel
+public class CutletPanel : PanelBase
 {
-    Cutlet cutlet;
+    private Cutlet cutlet;
 
-    public override void Init(int num)
+    public override void Init(int num, Sprite sprite)
     {
         this.num = num;
-        cutlet = GameManager.Instance.GetCutlets()[num];
+        cutlet = GameManager.Instance.CurrentUser.cutlets[num];
         SetUp();
     }
 
     protected override void SetUp()
     {
-        nameText.text = cutlet.name;
-        levelText.text = cutlet.level.ToString() + " Level";
-        priceText.text = cutlet.price.ToString() + "¿ø";
+        nameText.text = cutlet?.name;
+        levelText.text = cutlet?.level.ToString() + " Level";
+        priceText.text = cutlet?.price.ToString() + "¿ø";
     }
 
     public void OnClickCutlet()

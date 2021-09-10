@@ -43,6 +43,15 @@ public class GameManager : MonoSingleton<GameManager>
         SetCutletPrice();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            user.money += 10000;
+            uiManager.UpdatePanel();
+        }
+    }
+
     public void EarnMoneyPerSecond()
     {
         foreach (PartTimer partTimer in user.partTimerList)
@@ -102,16 +111,6 @@ public class GameManager : MonoSingleton<GameManager>
     public int GetMaxCutletCnt()
     {
         return maxCutletCnt;
-    }
-
-    public List<Hammer> GetHammers()
-    {
-        return user.hammerList;
-    }
-
-    public List<Cutlet> GetCutlets()
-    {
-        return user.cutlets;
     }
 
     public ulong GetCutletPrice()

@@ -1,24 +1,41 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 878,
+    "money": 7806,
     "partTimerList": [
         {
             "name": "코끼리 알바생",
-            "level": 3,
-            "price": 356,
-            "mps": 1
+            "level": 11,
+            "price": 14827,
+            "mps": 1,
+            "isSold": true
         },
         {
             "name": "딱따구리 알바생",
-            "level": 1,
-            "price": 871,
-            "mps": 3
+            "level": 0,
+            "price": 50000,
+            "mps": 5,
+            "isSold": false
         },
         {
             "name": "고양이 알바생",
             "level": 0,
-            "price": 1270,
-            "mps": 9
+            "price": 120000,
+            "mps": 10,
+            "isSold": false
+        },
+        {
+            "name": "곰탱이 알바생",
+            "level": 0,
+            "price": 450000,
+            "mps": 25,
+            "isSold": false
+        },
+        {
+            "name": "햄스터 알바생",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
         }
     ],
     "hammerList": [

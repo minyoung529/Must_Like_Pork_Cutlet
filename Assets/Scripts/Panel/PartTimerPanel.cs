@@ -4,121 +4,91 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PartTimerPanel : MonoBehaviour
+public class PartTimerPanel : PanelBase
 {
-    [SerializeField]
-    protected Text nameText;
-    [SerializeField]
-    protected Text priceText;
-    [SerializeField]
-    protected Text levelText;
-    [SerializeField]
-    protected Image itemImage;
-    [SerializeField]
-    protected Image buttonImage;
-
     private PartTimer partTimer;
 
-    protected bool isSecret;
-    protected int num;
-
-
-    public void Update()
+    public override void Init(int num, Sprite sprite)
     {
-        Inactive();
-    }
-    public virtual void Init(int num)
-    {
-        this.num = num;
         partTimer = GameManager.Instance.CurrentUser.partTimerList[num];
-        SetUp();
-        QuestionMark();
-
+        base.Init(num, sprite); ;
     }
 
-    protected virtual void SetUp()
+    protected override void SetUp()
     {
-        nameText.text = partTimer.name;
-        priceText.text = partTimer.price.ToString() + "원";
-        levelText.text = partTimer.level.ToString() + " Level";
+        nameText.text = partTimer?.name;
+        priceText.text = partTimer?.price + "원";
+        levelText.text = partTimer?.level + " Level";
     }
 
-    protected virtual void SecretInfo()
+    protected override void SecretInfo()
     {
-        nameText.text = "???? ???";
-        priceText.text = partTimer.price.ToString() + "원";
-        levelText.text = "";
-    }
+        if (!partTimer.GetIsSold())
+            nameText.text = QuestionMark(partTimer.name);
 
-    private string QuestionMark()
-    {
-        char[] nameToChar = new char[partTimer.name.Length];
-        string questionMarkName;
+        priceText.text = partTimer.price + "원";
 
-        for (int i = 0; i < partTimer.name.Length; i++)
+        if (num > 0)
         {
-            if (partTimer.name[i] == ' ')
-                nameToChar[i] = ' ';
-            else
-                nameToChar[i] = '?';
-
+            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 9)
+                levelText.text = "조건: " + GameManager.Instance.CurrentUser.partTimerList[num - 1].name + " 레벨 10 이상";
         }
-
-        questionMarkName = new string(nameToChar);
-        return questionMarkName;
+        isSecret = false;
     }
 
-    public void OnPointerUp()
+    public void OnClickUp()
     {
         if (GameManager.Instance.CurrentUser.money < partTimer.price) return;
+        if (num != 0)
+            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 9) return;
         GameManager.Instance.CurrentUser.money -= partTimer.price;
         partTimer.LevelUp();
         SetUp();
         GameManager.Instance.uiManager.UpdatePanel();
     }
 
-    public virtual void Inactive()
+    public override void Inactive()
     {
+
+        if (num != 0)
+        {
+            Debug.Log(GameManager.Instance.CurrentUser.partTimerList[num - 1].level);
+
+            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level > 9)
+            {
+                levelText.text = "";
+            }
+        }
+
         if (GameManager.Instance.CurrentUser?.money < partTimer?.price)
         {
             if (partTimer.level < 1)
             {
-                if (num > 0)
+                //물음표 보임
+                if (GameManager.Instance.CurrentUser?.money + partTimer.price * 0.2f < partTimer?.price)
                 {
-                    if (GameManager.Instance.CurrentUser?.money + 10 < partTimer?.price)
-                    {
-                        gameObject.SetActive(true);
-                        nameText.text = QuestionMark();
-                        isSecret = true;
-                    }
+                    gameObject.SetActive(true);
+                    SecretInfo();
                 }
-
-
-                if (num > 1)
-                {
-                    if (GameManager.Instance.CurrentUser?.money + 100 < partTimer?.price)
-                        gameObject.SetActive(false);
-                }
-
-            }
-
-            else
-            {
-                gameObject.SetActive(true);
-                isSecret = false;
             }
 
             buttonImage.color = new Color32(0, 0, 0, 121);
-
-            if (isSecret)
-            {
-                SecretInfo();
-            }
+            SecretInfo();
         }
 
         else
         {
+            if (num != 0)
+            {
+                if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 10)
+                {
+                    return;
+                }
+            }
+
             buttonImage.color = Color.clear;
+            SetUp();
         }
+
     }
 }

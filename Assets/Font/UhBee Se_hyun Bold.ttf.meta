@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: aa2a8a1ed95ef1b40bdee25a34ba16b7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - UhBee Se_hyun
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d4f1da936d205574d877ac06cab01408, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

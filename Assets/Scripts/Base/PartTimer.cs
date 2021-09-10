@@ -7,7 +7,7 @@ public class PartTimer
     public int level;
     public ulong price;
     public int mps;
-    private bool isSold;
+    public bool isSold;
 
     public void LevelUp()
     {

@@ -75,11 +75,14 @@ public class UIManager : MonoBehaviour
         count++;
         countText.text = count.ToString();
         cutlet.Move();
+        cutlet.SetSprite(count);
+
         if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
             GameManager.Instance.CurrentUser.money += GameManager.Instance.GetCutletPrice();
             UpdatePanel();
             count = 0;
+            cutlet.SetSprite(count);
             countText.text = count.ToString();
         }
     }

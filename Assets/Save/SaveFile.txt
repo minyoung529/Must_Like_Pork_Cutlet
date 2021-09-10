@@ -1,11 +1,11 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 176,
+    "money": 878,
     "partTimerList": [
         {
             "name": "코끼리 알바생",
-            "level": 1,
-            "price": 301,
+            "level": 3,
+            "price": 356,
             "mps": 1
         },
         {

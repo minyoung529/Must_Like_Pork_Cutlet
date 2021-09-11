@@ -8,16 +8,18 @@ public class CutletPanel : PanelBase
 
     public override void Init(int num, Sprite sprite)
     {
-        this.num = num;
+        maxLevel = 10;
         cutlet = GameManager.Instance.CurrentUser.cutlets[num];
+        base.Init(num, sprite);
         SetUp();
+        SetSoldItem();
     }
 
     protected override void SetUp()
     {
         nameText.text = cutlet?.name;
-        levelText.text = cutlet?.level.ToString() + " Level";
-        priceText.text = cutlet?.price.ToString() + "¿ø";
+        levelText.text = cutlet?.level + " Level";
+        priceText.text = cutlet?.price + "¿ø";
     }
 
     public void OnClickCutlet()
@@ -25,63 +27,36 @@ public class CutletPanel : PanelBase
         if (GameManager.Instance.CurrentUser.money < cutlet.price)
             return;
 
-        GameManager.Instance.CurrentUser.money -= cutlet.price;
+        GameManager.Instance.AddMoney(cutlet.price, false);
         cutlet.LevelUp();
-        SetUp();
         GameManager.Instance.SetCutletPrice();
         GameManager.Instance.uiManager.UpdatePanel();
+        SetUp();
+        SetSoldItem();
     }
 
     public override void Inactive()
     {
-        if (GameManager.Instance.CurrentUser?.money < cutlet?.price)
-        {
-            if (cutlet.level < 1)
-            {
-                if (num > 0)
-                {
-                    if (GameManager.Instance.CurrentUser?.money + 10 < cutlet?.price)
-                    {
-                        gameObject.SetActive(true);
-                        isSecret = true;
-                    }
-                }
-
-
-                if (num > 1)
-                {
-                    if (GameManager.Instance.CurrentUser?.money + 100 < cutlet?.price)
-                        gameObject.SetActive(false);
-                }
-
-            }
-
-            else
-            {
-                gameObject.SetActive(true);
-                isSecret = false;
-            }
-
-            buttonImage.color = new Color32(0, 0, 0, 121);
-
-            if (isSecret)
-            {
-                SecretInfo();
-            }
-        }
-
-        else
-        {
-            buttonImage.color = Color.clear;
-            isSecret = false;
-            SetUp();
-        }
+        base.Inactive(cutlet.GetIsSold(), cutlet.price, cutlet.level);
     }
 
     protected override void SecretInfo()
     {
-        nameText.text = "???? ???";
-        priceText.text = cutlet.price.ToString() + "¿ø";
-        levelText.text = "";
+        base.SecretInfo(cutlet.GetIsSold(), cutlet.price, cutlet.name);
+    }
+
+    private void SetSoldItem()
+    {
+        if (cutlet.GetIsSold())
+        {
+            levelText.transform.SetSiblingIndex(levelText.transform.GetSiblingIndex() - 1);
+            itemImage.color = Color.white;
+        }
+    }
+
+    protected override bool IsSecret()
+    {
+        if (num == 0) return false;
+        return GameManager.Instance.CurrentUser.cutlets[num - 1].level < maxLevel;
     }
 }

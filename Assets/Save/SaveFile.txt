@@ -1,37 +1,66 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 7806,
+    "money": 4216,
     "partTimerList": [
         {
-            "name": "코끼리 알바생",
+            "name": "코끼리 아저씨",
+            "englishName": "Elephant",
             "level": 11,
             "price": 14827,
             "mps": 1,
             "isSold": true
         },
         {
-            "name": "딱따구리 알바생",
-            "level": 0,
-            "price": 50000,
+            "name": "냥냥펀치선수",
+            "englishName": "Cat",
+            "level": 1,
+            "price": 50021,
             "mps": 5,
-            "isSold": false
+            "isSold": true
         },
         {
-            "name": "고양이 알바생",
+            "name": "말랑도치",
+            "englishName": "Hedgehog",
             "level": 0,
             "price": 120000,
             "mps": 10,
             "isSold": false
         },
         {
-            "name": "곰탱이 알바생",
+            "name": "핑펭이",
+            "englishName": "Penguin",
             "level": 0,
             "price": 450000,
             "mps": 25,
             "isSold": false
         },
         {
-            "name": "햄스터 알바생",
+            "name": "외계기린",
+            "englishName": "Giraffe",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "웽웽이",
+            "englishName": "Bee",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "죠쓰",
+            "englishName": "Shark",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "크앙다이노",
+            "englishName": "Dinosaur",
             "level": 0,
             "price": 840000,
             "mps": 45,
@@ -64,24 +93,54 @@
     "cutlets": [
         {
             "name": "오리지널 돈가스",
-            "addMoney": 16,
-            "price": 329,
-            "level": 0
+            "addMoney": 1312,
+            "price": 35580,
+            "level": 14
         },
         {
             "name": "치즈돈가스",
-            "addMoney": 64,
-            "price": 800,
-            "level": 0
+            "addMoney": 397,
+            "price": 3603,
+            "level": 8
         },
         {
-            "name": "갈릭버터 돈가스",
+            "name": "핵! 불돈가스",
             "addMoney": 123,
             "price": 3799,
             "level": 0
         },
         {
-            "name": "딸기",
+            "name": "짜장 돈가스",
+            "addMoney": 0,
+            "price": 0,
+            "level": 0
+        },
+        {
+            "name": "피카피카돈가스",
+            "addMoney": 0,
+            "price": 0,
+            "level": 0
+        },
+        {
+            "name": "오늘부터1일 돈가스",
+            "addMoney": 0,
+            "price": 0,
+            "level": 0
+        },
+        {
+            "name": "민트초코 돈가스",
+            "addMoney": 0,
+            "price": 0,
+            "level": 0
+        },
+        {
+            "name": "생크림딸기 돈가스",
+            "addMoney": 0,
+            "price": 0,
+            "level": 0
+        },
+        {
+            "name": "무지개 돈가스",
             "addMoney": 0,
             "price": 0,
             "level": 0

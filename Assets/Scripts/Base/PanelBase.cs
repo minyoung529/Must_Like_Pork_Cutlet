@@ -16,8 +16,8 @@ public class PanelBase : MonoBehaviour
     [SerializeField]
     protected Image buttonImage;
 
-    protected bool isSecret;
     protected int num;
+    protected int maxLevel;
 
     public virtual void Init(int num, Sprite sprite)
     {
@@ -46,7 +46,68 @@ public class PanelBase : MonoBehaviour
         return questionMarkName;
     }
 
-    public virtual void Inactive() { }
-
     protected virtual void SecretInfo() { }
+    protected virtual void SecretInfo(bool isSold, ulong price, string name)
+    {
+        if (!isSold && IsSecret())
+        {
+            nameText.text = QuestionMark(name);
+            if (num > 0)
+            {
+                itemImage.color = Color.black;
+            }
+        }
+
+        else
+        {
+            nameText.text = name;
+            itemImage.color = Color.white;
+        }
+
+        priceText.text = price + "원";
+        buttonImage.color = new Color32(0, 0, 0, 121);
+
+        if (num > 0)
+        {
+            if (IsSecret())
+                levelText.text = "조건: 앞 dddddddd 레벨 10 이상";
+        }
+    }
+
+
+    public virtual void Inactive()
+    {
+    }
+
+    public virtual void Inactive(bool isSold, ulong price, int level)
+    {
+        //잠금해제 후 팔린 거, 0 제외
+        if (num != 0)
+        {
+            if (!IsSecret() && isSold)
+            {
+                SetUp();
+            }
+        }
+
+        //현재 돈이 그 가격보다 적을 때
+        if (GameManager.Instance.CurrentUser?.money < price)
+        {
+            buttonImage.color = new Color32(0, 0, 0, 121);
+        }
+
+        //팔리지 않았으면 감춘다
+        if (!isSold && num != 0)
+        {
+            SecretInfo();
+        }
+
+        if (!IsSecret() && GameManager.Instance.CurrentUser?.money >= price)
+        {
+            buttonImage.color = Color.clear;
+            SetUp();
+        }
+    }
+
+    protected virtual bool IsSecret() { return false; }
 }

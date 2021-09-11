@@ -117,4 +117,12 @@ public class GameManager : MonoSingleton<GameManager>
     {
         return cutletMoney;
     }
+
+    public void AddMoney(ulong money, bool isAdd)
+    {
+        if (isAdd)
+            CurrentUser.money += money;
+        else
+            CurrentUser.money -= money;
+    }
 }

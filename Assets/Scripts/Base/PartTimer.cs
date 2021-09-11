@@ -4,6 +4,7 @@ using UnityEngine;
 public class PartTimer
 {
     public string name;
+    public string englishName;
     public int level;
     public ulong price;
     public int mps;

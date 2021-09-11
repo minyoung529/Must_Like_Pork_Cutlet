@@ -11,7 +11,9 @@ public class PartTimerPanel : PanelBase
     public override void Init(int num, Sprite sprite)
     {
         partTimer = GameManager.Instance.CurrentUser.partTimerList[num];
-        base.Init(num, sprite); ;
+        base.Init(num, sprite);
+        SetSoldItem();
+        maxLevel = 10;
     }
 
     protected override void SetUp()
@@ -23,72 +25,44 @@ public class PartTimerPanel : PanelBase
 
     protected override void SecretInfo()
     {
-        if (!partTimer.GetIsSold())
-            nameText.text = QuestionMark(partTimer.name);
-
-        priceText.text = partTimer.price + "원";
-
-        if (num > 0)
-        {
-            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 9)
-                levelText.text = "조건: " + GameManager.Instance.CurrentUser.partTimerList[num - 1].name + " 레벨 10 이상";
-        }
-        isSecret = false;
+        base.SecretInfo(partTimer.GetIsSold(), partTimer.price, partTimer.name);
     }
 
     public void OnClickUp()
     {
         if (GameManager.Instance.CurrentUser.money < partTimer.price) return;
         if (num != 0)
-            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 9) return;
-        GameManager.Instance.CurrentUser.money -= partTimer.price;
+        {
+            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < maxLevel - 1) return;
+        }
+
+        GameManager.Instance.AddMoney(partTimer.price, false);
         partTimer.LevelUp();
-        SetUp();
+
         GameManager.Instance.uiManager.UpdatePanel();
+        GameManager.Instance.uiManager.ActivePartTimers();
+
+        SetSoldItem();
+        SetUp();
     }
 
     public override void Inactive()
     {
+        base.Inactive(partTimer.GetIsSold(), partTimer.price, partTimer.level);
+    }
 
-        if (num != 0)
+    private void SetSoldItem()
+    {
+        if (partTimer.GetIsSold())
         {
-            Debug.Log(GameManager.Instance.CurrentUser.partTimerList[num - 1].level);
-
-            if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level > 9)
-            {
-                levelText.text = "";
-            }
+            levelText.transform.SetSiblingIndex(levelText.transform.GetSiblingIndex() - 1);
+            itemImage.color = Color.white;
         }
+    }
 
-        if (GameManager.Instance.CurrentUser?.money < partTimer?.price)
-        {
-            if (partTimer.level < 1)
-            {
-                //물음표 보임
-                if (GameManager.Instance.CurrentUser?.money + partTimer.price * 0.2f < partTimer?.price)
-                {
-                    gameObject.SetActive(true);
-                    SecretInfo();
-                }
-            }
-
-            buttonImage.color = new Color32(0, 0, 0, 121);
-            SecretInfo();
-        }
-
-        else
-        {
-            if (num != 0)
-            {
-                if (GameManager.Instance.CurrentUser.partTimerList[num - 1].level < 10)
-                {
-                    return;
-                }
-            }
-
-            buttonImage.color = Color.clear;
-            SetUp();
-        }
-
+    protected override bool IsSecret()
+    {
+        if (num == 0) return false;
+        return GameManager.Instance.CurrentUser.partTimerList[num - 1].level < maxLevel;
     }
 }

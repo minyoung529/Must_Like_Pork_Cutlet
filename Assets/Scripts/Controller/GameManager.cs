@@ -17,7 +17,6 @@ public class GameManager : MonoSingleton<GameManager>
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
-
     private ulong cutletMoney = 100;
 
     public UIManager uiManager { get; private set; }
@@ -47,7 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            user.money += 10000;
+            user.money += 1000000;
             uiManager.UpdatePanel();
         }
     }
@@ -57,9 +56,10 @@ public class GameManager : MonoSingleton<GameManager>
         foreach (PartTimer partTimer in user.partTimerList)
         {
             if (partTimer.GetIsSold())
-                user.money += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level);
+                AddMoney((ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level), true);
         }
 
+        //uiManager.Smooth();
         uiManager.UpdatePanel();
     }
 

@@ -1,22 +1,22 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 4216,
+    "money": 6800747,
     "partTimerList": [
         {
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
-            "level": 11,
-            "price": 14827,
+            "level": 0,
+            "price": 9900,
             "mps": 1,
-            "isSold": true
+            "isSold": false
         },
         {
             "name": "냥냥펀치선수",
             "englishName": "Cat",
-            "level": 1,
-            "price": 50021,
+            "level": 0,
+            "price": 50000,
             "mps": 5,
-            "isSold": true
+            "isSold": false
         },
         {
             "name": "말랑도치",
@@ -93,57 +93,66 @@
     "cutlets": [
         {
             "name": "오리지널 돈가스",
-            "addMoney": 1312,
-            "price": 35580,
-            "level": 14
+            "addMoney": 735,
+            "price": 12084,
+            "level": 11,
+            "isSold": true
         },
         {
             "name": "치즈돈가스",
-            "addMoney": 397,
-            "price": 3603,
-            "level": 8
+            "addMoney": 634,
+            "price": 8431,
+            "level": 10,
+            "isSold": true
         },
         {
             "name": "핵! 불돈가스",
-            "addMoney": 123,
-            "price": 3799,
-            "level": 0
+            "addMoney": 693,
+            "price": 11430,
+            "level": 10,
+            "isSold": true
         },
         {
             "name": "짜장 돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 719,
+            "price": 11755,
+            "level": 11,
+            "isSold": true
         },
         {
             "name": "피카피카돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 570,
+            "price": 7631,
+            "level": 10,
+            "isSold": true
         },
         {
             "name": "오늘부터1일 돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 719,
+            "price": 11755,
+            "level": 11,
+            "isSold": true
         },
         {
             "name": "민트초코 돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 1296,
+            "price": 35251,
+            "level": 14,
+            "isSold": true
         },
         {
             "name": "생크림딸기 돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 1801,
+            "price": 64843,
+            "level": 16,
+            "isSold": true
         },
         {
             "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 0,
-            "level": 0
+            "addMoney": 1081,
+            "price": 25142,
+            "level": 13,
+            "isSold": true
         }
     ]
 }

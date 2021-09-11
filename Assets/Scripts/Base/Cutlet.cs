@@ -7,7 +7,7 @@ public class Cutlet
     public int addMoney;
     public ulong price;
     public int level;
-    private bool isSold;
+    public bool isSold;
 
 
     public void LevelUp()

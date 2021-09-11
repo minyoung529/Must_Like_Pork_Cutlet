@@ -1,38 +1,38 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 6800747,
+    "money": 162817,
     "partTimerList": [
         {
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
-            "level": 0,
-            "price": 9900,
+            "level": 11,
+            "price": 14827,
             "mps": 1,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "냥냥펀치선수",
             "englishName": "Cat",
-            "level": 0,
-            "price": 50000,
+            "level": 12,
+            "price": 57045,
             "mps": 5,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "말랑도치",
             "englishName": "Hedgehog",
-            "level": 0,
-            "price": 120000,
+            "level": 10,
+            "price": 123340,
             "mps": 10,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "핑펭이",
             "englishName": "Penguin",
-            "level": 0,
-            "price": 450000,
+            "level": 11,
+            "price": 454927,
             "mps": 25,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "외계기린",

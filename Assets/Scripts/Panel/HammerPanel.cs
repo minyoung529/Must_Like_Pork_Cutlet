@@ -33,9 +33,12 @@ public class HammerPanel : PanelBase
     private void ChangeLine()
     {
         if (num == GameManager.Instance.CurrentUser.hammerList.Count - 1) return;
+
         GameObject obj;
         int transformNumber = transform.GetSiblingIndex();
-        if (hammer.grade == "common" && GameManager.Instance.CurrentUser.hammerList[num + 1].grade == "rare")
+        string nextGrade = hammer.grade == "common" ? "rare" : "legendary";
+
+        if (hammer.grade != nextGrade && GameManager.Instance.CurrentUser.hammerList[num + 1].grade == nextGrade)
         {
             if (transformNumber % 3 != 1)
             {
@@ -53,31 +56,9 @@ public class HammerPanel : PanelBase
                     obj = Instantiate(lineObject, transform.parent);
                     obj.transform.SetSiblingIndex(transformNumber + 1);
                 }
-                obj.SetActive(true);
 
-            }
-        }
-
-        else if (hammer.grade == "rare" && GameManager.Instance.CurrentUser.hammerList[num + 1].grade == "legendary")
-        {
-            if (transformNumber % 3 != 1)
-            {
-                if (transformNumber % 3 == 0)
-                {
-                    obj = Instantiate(lineObject, transform.parent);
-                    obj.transform.SetSiblingIndex(transformNumber + 1);
-                }
-
-                else
-                {
-                    obj = Instantiate(lineObject, transform.parent);
-                    obj.transform.SetSiblingIndex(transformNumber + 1);
-                    obj = Instantiate(lineObject, transform.parent);
-                    obj.transform.SetSiblingIndex(transformNumber + 1);
-                }
                 obj.SetActive(true);
             }
         }
-
     }
 }

@@ -73,56 +73,64 @@
             "grade": "common",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "돌 망치",
             "grade": "common",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "철 망치",
             "grade": "common",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "금 망치",
             "grade": "common",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "상어이빨 망치",
             "grade": "rare",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "마시멜로우 망치",
             "grade": "rare",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "솜 망치",
             "grade": "rare",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         },
         {
             "name": "무지개 망치",
             "grade": "legendary",
             "clickCount": 0,
             "xp": 0,
-            "level": 0
+            "level": 0,
+            "isSold": false
         }
     ],
     "cutlets": [

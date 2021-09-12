@@ -66,6 +66,4 @@ public class CutletPanel : PanelBase
         if (num == 0) return false;
         return GameManager.Instance.CurrentUser.cutlets[num - 1].level < maxLevel;
     }
-
-    
 }

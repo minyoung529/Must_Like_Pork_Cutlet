@@ -18,6 +18,7 @@ public class HammerPanel : PanelBase
         hammer = GameManager.Instance.CurrentUser.hammerList[num];
         SetColor();
         ChangeLine();
+        SetSoldItem();
     }
 
     private void SetColor()
@@ -55,10 +56,17 @@ public class HammerPanel : PanelBase
                     obj.SetActive(true);
                     obj = Instantiate(lineObject, transform.parent);
                     obj.transform.SetSiblingIndex(transformNumber + 1);
+                    obj.SetActive(true);
                 }
-
-                obj.SetActive(true);
             }
+        }
+    }
+
+    private void SetSoldItem()
+    {
+        if (!hammer.GetIsSold())
+        {
+            itemImage.color = Color.black;
         }
     }
 }

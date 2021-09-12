@@ -290,7 +290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &116739520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -303,13 +303,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1002499353}
+  - {fileID: 717795996}
   m_Father: {fileID: 1869827105}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 3.040002, y: -0.00000023842}
-  m_SizeDelta: {x: -6.080002, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &116739521
 MonoBehaviour:
@@ -331,10 +332,10 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 45, y: 45}
-  m_Spacing: {x: 3.5, y: 3.5}
+  m_CellSize: {x: 30, y: 30}
+  m_Spacing: {x: 1.6, y: 2.1}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3
 --- !u!114 &116739522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1499,7 @@ GameObject:
   - component: {fileID: 558734609}
   - component: {fileID: 558734608}
   m_Layer: 5
-  m_Name: HammerButton (2)
+  m_Name: HammerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,6 +1983,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709271333}
   m_CullTransparentMesh: 1
+--- !u!1 &717795995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 717795996}
+  m_Layer: 5
+  m_Name: ChangeLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &717795996
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717795995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 116739520}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 62.39995, y: -15.000004}
+  m_SizeDelta: {x: 30, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &722476277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2187,7 @@ GameObject:
   - component: {fileID: 860379463}
   - component: {fileID: 860379462}
   m_Layer: 5
-  m_Name: HammerButton
+  m_Name: CutletButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2284,7 +2320,7 @@ GameObject:
   - component: {fileID: 921297360}
   - component: {fileID: 921297359}
   m_Layer: 5
-  m_Name: HammerButton (1)
+  m_Name: PartTimerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,7 +2964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1002499353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2947,8 +2983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46.75, y: -22.5}
-  m_SizeDelta: {x: 45, y: 45}
+  m_AnchoredPosition: {x: 46.6, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002499354
 MonoBehaviour:
@@ -2966,7 +3002,8 @@ MonoBehaviour:
   priceText: {fileID: 0}
   levelText: {fileID: 0}
   itemImage: {fileID: 1591001563}
-  buttonImage: {fileID: 377008287}
+  buttonImage: {fileID: 1002499356}
+  lineObject: {fileID: 717795995}
 --- !u!114 &1002499355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,15 +3073,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.4738875, b: 0.4738875, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1080825480604336155, guid: a21ebfa83c5cf3746854e4b6dc2ed65a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3177,6 +3214,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1909112676}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HammerChopChop
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1046778018
@@ -3404,7 +3453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1145556457
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3424,7 +3473,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 2, y: 0}
-  m_SizeDelta: {x: -3.79, y: 0}
+  m_SizeDelta: {x: -3.79, y: 39.895}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1145556458
 MonoBehaviour:
@@ -3505,10 +3554,10 @@ RectTransform:
   m_Father: {fileID: 1145556457}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 38.15}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.895, y: -19.075}
+  m_SizeDelta: {x: 95.79, y: 38.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204769999
 MonoBehaviour:
@@ -8897,10 +8946,10 @@ RectTransform:
   m_Father: {fileID: 1002499353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 6.33, y: 0.00000011921}
-  m_SizeDelta: {x: 32.34, y: 32.95}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 4.1774, y: 0}
+  m_SizeDelta: {x: -8.3548, y: -8.53}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1591001563
 MonoBehaviour:
@@ -8922,9 +8971,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 5393448996881579246, guid: 747fb3ca8718596408dd0bf8aeaf6ecd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9177,18 +9226,48 @@ MonoBehaviour:
       mps: 45
       isSold: 0
     hammerList:
-    - name: "\uB3C8\uAC00\uC2A4 \uB9DD\uCE58"
-      grade: 
+    - name: "\uB098\uBB34 \uB9DD\uCE58"
+      grade: common
       clickCount: 0
       xp: 0
       level: 0
-    - name: "\uBFC5\uB9DD\uCE58"
-      grade: 
+    - name: "\uB179\uC2A8 \uB9DD\uCE58"
+      grade: common
       clickCount: 0
       xp: 0
       level: 0
-    - name: "\uB9DD\uCE58\uB9DD\uCE58\uB9DD\uB9DD\uCE58"
-      grade: 
+    - name: "\uB3CC \uB9DD\uCE58"
+      grade: common
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uCCA0 \uB9DD\uCE58"
+      grade: common
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uAE08 \uB9DD\uCE58"
+      grade: common
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uC0C1\uC5B4\uC774\uBE68 \uB9DD\uCE58"
+      grade: rare
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uB9C8\uC2DC\uBA5C\uB85C\uC6B0 \uB9DD\uCE58"
+      grade: rare
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uC19C \uB9DD\uCE58"
+      grade: rare
+      clickCount: 0
+      xp: 0
+      level: 0
+    - name: "\uBB34\uC9C0\uAC1C \uB9DD\uCE58"
+      grade: legendary
       clickCount: 0
       xp: 0
       level: 0
@@ -9762,10 +9841,10 @@ RectTransform:
   m_Father: {fileID: 1145556457}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.245}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.895, y: -39.772503}
+  m_SizeDelta: {x: 95.79, y: 0.245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804425125
 MonoBehaviour:
@@ -10165,7 +10244,7 @@ GameObject:
   - component: {fileID: 1909112674}
   - component: {fileID: 1909112676}
   m_Layer: 0
-  m_Name: Hammer_0
+  m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10230,7 +10309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909112673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.709, y: -0.299, z: 0}
+  m_LocalPosition: {x: -1.755, y: -0.219, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10246,7 +10325,7 @@ Animator:
   m_GameObject: {fileID: 1909112673}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9de6c7ccf48bd1349b07b9a3496d46a3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

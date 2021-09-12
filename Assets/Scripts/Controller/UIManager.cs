@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
 
     private Sprite[] partTimerSprites;
     private Sprite[] cutletSprites;
+    private Sprite[] hammerSprites;
     private Sprite[] guestSprites;
     private Image[] partTimersImage;
     private Image[] cutletsImage;
@@ -57,7 +58,7 @@ public class UIManager : MonoBehaviour
     {
         InstantiatePanel(cutletPanelTemplate, cutletTransform, GameManager.Instance.CurrentUser.cutlets.Count, cutletSprites);
         InstantiatePanel(partTimerpanelTemplate, partTimerTransform, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerSprites);
-        //InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count);
+        InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
     }
 
     private void InstantiatePanel(GameObject template, RectTransform rectTransform, int count, Sprite[] sprites)
@@ -146,6 +147,7 @@ public class UIManager : MonoBehaviour
         partTimerSprites = Resources.LoadAll<Sprite>("Sprites/PartTimerImage");
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/CutletImage");
         guestSprites = Resources.LoadAll<Sprite>("Sprites/Guest");
+        hammerSprites = Resources.LoadAll<Sprite>("Sprites/Hammer");
         UpdatePanel();
     }
 

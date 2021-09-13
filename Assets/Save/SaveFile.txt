@@ -69,6 +69,14 @@
     ],
     "hammerList": [
         {
+            "name": "나무 망치",
+            "grade": "common",
+            "clickCount": 1,
+            "xp": 0,
+            "level": 1,
+            "isSold": true
+        },
+        {
             "name": "녹슨 망치",
             "grade": "common",
             "clickCount": 0,
@@ -138,8 +146,8 @@
             "name": "오리지널 돈가스",
             "addMoney": 16,
             "price": 329,
-            "level": 0,
-            "isSold": false
+            "level": 1,
+            "isSold": true
         },
         {
             "name": "치즈돈가스",

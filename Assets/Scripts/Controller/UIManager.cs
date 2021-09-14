@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            randomHammerImage[i] = randomHammerTransform.GetChild(i).gameObject.GetComponent<Image>();
+            randomHammerImage[i] = randomHammerTransform.GetChild(i + 1).gameObject.GetComponent<Image>();
         }
 
         RandomHammer(10);
@@ -83,11 +83,17 @@ public class UIManager : MonoBehaviour
         {
             obj = Instantiate(template.gameObject, rectTransform);
             panel = obj.GetComponent<PanelBase>();
-            if (randomHammerTemplate != randomHammerTransform)
+
+            if (template == randomHammerTemplate)
             {
-                panel.Init(i, sprites[i]);
+                panel.Init(0, null);
                 randomPanel.Add(panel);
+                obj.SetActive(true);
+                continue;
             }
+
+            Debug.Log(panel.gameObject.name);
+            panel.Init(i, sprites[i]);
             upgradePanels.Add(panel);
             obj.SetActive(true);
         }
@@ -271,8 +277,8 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            rand = Random.Range(0, GameManager.Instance.CurrentUser.cutlets.Count);
-            randomPanel[i].Init(rand, cutletSprites[rand]);
+            rand = Random.Range(0, GameManager.Instance.CurrentUser.hammerList.Count);
+            randomPanel[i].Init(rand, hammerSprites[rand]);
             Debug.Log(randomPanel[i].gameObject.name);
         }
     }

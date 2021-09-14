@@ -70,7 +70,7 @@ public class PanelBase : MonoBehaviour
         if (num > 0)
         {
             if (IsSecret())
-                levelText.text = "조건: 앞 dddddddd 레벨 10 이상";
+                levelText.text = "조건: 앞 상품 레벨 10 이상";
         }
     }
 

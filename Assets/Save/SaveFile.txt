@@ -1,6 +1,6 @@
 ﻿{
     "onClickMoney": 0,
-    "money": 0,
+    "money": 812,
     "partTimerList": [
         {
             "name": "코끼리 아저씨",

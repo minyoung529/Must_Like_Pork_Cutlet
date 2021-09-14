@@ -10,9 +10,10 @@ public class UIManager : MonoBehaviour
 {
     #region º¯¼ö
     [Header("ÆÐ³Î ÅÛÇÃ¸´")]
-    [SerializeField] private GameObject partTimerpanelTemplate;
-    [SerializeField] private GameObject hammerPanelTemplate;
-    [SerializeField] private GameObject cutletPanelTemplate;
+    [SerializeField] private PanelBase partTimerpanelTemplate;
+    [SerializeField] private PanelBase hammerPanelTemplate;
+    [SerializeField] private PanelBase cutletPanelTemplate;
+    [SerializeField] private PanelBase randomHammerTemplate;
 
     [Header("°¢°¢ Æ®·£½ºÆûµé")]
     [SerializeField] private Transform partTimersTransform;
@@ -23,8 +24,10 @@ public class UIManager : MonoBehaviour
     private Text countText;
 
     [Header("¼Õ´Ô")]
-    [SerializeField]
-    private Image guest;
+    [SerializeField] private Image guest;
+
+    [Header("·£´ý »Ì±â")]
+    [SerializeField] private RectTransform randomHammerTransform;
 
     private ScrollRect scrollRect;
 
@@ -33,9 +36,10 @@ public class UIManager : MonoBehaviour
     private RectTransform partTimerTransform;
 
     private int count = 0;
-    private ulong oldMoney;
 
     private List<PanelBase> upgradePanels = new List<PanelBase>();
+    private List<PanelBase> randomPanel = new List<PanelBase>();
+
     [Header("¸ÞÀÎ µ·°¡½º")]
     [SerializeField] private CutletMove cutlet;
     #endregion
@@ -46,12 +50,20 @@ public class UIManager : MonoBehaviour
     private Sprite[] guestSprites;
     private Image[] partTimersImage;
     private Image[] cutletsImage;
+    private Image[] randomHammerImage = new Image[10];
 
     private void Start()
     {
         FirstSetting();
         SettingUpgradePanel();
         ActivePartTimers();
+
+        for (int i = 0; i < 10; i++)
+        {
+            randomHammerImage[i] = randomHammerTransform.GetChild(i).gameObject.GetComponent<Image>();
+        }
+
+        RandomHammer(10);
     }
 
     private void SettingUpgradePanel()
@@ -59,23 +71,28 @@ public class UIManager : MonoBehaviour
         InstantiatePanel(cutletPanelTemplate, cutletTransform, GameManager.Instance.CurrentUser.cutlets.Count, cutletSprites);
         InstantiatePanel(partTimerpanelTemplate, partTimerTransform, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerSprites);
         InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
+        InstantiatePanel(randomHammerTemplate, randomHammerTransform, 10);
     }
 
-    private void InstantiatePanel(GameObject template, RectTransform rectTransform, int count, Sprite[] sprites)
+    private void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count, Sprite[] sprites = null)
     {
         GameObject obj;
         PanelBase panel;
 
         for (int i = 0; i < count; i++)
         {
-            obj = Instantiate(template, rectTransform);
+            obj = Instantiate(template.gameObject, rectTransform);
             panel = obj.GetComponent<PanelBase>();
-            panel.Init(i, sprites[i]);
+            if (randomHammerTemplate != randomHammerTransform)
+            {
+                panel.Init(i, sprites[i]);
+                randomPanel.Add(panel);
+            }
             upgradePanels.Add(panel);
             obj.SetActive(true);
         }
 
-        template.SetActive(false);
+        template.gameObject.SetActive(false);
     }
 
     public void OnClickPork()
@@ -119,7 +136,6 @@ public class UIManager : MonoBehaviour
     private void FirstSetting()
     {
         List<PartTimer> partTimers = GameManager.Instance.CurrentUser.partTimerList;
-        List<Cutlet> cutlets = GameManager.Instance.CurrentUser.cutlets;
 
         scrollRect = partTimerpanelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
         cutletTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(0).gameObject.GetComponent<RectTransform>();
@@ -139,6 +155,7 @@ public class UIManager : MonoBehaviour
         {
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
+
 
         cutletTransform.gameObject.SetActive(true);
         partTimerTransform.gameObject.SetActive(false);
@@ -212,9 +229,6 @@ public class UIManager : MonoBehaviour
         }
 
         number = Random.Range(0, numbers.Count);
-        Debug.Log(number);
-        Debug.Log(numbers.Count);
-
         return numbers[number];
     }
 
@@ -222,11 +236,15 @@ public class UIManager : MonoBehaviour
     {
         float time = Random.Range(2f, 4.5f);
         float randomX = Random.Range(-32.4f, 32.4f);
+
         yield return new WaitForSeconds(time);
+
         guest.sprite = guestSprites[Random.Range(0, 2)];
         guest.gameObject.SetActive(true);
         guest.transform.DOLocalMove(new Vector2(randomX, 45f), 0.4f);
+
         yield return new WaitForSeconds(0.4f);
+
         guest.transform.DOLocalMove(new Vector2(randomX, 20f), 0.3f);
 
         cutletsImage[0].color = Color.clear;
@@ -244,6 +262,18 @@ public class UIManager : MonoBehaviour
                 cutletsImage[i] = cutletsImage[i + 1];
             else
                 cutletsImage[i] = temp;
+        }
+    }
+
+    public void RandomHammer(int amount)
+    {
+        int rand;
+
+        for (int i = 0; i < amount; i++)
+        {
+            rand = Random.Range(0, GameManager.Instance.CurrentUser.cutlets.Count);
+            randomPanel[i].Init(rand, cutletSprites[rand]);
+            Debug.Log(randomPanel[i].gameObject.name);
         }
     }
 }

@@ -9,7 +9,6 @@ public class Cutlet
     public int level;
     public bool isSold;
 
-
     public void LevelUp()
     {
         level++;

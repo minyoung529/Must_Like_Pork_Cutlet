@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HammerPanel : PanelBase
 {
     private Hammer hammer;
     [SerializeField]
     private GameObject lineObject;
-
+    [SerializeField]
+    private Image checkImage;
+    //¹ÌÃÆ³Ä ¹Î¿µ¾Æ ¿Ö ÄÚµå¸£ ÀÌ·°¤¾°Ô Â®¾î ³Ê ÇÇ°ïÇß´Ï 
     public void OnClickHammer()
     {
+        //if (!hammer.isSold) return;
+        checkImage.gameObject.SetActive(true);
+        GameManager.Instance.CurrentUser.UserHammer(hammer.name);
+        if(CheckIsMine())
+        {
+            checkImage.gameObject.SetActive(false);
+            return;
+        }
+        GameManager.Instance.uiManager.ChangeHammerSprite(itemImage.sprite);
     }
 
     public override void Init(int num, Sprite sprite)
@@ -47,6 +59,7 @@ public class HammerPanel : PanelBase
                 {
                     obj = Instantiate(lineObject, transform.parent);
                     obj.transform.SetSiblingIndex(transformNumber + 1);
+                    obj.SetActive(true);
                 }
 
                 else
@@ -68,5 +81,10 @@ public class HammerPanel : PanelBase
         {
             itemImage.color = Color.black;
         }
+    }
+
+    private bool CheckIsMine()
+    {
+        return (GameManager.Instance.CurrentUser.UserHammer() != hammer.name);
     }
 }

@@ -33,6 +33,11 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         LoadFromJson();
+
+        for (int i = 0; i < user.hammerList.Count; i++)
+        {
+            user.hammerList[i].isSold = true;
+        }
     }
 
     private void Start()

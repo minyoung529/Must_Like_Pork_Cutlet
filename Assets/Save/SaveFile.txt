@@ -1,6 +1,8 @@
 ﻿{
+    "nickname": "",
     "onClickMoney": 0,
-    "money": 812,
+    "money": 10003132,
+    "userHammer": "녹슨 망치",
     "partTimerList": [
         {
             "name": "코끼리 아저씨",
@@ -82,7 +84,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "돌 망치",
@@ -90,7 +92,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "철 망치",
@@ -98,7 +100,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "금 망치",
@@ -106,7 +108,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "상어이빨 망치",
@@ -114,7 +116,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "마시멜로우 망치",
@@ -122,7 +124,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "솜 망치",
@@ -130,7 +132,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "무지개 망치",
@@ -138,7 +140,7 @@
             "clickCount": 0,
             "xp": 0,
             "level": 0,
-            "isSold": false
+            "isSold": true
         }
     ],
     "cutlets": [

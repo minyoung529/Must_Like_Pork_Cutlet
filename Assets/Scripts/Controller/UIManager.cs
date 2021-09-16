@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
     [Header("¼Õ´Ô")]
     [SerializeField] private Image guest;
 
+    [Header("¸ÁÄ¡")]
+    [SerializeField] private SpriteRenderer playerHammer;
+
     [Header("·£´ý »Ì±â")]
     [SerializeField] private RectTransform randomHammerTransform;
 
@@ -162,7 +165,6 @@ public class UIManager : MonoBehaviour
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
 
-
         cutletTransform.gameObject.SetActive(true);
         partTimerTransform.gameObject.SetActive(false);
         hammerTransform.gameObject.SetActive(false);
@@ -171,6 +173,7 @@ public class UIManager : MonoBehaviour
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/CutletImage");
         guestSprites = Resources.LoadAll<Sprite>("Sprites/Guest");
         hammerSprites = Resources.LoadAll<Sprite>("Sprites/Hammer");
+
         UpdatePanel();
     }
 
@@ -277,9 +280,53 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            rand = Random.Range(0, GameManager.Instance.CurrentUser.hammerList.Count);
+            rand = SelectRandom();
             randomPanel[i].Init(rand, hammerSprites[rand]);
             Debug.Log(randomPanel[i].gameObject.name);
         }
+    }
+
+    private int SelectRandom()
+    {
+        List<Hammer> hammerList = GameManager.Instance.CurrentUser.hammerList;
+        int rand = Random.Range(0, 100);
+        int commonCnt = 0;
+        int rareCnt = 0;
+
+        for (int i = 0; i < hammerList.Count; i++)
+        {
+            if (hammerList[i].grade == "common")
+            {
+                commonCnt++;
+            }
+
+            else if (hammerList[i].grade == "rare")
+            {
+                rareCnt++;
+            }
+        }
+
+        if (rand < 10) // 0-9
+        {
+            rand = Random.Range(rareCnt, hammerList.Count);
+        }
+
+        else if (rand < 40) //10 - 49
+        {
+            rand = Random.Range(commonCnt, rareCnt);
+        }
+
+        else
+        {
+            rand = Random.Range(0, commonCnt);
+        }
+
+        return rand;
+    }
+
+    public void ChangeHammerSprite(Sprite sprite)
+    {
+        Debug.Log(sprite.name);
+        playerHammer.sprite = sprite;
     }
 }

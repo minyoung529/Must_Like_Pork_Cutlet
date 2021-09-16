@@ -71,9 +71,9 @@ public class UIManager : MonoBehaviour
 
     private void SettingUpgradePanel()
     {
+        InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
         InstantiatePanel(cutletPanelTemplate, cutletTransform, GameManager.Instance.CurrentUser.cutlets.Count, cutletSprites);
         InstantiatePanel(partTimerpanelTemplate, partTimerTransform, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerSprites);
-        InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
         InstantiatePanel(randomHammerTemplate, randomHammerTransform, 10);
     }
 
@@ -328,5 +328,13 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log(sprite.name);
         playerHammer.sprite = sprite;
+    }
+
+    public void CheckHammer()
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentUser.hammerList.Count; i++)
+        {
+            upgradePanels[i].SetActiveCheck();
+        }
     }
 }

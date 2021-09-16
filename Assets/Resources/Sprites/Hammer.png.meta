@@ -133,12 +133,12 @@ TextureImporter:
       name: Hammer_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 657
+        x: 47
+        y: 643
         width: 204
         height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,12 +154,12 @@ TextureImporter:
       name: Hammer_1
       rect:
         serializedVersion: 2
-        x: 314
-        y: 657
+        x: 300
+        y: 643
         width: 204
         height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: Hammer_2
       rect:
         serializedVersion: 2
-        x: 567
-        y: 657
+        x: 553
+        y: 643
         width: 204
         height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: Hammer_3
       rect:
         serializedVersion: 2
-        x: 822
-        y: 657
+        x: 808
+        y: 643
         width: 204
         height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,12 +217,12 @@ TextureImporter:
       name: Hammer_4
       rect:
         serializedVersion: 2
-        x: 1075
-        y: 646
+        x: 1061
+        y: 632
         width: 204
-        height: 202
+        height: 201
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,12 +238,12 @@ TextureImporter:
       name: Hammer_5
       rect:
         serializedVersion: 2
-        x: 61
-        y: 375
-        width: 268
-        height: 190
+        x: 47
+        y: 361
+        width: 251
+        height: 193
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -259,12 +259,12 @@ TextureImporter:
       name: Hammer_6
       rect:
         serializedVersion: 2
-        x: 378
-        y: 375
+        x: 364
+        y: 361
         width: 222
         height: 203
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,12 +280,12 @@ TextureImporter:
       name: Hammer_7
       rect:
         serializedVersion: 2
-        x: 673
-        y: 378
+        x: 659
+        y: 364
         width: 208
         height: 197
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -301,12 +301,12 @@ TextureImporter:
       name: Hammer_8
       rect:
         serializedVersion: 2
-        x: 59
-        y: 69
-        width: 208
-        height: 209
+        x: 47
+        y: 55
+        width: 204
+        height: 202
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

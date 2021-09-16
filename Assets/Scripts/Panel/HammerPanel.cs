@@ -14,14 +14,7 @@ public class HammerPanel : PanelBase
     public void OnClickHammer()
     {
         //if (!hammer.isSold) return;
-        checkImage.gameObject.SetActive(true);
-        GameManager.Instance.CurrentUser.UserHammer(hammer.name);
-        if(CheckIsMine())
-        {
-            checkImage.gameObject.SetActive(false);
-            return;
-        }
-        GameManager.Instance.uiManager.ChangeHammerSprite(itemImage.sprite);
+        SetHammer();
     }
 
     public override void Init(int num, Sprite sprite)
@@ -83,8 +76,16 @@ public class HammerPanel : PanelBase
         }
     }
 
-    private bool CheckIsMine()
+    public override void SetActiveCheck()
     {
-        return (GameManager.Instance.CurrentUser.UserHammer() != hammer.name);
+        checkImage.gameObject.SetActive(false);
+    }
+
+    private void SetHammer()
+    {
+        GameManager.Instance.CurrentUser.UserHammer(hammer.name);
+        GameManager.Instance.uiManager.CheckHammer();
+        checkImage.gameObject.SetActive(true);
+        GameManager.Instance.uiManager.ChangeHammerSprite(itemImage.sprite);
     }
 }

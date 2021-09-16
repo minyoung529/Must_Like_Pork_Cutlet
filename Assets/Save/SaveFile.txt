@@ -1,24 +1,24 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 10003132,
-    "userHammer": "녹슨 망치",
+    "money": 9486053,
+    "userHammer": "나무 망치",
     "partTimerList": [
         {
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
-            "level": 0,
-            "price": 9900,
+            "level": 11,
+            "price": 14827,
             "mps": 1,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "냥냥펀치선수",
             "englishName": "Cat",
-            "level": 0,
-            "price": 50000,
+            "level": 8,
+            "price": 51370,
             "mps": 5,
-            "isSold": false
+            "isSold": true
         },
         {
             "name": "말랑도치",

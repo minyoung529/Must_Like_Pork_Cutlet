@@ -12328,47 +12328,56 @@ MonoBehaviour:
       level: 0
       isSold: 0
     cutlets:
-    - name: "\uC624\uB9AC\uC9C0\uB110 \uB3C8\uAC00\uC2A4"
+    - code: 0
+      name: "\uC624\uB9AC\uC9C0\uB110 \uB3C8\uAC00\uC2A4"
       addMoney: 0
-      price: 329
+      price: 0
       level: 1
       isSold: 1
-    - name: "\uCE58\uC988\uB3C8\uAC00\uC2A4"
+    - code: 1
+      name: "\uCE58\uC988 \uB3C8\uAC00\uC2A4"
       addMoney: 64
-      price: 800
+      price: 461
       level: 0
       isSold: 0
-    - name: "\uD575! \uBD88\uB3C8\uAC00\uC2A4"
+    - code: 2
+      name: "\uD575! \uBD88\uB3C8\uAC00\uC2A4"
       addMoney: 123
-      price: 3799
+      price: 1233
       level: 0
       isSold: 0
-    - name: "\uC9DC\uC7A5 \uB3C8\uAC00\uC2A4"
+    - code: 3
+      name: "\uC9DC\uC7A5 \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0
       isSold: 0
-    - name: "\uD53C\uCE74\uD53C\uCE74\uB3C8\uAC00\uC2A4"
+    - code: 4
+      name: "\uD53C\uCE74\uD53C\uCE74 \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0
       isSold: 0
-    - name: "\uC624\uB298\uBD80\uD1301\uC77C \uB3C8\uAC00\uC2A4"
+    - code: 5
+      name: "\uC624\uB298\uBD80\uD1301\uC77C \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0
       isSold: 0
-    - name: "\uBBFC\uD2B8\uCD08\uCF54 \uB3C8\uAC00\uC2A4"
+    - code: 6
+      name: "\uBBFC\uD2B8\uCD08\uCF54 \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0
       isSold: 0
-    - name: "\uC0DD\uD06C\uB9BC\uB538\uAE30 \uB3C8\uAC00\uC2A4"
+    - code: 7
+      name: "\uC0DD\uD06C\uB9BC\uB538\uAE30 \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0
       isSold: 0
-    - name: "\uBB34\uC9C0\uAC1C \uB3C8\uAC00\uC2A4"
+    - code: 8
+      name: "\uBB34\uC9C0\uAC1C \uB3C8\uAC00\uC2A4"
       addMoney: 0
       price: 0
       level: 0

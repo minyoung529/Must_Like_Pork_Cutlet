@@ -1,0 +1,343 @@
+﻿{
+    "nickname": "",
+    "onClickMoney": 0,
+    "money": 10069,
+    "userHammer": "",
+    "partTimerList": [
+        {
+            "name": "코끼리 아저씨",
+            "englishName": "Elephant",
+            "level": 0,
+            "price": 9900,
+            "mps": 1,
+            "isSold": false
+        },
+        {
+            "name": "냥냥펀치선수",
+            "englishName": "Cat",
+            "level": 0,
+            "price": 50000,
+            "mps": 5,
+            "isSold": false
+        },
+        {
+            "name": "말랑도치",
+            "englishName": "Hedgehog",
+            "level": 0,
+            "price": 120000,
+            "mps": 10,
+            "isSold": false
+        },
+        {
+            "name": "핑펭이",
+            "englishName": "Penguin",
+            "level": 0,
+            "price": 450000,
+            "mps": 25,
+            "isSold": false
+        },
+        {
+            "name": "외계기린",
+            "englishName": "Giraffe",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "웽웽이",
+            "englishName": "Bee",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "죠쓰",
+            "englishName": "Shark",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        },
+        {
+            "name": "크앙다이노",
+            "englishName": "Dinosaur",
+            "level": 0,
+            "price": 840000,
+            "mps": 45,
+            "isSold": false
+        }
+    ],
+    "hammerList": [
+        {
+            "code": 0,
+            "name": "나무 망치",
+            "grade": "common",
+            "info": "나무로 만든 평범한 나무 망치. 나무 틈에서 벌레가 나온다는 괴소문도 있다.",
+            "clickCount": 1,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 1,
+            "isSold": true
+        },
+        {
+            "code": 1,
+            "name": "녹슨 망치",
+            "grade": "common",
+            "info": "오래된 녹슨 망치. 아직은 쓸만하다며 박박 우길 수 있는 정도이다.",
+            "clickCount": 1,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 2,
+            "name": "짱돌 망치",
+            "grade": "common",
+            "info": "짱돌을 꾹꾹 뭉쳐 만든 망치. 무기로 쓰면 망치 중 가장 세다고 한다.",
+            "clickCount": 1,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 3,
+            "name": "철 망치",
+            "grade": "common",
+            "info": "아주 깔끔한 철 망치. 할인해서 인터넷으로 샀다고 한다. 가성비가 좋다.",
+            "clickCount": 1,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 4,
+            "name": "금 망치",
+            "grade": "common",
+            "info": "반짝반짝 블링블링 금 망치. 손잡이에 있는 테두리가 이따금씩 환하게 빛난다.",
+            "clickCount": 1,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 5,
+            "name": "상어이빨 망치",
+            "grade": "rare",
+            "info": "상어의 이빨을 가지고 만든 망치. 이에는 Z자 상처가 나있다. 무슨 일이었을까?",
+            "clickCount": 2,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 6,
+            "name": "마시멜로우 망치",
+            "grade": "rare",
+            "info": "말랑말랑 마시멜로우 망치. 조금 그을렸지만 역시 정말 맛있다.",
+            "clickCount": 2,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 7,
+            "name": "솜 망치",
+            "grade": "rare",
+            "info": "복실복실 몽글몽글 솜 망치. 솜이라 해서 약할 거라고 생각하면... 큰 오산이다.",
+            "clickCount": 2,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        },
+        {
+            "code": 8,
+            "name": "무지개 망치",
+            "grade": "legendary",
+            "info": "어느날 천사가 내려준 돈가스 망치이다. 천사가 왜 망치를 가지고 다니는 걸까?",
+            "clickCount": 5,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0,
+            "isSold": true
+        }
+    ],
+    "cutlets": [
+        {
+            "code": 0,
+            "name": "오리지널 돈가스",
+            "addMoney": 715,
+            "price": 21101,
+            "level": 11,
+            "isSold": true
+        },
+        {
+            "code": 1,
+            "name": "치즈 돈가스",
+            "addMoney": 64,
+            "price": 114,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 2,
+            "name": "핵! 불돈가스",
+            "addMoney": 123,
+            "price": 374,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 3,
+            "name": "짜장 돈가스",
+            "addMoney": 0,
+            "price": 1969,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 4,
+            "name": "피카피카 돈가스",
+            "addMoney": 0,
+            "price": 7952,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 5,
+            "name": "오늘부터1일 돈가스",
+            "addMoney": 0,
+            "price": 24860,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 6,
+            "name": "민트초코 돈가스",
+            "addMoney": 0,
+            "price": 64650,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 7,
+            "name": "생크림딸기 돈가스",
+            "addMoney": 0,
+            "price": 147018,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 8,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 302098,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 9,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 573528,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 10,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 1021881,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 11,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 1728446,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 12,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 2799356,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 13,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 4370069,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 14,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 6610176,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 15,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 9728552,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 16,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 13978830,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 17,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 19665216,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 18,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 27148610,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 19,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 36853056,
+            "level": 0,
+            "isSold": false
+        },
+        {
+            "code": 20,
+            "name": "무지개 돈가스",
+            "addMoney": 0,
+            "price": 49272532,
+            "level": 0,
+            "isSold": false
+        }
+    ]
+}

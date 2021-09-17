@@ -74,7 +74,6 @@ public class PanelBase : MonoBehaviour
         }
     }
 
-
     public virtual void Inactive()
     {
     }
@@ -112,4 +111,5 @@ public class PanelBase : MonoBehaviour
     protected virtual bool IsSecret() { return false; }
 
     public virtual void SetActiveCheck() { }
+    public virtual void Mounting() { }
 }

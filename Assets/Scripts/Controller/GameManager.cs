@@ -9,15 +9,12 @@ public class GameManager : MonoSingleton<GameManager>
     private User user;
     public User CurrentUser { get { return user; } }
 
-    [SerializeField]
-    private List<Hammer> hammers;
-    [SerializeField]
-    private List<Cutlet> cutlets;
-
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
     private ulong cutletMoney = 100;
+    private ulong mpsMoney = 0;
+    private int clickCount;
 
     public UIManager uiManager { get; private set; }
 
@@ -51,17 +48,22 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            user.money += 1000000;
+            user.money += 100000;
             uiManager.UpdatePanel();
         }
     }
 
     public void EarnMoneyPerSecond()
     {
+        mpsMoney = 0;
+
         foreach (PartTimer partTimer in user.partTimerList)
         {
             if (partTimer.GetIsSold())
+            {
+                mpsMoney += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level);
                 AddMoney((ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level), true);
+            }
         }
 
         //uiManager.Smooth();
@@ -75,6 +77,17 @@ public class GameManager : MonoSingleton<GameManager>
             if (cutlet.GetIsSold())
                 cutletMoney += (ulong)cutlet.addMoney;
         }
+    }
+
+    public Hammer GetUserHammer()
+    {
+        foreach (Hammer hammer in user.hammerList)
+        {
+            if (user.UserHammer() == hammer.name)
+                return hammer;
+        }
+
+        return user.hammerList[0];
     }
 
     private void LoadFromJson()
@@ -123,11 +136,18 @@ public class GameManager : MonoSingleton<GameManager>
         return cutletMoney;
     }
 
+    public ulong GetMPS()
+    {
+        return mpsMoney;
+    }
+
     public void AddMoney(ulong money, bool isAdd)
     {
         if (isAdd)
             CurrentUser.money += money;
         else
             CurrentUser.money -= money;
+
+        uiManager.UpdatePanel();
     }
 }

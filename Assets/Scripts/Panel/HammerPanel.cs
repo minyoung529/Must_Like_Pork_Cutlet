@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HammerPanel : PanelBase
 {
     private Hammer hammer;
-    [SerializeField]
-    private GameObject lineObject;
-    [SerializeField]
-    private Image checkImage;
-    //¹ÌÃÆ³Ä ¹Î¿µ¾Æ ¿Ö ÄÚµå¸£ ÀÌ·°¤¾°Ô Â®¾î ³Ê ÇÇ°ïÇß´Ï 
+
+    [SerializeField] private GameObject lineObject;
+    [SerializeField] private Image checkImage;
+
     public void OnClickHammer()
     {
-        //if (!hammer.isSold) return;
-        SetHammer();
+        GameManager.Instance.uiManager.ActiveHammerInfo(hammer.code);
     }
 
     public override void Init(int num, Sprite sprite)
@@ -81,8 +80,9 @@ public class HammerPanel : PanelBase
         checkImage.gameObject.SetActive(false);
     }
 
-    private void SetHammer()
+    public override void Mounting()
     {
+        if (!hammer.GetIsSold()) return;
         GameManager.Instance.CurrentUser.UserHammer(hammer.name);
         GameManager.Instance.uiManager.CheckHammer();
         checkImage.gameObject.SetActive(true);

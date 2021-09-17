@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [Header("µ· ÅØ½ºÆ®")]
     [SerializeField] private Text moneyText;
     private Text countText;
+    private Text mpsAndCutletText;
 
     [Header("¼Õ´Ô")]
     [SerializeField] private Image guest;
@@ -31,6 +32,9 @@ public class UIManager : MonoBehaviour
 
     [Header("·£´ý »Ì±â")]
     [SerializeField] private RectTransform randomHammerTransform;
+
+    [Header("¸ÁÄ¡ ¼³¸í")]
+    [SerializeField] private HammerInformation hammerInformation;
 
     private ScrollRect scrollRect;
 
@@ -55,10 +59,13 @@ public class UIManager : MonoBehaviour
     private Image[] cutletsImage;
     private Image[] randomHammerImage = new Image[10];
 
+    private List<HammerPanel> hammerPanels;
+    private List<CutletPanel> cutletPanels;
+    private List<PartTimerPanel> partTimerPanels;
+
     private void Start()
     {
         FirstSetting();
-        SettingUpgradePanel();
         ActivePartTimers();
 
         for (int i = 0; i < 10; i++)
@@ -106,17 +113,20 @@ public class UIManager : MonoBehaviour
 
     public void OnClickPork()
     {
-        count++;
+        Hammer hammer = GameManager.Instance.GetUserHammer();
+
+        GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
+        count += hammer.clickCount;
         countText.text = count.ToString();
         cutlet.Move();
         cutlet.SetSprite(count);
 
         if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
-            GameManager.Instance.CurrentUser.money += GameManager.Instance.GetCutletPrice();
+            GameManager.Instance.AddMoney(GameManager.Instance.GetCutletPrice(), true);
             UpdatePanel();
 
-            count = 0;
+            count -= 10;
             countText.text = count.ToString();
             cutlet.SetSprite(count);
             CutletsOnTable();
@@ -126,7 +136,7 @@ public class UIManager : MonoBehaviour
     public void UpdatePanel()
     {
         moneyText.text = GameManager.Instance.CurrentUser.money + "¿ø";
-
+        mpsAndCutletText.text = string.Format("µ·°¡½º °¡°Ý {0}¿ø / ÃÊ´ç {1}¿ø", GameManager.Instance.GetCutletPrice(), GameManager.Instance.GetMPS());
         foreach (PanelBase upgradePanels in upgradePanels)
         {
             upgradePanels.Inactive();
@@ -151,6 +161,7 @@ public class UIManager : MonoBehaviour
         partTimerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(1).gameObject.GetComponent<RectTransform>();
         hammerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(2).gameObject.GetComponent<RectTransform>();
         countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
+        mpsAndCutletText = moneyText.transform.parent.GetChild(2).gameObject.GetComponent<Text>();
 
         partTimersImage = new Image[partTimers.Count];
         cutletsImage = new Image[cutletsTransform.childCount];
@@ -174,6 +185,10 @@ public class UIManager : MonoBehaviour
         guestSprites = Resources.LoadAll<Sprite>("Sprites/Guest");
         hammerSprites = Resources.LoadAll<Sprite>("Sprites/Hammer");
 
+        SettingUpgradePanel();
+
+        ChangeHammerSprite(hammerSprites[GameManager.Instance.GetUserHammer().code]);
+        SetHammer(GameManager.Instance.GetUserHammer().code);
         UpdatePanel();
     }
 
@@ -282,7 +297,6 @@ public class UIManager : MonoBehaviour
         {
             rand = SelectRandom();
             randomPanel[i].Init(rand, hammerSprites[rand]);
-            Debug.Log(randomPanel[i].gameObject.name);
         }
     }
 
@@ -336,5 +350,36 @@ public class UIManager : MonoBehaviour
         {
             upgradePanels[i].SetActiveCheck();
         }
+    }
+
+    public Sprite[] GetHammerSprites()
+    {
+        return hammerSprites;
+    }
+
+    public void ActiveHammerInfo(int index)
+    {
+        hammerInformation.gameObject.SetActive(true);
+        hammerInformation.SetIndex(index);
+    }
+
+    public void SetHammer()
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentUser.hammerList.Count; i++)
+        {
+            upgradePanels[i].SetActiveCheck();
+        }
+
+        upgradePanels[hammerInformation.GetIndex()].Mounting();
+    }
+
+    public void SetHammer(int index)
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentUser.hammerList.Count; i++)
+        {
+            upgradePanels[i].SetActiveCheck();
+        }
+
+        upgradePanels[index].Mounting();
     }
 }

@@ -33,8 +33,9 @@ public class UIManager : MonoBehaviour
     [Header("·£´ý »Ì±â")]
     [SerializeField] private RectTransform randomHammerTransform;
 
-    [Header("¸ÁÄ¡ ¼³¸í")]
+    [Header("¼³¸í ÆÐ³Î")]
     [SerializeField] private HammerInformation hammerInformation;
+    [SerializeField] private PartTimerInformation partTimerInformation;
 
     private ScrollRect scrollRect;
 
@@ -102,7 +103,6 @@ public class UIManager : MonoBehaviour
                 continue;
             }
 
-            Debug.Log(panel.gameObject.name);
             panel.Init(i, sprites[i]);
             upgradePanels.Add(panel);
             obj.SetActive(true);
@@ -357,6 +357,11 @@ public class UIManager : MonoBehaviour
         return hammerSprites;
     }
 
+    public Sprite[] GetPartTimerSprite()
+    {
+        return partTimerSprites;
+    }
+
     public void ActiveHammerInfo(int index)
     {
         hammerInformation.gameObject.SetActive(true);
@@ -381,5 +386,10 @@ public class UIManager : MonoBehaviour
         }
 
         upgradePanels[index].Mounting();
+    }
+
+    public PartTimerInformation partTimerInfo()
+    {
+        return partTimerInformation;
     }
 }

@@ -8,7 +8,7 @@ public class CutletPanel : PanelBase
 
     public override void Init(int num, Sprite sprite)
     {
-        maxLevel = 10;
+        maxLevel = 5;
 
         base.Init(num, sprite);
         this.num = num;

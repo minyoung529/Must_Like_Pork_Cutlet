@@ -1,68 +1,84 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 10069,
-    "userHammer": "",
+    "money": 1148797,
+    "userHammer": "나무 망치",
     "partTimerList": [
         {
+            "code": 0,
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
-            "level": 0,
-            "price": 9900,
+            "story": "평범한 디자인 회사의 사원이었다. 반복된 삶에 회의를 느껴 돈가스 알바에 지원했다.\n\n친절한 아저씨이지만 일하면서 흥얼거리는 콧노래는 정말 못 들어주겠다고 한다.\n\n큰 앞발로 돈가스를 두드리고 있다. 때문에 손님들이 지진이 난 줄 아는 경우도 종종 있다.",
+            "level": 10,
+            "price": 13240,
             "mps": 1,
-            "isSold": false
+            "isSold": true
         },
         {
+            "code": 1,
             "name": "냥냥펀치선수",
             "englishName": "Cat",
-            "level": 0,
-            "price": 50000,
+            "story": "어떤 냥냥복싱 대회든 주름잡고 다니던 전설의 냥냥펀치 챔피언 선수.\r\n\r\n선수 시절 돈가스를 너무 좋아해서 알바에 지원했다.\r\n\r\n화려하고 파격적이 머리 스타일 때문에 냥아치라는 오해를 받지만, 사실은 순박한 시골 고양이.\r\n\r\n빠른 냥냥펀치로 돈가스를 두드린다. 가끔 너무 세게 두드려서 고기가 찢어지기도 한다.\r\n",
+            "level": 1,
+            "price": 50021,
             "mps": 5,
-            "isSold": false
+            "isSold": true
         },
         {
+            "code": 2,
             "name": "말랑도치",
             "englishName": "Hedgehog",
+            "story": "뾰족한 것을 싫어하는 고슴도치. 배에는 말랑말랑한 핑크 하트가 있다.\r\n\r\n뾰족한 집에서 가출하고 돈을 벌기 위해 돈가스 알바에 지원했다. 가출한 이유는 아무에게도 말한 적 없다.\r\n\r\n가시를 쓸 것 같지만, 작은 손으로 돈가스를 두드린다고 한다.\r\n",
             "level": 0,
             "price": 120000,
             "mps": 10,
             "isSold": false
         },
         {
+            "code": 3,
             "name": "핑펭이",
             "englishName": "Penguin",
+            "story": "솜사탕 같은 핑크색 아기 펭귄. 남극에서부터 빙하 타고 내려왔다고 한다.\r\n\r\n길에서 주운 산타 모자는 절대 벗지 않으며 고향을 매우 그리워한다. 딱히 친한 친구도 없는 것 같아 항상 외로워 보인다.\r\n\r\n짧은 부리로 돈가스를 두드린다.\r\n",
             "level": 0,
             "price": 450000,
             "mps": 25,
             "isSold": false
         },
         {
+            "code": 4,
             "name": "외계기린",
             "englishName": "Giraffe",
+            "story": "한 눈에 다 담아지지 않을 정도로 키가 큰 기린. 특이한 뿔… 이라고 불러도 될까 싶은 더듬이를 가지고 있다.\r\n\r\n뿔로 외계와 소통한다는 소문이 있다. 레이저도 나온다는데… 그 소문이 사실인지는 그 누구도 모른다.\r",
             "level": 0,
             "price": 840000,
             "mps": 45,
             "isSold": false
         },
         {
+            "code": 5,
             "name": "웽웽이",
             "englishName": "Bee",
+            "story": "동글동글 짜리몽땅하고 귀여운 호박벌. 애교가 많으며 머리가 좋다.\r\n\r\n식당에 있는 꽃은 모두 그의 차지이다. 누군가 꽃을 꺾어간다면 벌침을 날릴지도 모른다.\r\n\r\n작지만 강력한 침으로 돈가스를 두드린다. 돈가스에 독이 들어갈 일은 없다고 한다.\r\n",
             "level": 0,
             "price": 840000,
             "mps": 45,
             "isSold": false
         },
         {
+            "code": 6,
             "name": "죠쓰",
             "englishName": "Shark",
+            "story": "특이한 색을 가진 상어. 매끈매끈 물광 피부는 모두들 부러워한다.\r\n\r\n몸에 Z 모양 상처에 관해서는 알려진 바가 없다. 상처에 대한 얘기를 꺼내면 웃으며 말을 돌린다.\r\n\r\n공격성이 0에 가까우며 날카로운 이빨로 돈가스를 두드린다.\r\n",
             "level": 0,
             "price": 840000,
             "mps": 45,
             "isSold": false
         },
         {
+            "code": 7,
             "name": "크앙다이노",
             "englishName": "Dinosaur",
+            "story": "목이 긴 공룡.\r\n\r\n모두와 친하지만 모두에게 선을 긋는다. 마치 외딴섬같다.\r",
             "level": 0,
             "price": 840000,
             "mps": 45,
@@ -174,9 +190,9 @@
         {
             "code": 0,
             "name": "오리지널 돈가스",
-            "addMoney": 715,
-            "price": 21101,
-            "level": 11,
+            "addMoney": 0,
+            "price": 101,
+            "level": 1,
             "isSold": true
         },
         {
@@ -240,102 +256,6 @@
             "name": "무지개 돈가스",
             "addMoney": 0,
             "price": 302098,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 9,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 573528,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 10,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 1021881,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 11,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 1728446,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 12,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 2799356,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 13,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 4370069,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 14,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 6610176,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 15,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 9728552,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 16,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 13978830,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 17,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 19665216,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 18,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 27148610,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 19,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 36853056,
-            "level": 0,
-            "isSold": false
-        },
-        {
-            "code": 20,
-            "name": "무지개 돈가스",
-            "addMoney": 0,
-            "price": 49272532,
             "level": 0,
             "isSold": false
         }

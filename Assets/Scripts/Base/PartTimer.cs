@@ -3,8 +3,11 @@ using UnityEngine;
 [System.Serializable]
 public class PartTimer
 {
+    public int code;
     public string name;
     public string englishName;
+    [TextArea]
+    public string story;
     public int level;
     public ulong price;
     public int mps;

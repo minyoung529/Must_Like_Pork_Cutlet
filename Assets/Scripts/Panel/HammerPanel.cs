@@ -88,4 +88,12 @@ public class HammerPanel : PanelBase
         checkImage.gameObject.SetActive(true);
         GameManager.Instance.uiManager.ChangeHammerSprite(itemImage.sprite);
     }
+
+    public override void Inactive()
+    {
+        if (!hammer.GetIsSold())
+        {
+            buttonImage.color = Color.gray;
+        }
+    }
 }

@@ -3054,12 +3054,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grade: {fileID: 1331757940}
-  itemName: {fileID: 0}
+  itemName: {fileID: 378826605}
   information: {fileID: 1963654633}
   ability: {fileID: 1997170013}
   nextAbility: {fileID: 56228097}
   levelText: {fileID: 895895515}
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 832795172}
   gradeOutline: {fileID: 646457286}
 --- !u!1 &519420028
 GameObject:
@@ -14773,7 +14773,7 @@ GameObject:
   - component: {fileID: 1686838803}
   - component: {fileID: 1686838804}
   m_Layer: 0
-  m_Name: Pork
+  m_Name: Cutlet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14860,7 +14860,10 @@ MonoBehaviour:
   hammer: {fileID: 1909112674}
   originalMaterial: {fileID: 2100000, guid: bc9901c67fc512d43ad6d2a6ae01caae, type: 2}
   criticalMaterial: {fileID: 2100000, guid: e91f868caee6feb43ad572dba6381d3f, type: 2}
-  criticalUI: {fileID: 283965543}
+  criticalUI: {fileID: 283965544}
+  sprites:
+  - {fileID: -9136572144232859775, guid: a21ebfa83c5cf3746854e4b6dc2ed65a, type: 3}
+  - {fileID: 8586885197115800619, guid: a21ebfa83c5cf3746854e4b6dc2ed65a, type: 3}
 --- !u!95 &1686838804
 Animator:
   serializedVersion: 3

@@ -117,14 +117,22 @@ public class UIManager : MonoBehaviour
         Hammer hammer = GameManager.Instance.CurrentUser.GetHammer();
 
         GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
-        if(GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit))
+
+        if (GameManager.Instance.RandomSelecting(5f))
         {
-            count += hammer.clickCount;
+            cutlet.CriticalHit(1);
+            return;
         }
-        else
+
+        if (GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit + 5f))
         {
             count += hammer.clickCount + 2;
-            cutlet.CriticalHit();
+            cutlet.CriticalHit(0);
+        }
+
+        else
+        {
+            count += hammer.clickCount;
         }
 
         countText.text = count.ToString();
@@ -350,7 +358,6 @@ public class UIManager : MonoBehaviour
 
     public void ChangeHammerSprite(Sprite sprite)
     {
-        Debug.Log(sprite.name);
         playerHammer.sprite = sprite;
     }
 

@@ -31,10 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         LoadFromJson();
 
-        for (int i = 0; i < user.hammerList.Count; i++)
-        {
-            user.hammerList[i].isSold = true;
-        }
+        user.hammerList[0].SetIsSold(true);
     }
 
     private void Start()
@@ -152,8 +149,7 @@ public class GameManager : MonoSingleton<GameManager>
     public bool RandomSelecting(float percentage)
     {
         float random = Random.Range(0, 100);
-
-        if (percentage <= random) return true;
+        if (percentage > random) return true;
         else return false;
     }
 }

@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 36848,
+    "money": 44928,
     "userHammer": "나무 망치",
     "partTimerList": [
         {
@@ -94,8 +94,7 @@
             "clickCount": 1,
             "clickPerMoney": 0,
             "criticalHit": 10.0,
-            "level": 1,
-            "isSold": true
+            "level": 1
         },
         {
             "code": 1,
@@ -105,8 +104,7 @@
             "clickCount": 1,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 2,
@@ -116,8 +114,7 @@
             "clickCount": 1,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 3,
@@ -127,8 +124,7 @@
             "clickCount": 1,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 4,
@@ -138,8 +134,7 @@
             "clickCount": 1,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 5,
@@ -149,8 +144,7 @@
             "clickCount": 2,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 6,
@@ -160,8 +154,7 @@
             "clickCount": 2,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 7,
@@ -171,8 +164,7 @@
             "clickCount": 2,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         },
         {
             "code": 8,
@@ -182,8 +174,7 @@
             "clickCount": 5,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
-            "level": 0,
-            "isSold": true
+            "level": 0
         }
     ],
     "cutlets": [

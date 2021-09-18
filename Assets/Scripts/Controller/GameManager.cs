@@ -80,17 +80,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public Hammer GetUserHammer()
-    {
-        foreach (Hammer hammer in user.hammerList)
-        {
-            if (user.UserHammer() == hammer.name)
-                return hammer;
-        }
-
-        return user.hammerList[0];
-    }
-
     private void LoadFromJson()
     {
         string json = "";
@@ -158,5 +147,13 @@ public class GameManager : MonoSingleton<GameManager>
         {
             cutlet.SetPrice((ulong) Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
         }
+    }
+
+    public bool RandomSelecting(float percentage)
+    {
+        float random = Random.Range(0, 100);
+
+        if (percentage <= random) return true;
+        else return false;
     }
 }

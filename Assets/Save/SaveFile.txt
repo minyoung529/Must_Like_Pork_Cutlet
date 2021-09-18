@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 1148797,
+    "money": 36848,
     "userHammer": "나무 망치",
     "partTimerList": [
         {
@@ -9,20 +9,20 @@
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
             "story": "평범한 디자인 회사의 사원이었다. 반복된 삶에 회의를 느껴 돈가스 알바에 지원했다.\n\n친절한 아저씨이지만 일하면서 흥얼거리는 콧노래는 정말 못 들어주겠다고 한다.\n\n큰 앞발로 돈가스를 두드리고 있다. 때문에 손님들이 지진이 난 줄 아는 경우도 종종 있다.",
-            "level": 10,
-            "price": 13240,
+            "level": 0,
+            "price": 9900,
             "mps": 1,
-            "isSold": true
+            "isSold": false
         },
         {
             "code": 1,
             "name": "냥냥펀치선수",
             "englishName": "Cat",
             "story": "어떤 냥냥복싱 대회든 주름잡고 다니던 전설의 냥냥펀치 챔피언 선수.\r\n\r\n선수 시절 돈가스를 너무 좋아해서 알바에 지원했다.\r\n\r\n화려하고 파격적이 머리 스타일 때문에 냥아치라는 오해를 받지만, 사실은 순박한 시골 고양이.\r\n\r\n빠른 냥냥펀치로 돈가스를 두드린다. 가끔 너무 세게 두드려서 고기가 찢어지기도 한다.\r\n",
-            "level": 1,
-            "price": 50021,
+            "level": 0,
+            "price": 50000,
             "mps": 5,
-            "isSold": true
+            "isSold": false
         },
         {
             "code": 2,
@@ -93,7 +93,7 @@
             "info": "나무로 만든 평범한 나무 망치. 나무 틈에서 벌레가 나온다는 괴소문도 있다.",
             "clickCount": 1,
             "clickPerMoney": 0,
-            "criticalHit": 0.0,
+            "criticalHit": 10.0,
             "level": 1,
             "isSold": true
         },
@@ -190,18 +190,18 @@
         {
             "code": 0,
             "name": "오리지널 돈가스",
-            "addMoney": 0,
+            "addMoney": 188,
             "price": 101,
-            "level": 1,
+            "level": 7,
             "isSold": true
         },
         {
             "code": 1,
             "name": "치즈 돈가스",
-            "addMoney": 64,
+            "addMoney": 116,
             "price": 114,
-            "level": 0,
-            "isSold": false
+            "level": 4,
+            "isSold": true
         },
         {
             "code": 2,

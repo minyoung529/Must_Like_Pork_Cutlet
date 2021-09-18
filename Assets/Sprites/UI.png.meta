@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 1080825480604336155
     second: UI_2
+  - first:
+      213: -9136572144232859775
+    second: UI_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 700
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,8 +118,8 @@ TextureImporter:
       name: UI_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 16
+        x: 59
+        y: 40
         width: 511
         height: 209
       alignment: 0
@@ -136,8 +139,8 @@ TextureImporter:
       name: UI_1
       rect:
         serializedVersion: 2
-        x: 603
-        y: 18
+        x: 632
+        y: 42
         width: 253
         height: 309
       alignment: 0
@@ -157,8 +160,8 @@ TextureImporter:
       name: UI_2
       rect:
         serializedVersion: 2
-        x: 903
-        y: 0
+        x: 932
+        y: 24
         width: 330
         height: 335
       alignment: 0
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: b10cc935c0ddffe00800000000000000
       internalID: 1080825480604336155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_3
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 30
+        width: 599
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187754eda00643180800000000000000
+      internalID: -9136572144232859775
       vertices: []
       indices: 
       edges: []

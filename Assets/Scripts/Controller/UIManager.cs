@@ -111,12 +111,22 @@ public class UIManager : MonoBehaviour
         template.gameObject.SetActive(false);
     }
 
+    [Obsolete]
     public void OnClickPork()
     {
-        Hammer hammer = GameManager.Instance.GetUserHammer();
+        Hammer hammer = GameManager.Instance.CurrentUser.GetHammer();
 
         GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
-        count += hammer.clickCount;
+        if(GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit))
+        {
+            count += hammer.clickCount;
+        }
+        else
+        {
+            count += hammer.clickCount + 2;
+            cutlet.CriticalHit();
+        }
+
         countText.text = count.ToString();
         cutlet.Move();
         cutlet.SetSprite(count);
@@ -187,8 +197,8 @@ public class UIManager : MonoBehaviour
 
         SettingUpgradePanel();
 
-        ChangeHammerSprite(hammerSprites[GameManager.Instance.GetUserHammer().code]);
-        SetHammer(GameManager.Instance.GetUserHammer().code);
+        ChangeHammerSprite(hammerSprites[GameManager.Instance.CurrentUser.GetHammer().code]);
+        SetHammer(GameManager.Instance.CurrentUser.GetHammer().code);
         UpdatePanel();
     }
 

@@ -23,8 +23,16 @@ public class User
         return userHammer;
     }
 
+    public Hammer GetHammer()
+    {
+        Hammer hammer = hammerList.Find(x => x.name == userHammer);
+        if (hammer == null) return hammerList[0];
+        else return hammer;
+    }
+
     public void UserHammer(string hammer)
     {
         userHammer = hammer;
     }
+
 }

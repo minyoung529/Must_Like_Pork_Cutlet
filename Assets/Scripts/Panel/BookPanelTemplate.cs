@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class BookPanelTemplate : PanelBase
 {
-    [SerializeField] private Image bookItem;
     private Sprite[] sprites;
     private int index;
+
+    private PartTimer partTimer;
+    private Cutlet cutlet;
+    private Hammer hammer;
+
+    [SerializeField] private Text infoText;
+    [SerializeField] private Text detailInfoText;
+    [SerializeField] private Image leftImage;
+    [SerializeField] private GameObject plate;
 
     private enum ButtonState
     {
@@ -28,8 +36,10 @@ public class BookPanelTemplate : PanelBase
     {
         buttonState = JudgeState(state);
         index = num;
+        Debug.Log(index);
+
         SetUp();
-        itemImage.color = Color.red;
+        SetData();
     }
 
     private ButtonState JudgeState(int num)
@@ -55,17 +65,17 @@ public class BookPanelTemplate : PanelBase
         {
             case ButtonState.cutlet:
                 //if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
-                bookItem.sprite = GameManager.Instance.uiManager.GetCutletSprite()[index];
+                itemImage.sprite = GameManager.Instance.uiManager.GetCutletSprite()[index];
                 break;
 
             case ButtonState.partTimer:
                 if (Compare(GameManager.Instance.CurrentUser.partTimerList.Count)) break;
-                bookItem.sprite = GameManager.Instance.uiManager.GetPartTimerSprite()[index];
+                itemImage.sprite = GameManager.Instance.uiManager.GetPartTimerSprite()[index];
                 break;
 
             case ButtonState.hammer:
                 if (Compare(GameManager.Instance.CurrentUser.hammerList.Count)) break;
-                bookItem.sprite = GameManager.Instance.uiManager.GetHammerSprites()[index];
+                itemImage.sprite = GameManager.Instance.uiManager.GetHammerSprites()[index];
                 break;
         }
 
@@ -73,11 +83,69 @@ public class BookPanelTemplate : PanelBase
 
     private bool Compare(int count)
     {
-        if (index > count)
+        if (index >= count)
         {
             gameObject.SetActive(false);
             return true;
         }
-        return false;
+        else
+        {
+            gameObject.SetActive(true);
+            return false;
+        }
+    }
+
+    private void SetData()
+    {
+        User user = GameManager.Instance.CurrentUser;
+
+        if(index < user.cutlets.Count)
+        {
+            cutlet = user.cutlets[index];
+        }
+
+        if (index < user.partTimerList.Count)
+        {
+            partTimer = user.partTimerList[index];
+        }
+
+        if (index < user.hammerList.Count)
+        {
+            hammer = user.hammerList[index];
+        }
+    }
+
+    public void OnClickButton()
+    {
+        switch(buttonState)
+        {
+            case ButtonState.cutlet:
+                SetLeftInformation(cutlet.name, cutlet.info, itemImage.sprite);
+                break;
+
+            case ButtonState.partTimer:
+                SetLeftInformation(partTimer.name, partTimer.story, itemImage.sprite);
+                break;
+
+            case ButtonState.hammer:
+                SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
+                break;
+
+        }
+    }
+
+    private void SetLeftInformation(string name, string info, Sprite sprite)
+    {
+        if (buttonState == ButtonState.cutlet)
+        {
+            plate.SetActive(true);
+        }
+        else
+            plate.SetActive(false);
+
+        nameText.text = name;
+        infoText.text = info;
+        detailInfoText.text = info;
+        leftImage.sprite = sprite;
     }
 }

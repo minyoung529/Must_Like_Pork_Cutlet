@@ -14,6 +14,7 @@ public class BookButton : MonoBehaviour
         int count = Mathf.Max(user.cutlets.Count, user.partTimerList.Count, user.hammerList.Count);
         contents = transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
         InstantiatePanel(panelBase, contents, count);
+        OnClickCategory(0);
     }
 
     public void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count)
@@ -37,7 +38,7 @@ public class BookButton : MonoBehaviour
     {
         for (int i = 0; i < panels.Count; i++)
         {
-            panelBase.Init(i, null, num);
+            panels[i].Init(i, null, num);
         }
     }
 }

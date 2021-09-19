@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 56783,
+    "money": 1608772,
     "userHammer": "나무 망치",
     "partTimerList": [
         {
@@ -9,20 +9,20 @@
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
             "story": "평범한 디자인 회사의 사원이었다. 반복된 삶에 회의를 느껴 돈가스 알바에 지원했다.\n\n친절한 아저씨이지만 일하면서 흥얼거리는 콧노래는 정말 못 들어주겠다고 한다.\n\n큰 앞발로 돈가스를 두드리고 있다. 때문에 손님들이 지진이 난 줄 아는 경우도 종종 있다.",
-            "level": 0,
-            "price": 9900,
+            "level": 11,
+            "price": 14827,
             "mps": 1,
-            "isSold": false
+            "isSold": true
         },
         {
             "code": 1,
             "name": "냥냥펀치선수",
             "englishName": "Cat",
             "story": "어떤 냥냥복싱 대회든 주름잡고 다니던 전설의 냥냥펀치 챔피언 선수.\r\n\r\n선수 시절 돈가스를 너무 좋아해서 알바에 지원했다.\r\n\r\n화려하고 파격적이 머리 스타일 때문에 냥아치라는 오해를 받지만, 사실은 순박한 시골 고양이.\r\n\r\n빠른 냥냥펀치로 돈가스를 두드린다. 가끔 너무 세게 두드려서 고기가 찢어지기도 한다.\r\n",
-            "level": 0,
-            "price": 50000,
+            "level": 1,
+            "price": 50021,
             "mps": 5,
-            "isSold": false
+            "isSold": true
         },
         {
             "code": 2,
@@ -181,6 +181,7 @@
         {
             "code": 0,
             "name": "오리지널 돈가스",
+            "info": "",
             "addMoney": 188,
             "price": 101,
             "level": 7,
@@ -189,6 +190,7 @@
         {
             "code": 1,
             "name": "치즈 돈가스",
+            "info": "",
             "addMoney": 197,
             "price": 114,
             "level": 6,
@@ -197,6 +199,7 @@
         {
             "code": 2,
             "name": "핵! 불돈가스",
+            "info": "",
             "addMoney": 123,
             "price": 374,
             "level": 0,
@@ -205,6 +208,7 @@
         {
             "code": 3,
             "name": "짜장 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 1969,
             "level": 0,
@@ -213,6 +217,7 @@
         {
             "code": 4,
             "name": "피카피카 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 7952,
             "level": 0,
@@ -221,6 +226,7 @@
         {
             "code": 5,
             "name": "오늘부터1일 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 24860,
             "level": 0,
@@ -229,6 +235,7 @@
         {
             "code": 6,
             "name": "민트초코 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 64650,
             "level": 0,
@@ -237,6 +244,7 @@
         {
             "code": 7,
             "name": "생크림딸기 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 147018,
             "level": 0,
@@ -245,6 +253,7 @@
         {
             "code": 8,
             "name": "무지개 돈가스",
+            "info": "",
             "addMoney": 0,
             "price": 302098,
             "level": 0,

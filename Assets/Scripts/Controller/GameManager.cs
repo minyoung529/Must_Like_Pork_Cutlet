@@ -17,6 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     private int clickCount;
 
     public UIManager uiManager { get; private set; }
+    public QuestManager questManager { get; private set; }
 
     private int maxCutletCnt = 10;
 
@@ -36,7 +37,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = GetComponent<UIManager>();
+        questManager = GetComponent<QuestManager>();
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         SetUser();
         SetCutletPrice();
@@ -140,9 +142,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void SetUser()
     {
-        foreach(Cutlet cutlet in user.cutlets)
+        foreach (Cutlet cutlet in user.cutlets)
         {
-            cutlet.SetPrice((ulong) Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
+            cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
         }
     }
 
@@ -151,5 +153,28 @@ public class GameManager : MonoSingleton<GameManager>
         float random = Random.Range(0, 100);
         if (percentage > random) return true;
         else return false;
+    }
+
+    public float Randoms(params float[] percentages)
+    {
+        float max = 0;
+        float random = 0;
+
+        foreach (float percentage in percentages)
+        {
+            max += percentage;
+        }
+
+        random = Random.Range(0f, max);
+
+        foreach (float percentage in percentages)
+        {
+            if (random < percentage)
+            {
+                return percentage;
+            }
+        }
+
+        return 0;
     }
 }

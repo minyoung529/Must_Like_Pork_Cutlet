@@ -13,11 +13,11 @@ public class BookButton : MonoBehaviour
         User user = GameManager.Instance.CurrentUser;
         int count = Mathf.Max(user.cutlets.Count, user.partTimerList.Count, user.hammerList.Count);
         contents = transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
-        InstantiatePanel(panelBase, contents, count);
+        InstantiatePanel(panelBase, transform.GetChild(0).GetChild(0), count);
         OnClickCategory(0);
     }
 
-    public void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count)
+    public void InstantiatePanel(PanelBase template, Transform rectTransform, int count)
     {
         GameObject obj;
         PanelBase panel;

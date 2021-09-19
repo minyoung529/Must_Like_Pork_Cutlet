@@ -37,11 +37,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private HammerInformation hammerInformation;
     [SerializeField] private PartTimerInformation partTimerInformation;
 
-    private ScrollRect scrollRect;
+    [Header("메인 스크롤")]
+    [SerializeField] private ScrollRect scrollRect;
 
-    private RectTransform hammerTransform;
-    private RectTransform cutletTransform;
-    private RectTransform partTimerTransform;
+    private Transform hammerTransform;
+    private Transform cutletTransform;
+    private Transform partTimerTransform;
 
     private int count = 0;
 
@@ -85,14 +86,14 @@ public class UIManager : MonoBehaviour
         InstantiatePanel(randomHammerTemplate, randomHammerTransform, 10);
     }
 
-    public void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count, Sprite[] sprites = null)
+    public void InstantiatePanel(PanelBase template, Transform transform, int count, Sprite[] sprites = null)
     {
         GameObject obj;
         PanelBase panel;
 
         for (int i = 0; i < count; i++)
         {
-            obj = Instantiate(template.gameObject, rectTransform);
+            obj = Instantiate(template.gameObject, transform);
             panel = obj.GetComponent<PanelBase>();
 
             if (template == randomHammerTemplate)
@@ -174,10 +175,10 @@ public class UIManager : MonoBehaviour
     {
         List<PartTimer> partTimers = GameManager.Instance.CurrentUser.partTimerList;
 
-        scrollRect = partTimerpanelTemplate.transform.parent.parent.parent.gameObject.GetComponent<ScrollRect>();
-        cutletTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(0).gameObject.GetComponent<RectTransform>();
-        partTimerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(1).gameObject.GetComponent<RectTransform>();
-        hammerTransform = partTimerpanelTemplate.transform.parent.parent.GetChild(2).gameObject.GetComponent<RectTransform>();
+        cutletTransform = cutletPanelTemplate.transform.parent;
+        partTimerTransform = partTimerpanelTemplate.transform.parent;
+        hammerTransform = hammerPanelTemplate.transform.parent;
+
         countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
         mpsAndCutletText = moneyText.transform.parent.GetChild(2).gameObject.GetComponent<Text>();
 
@@ -193,10 +194,6 @@ public class UIManager : MonoBehaviour
         {
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
-
-        cutletTransform.gameObject.SetActive(true);
-        partTimerTransform.gameObject.SetActive(false);
-        hammerTransform.gameObject.SetActive(false);
 
         partTimerSprites = Resources.LoadAll<Sprite>("Sprites/PartTimerImage");
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/CutletImage");
@@ -321,6 +318,7 @@ public class UIManager : MonoBehaviour
     private int SelectRandom()
     {
         List<Hammer> hammerList = GameManager.Instance.CurrentUser.hammerList;
+
         int rand = Random.Range(0, 100);
         int commonCnt = 0;
         int rareCnt = 0;
@@ -338,12 +336,12 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 10) // 0-9
+        if (rand < 4) // 0-9
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 40) //10 - 49
+        else if (rand < 32) //10 - 49
         {
             rand = Random.Range(commonCnt, rareCnt);
         }

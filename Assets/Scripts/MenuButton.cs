@@ -23,6 +23,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         {
             StartCoroutine(SetMenu());
         }
+
         else
         {
             StartCoroutine(UnSetMenu());
@@ -36,7 +37,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         {
             increasement -= 14.5f;
             children[i].gameObject.SetActive(true);
-            children[i].DOAnchorPosY(increasement, 0.1f).SetEase(Ease.Flash);
+            children[i].DOAnchorPosX(increasement, 0.1f).SetEase(Ease.Flash);
             yield return new WaitForSeconds(0.05f);
         }
         isActive = true;
@@ -49,7 +50,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
 
         for (int i = children.Count - 1; i > -1; i--)
         {
-            children[i].DOAnchorPosY(0, 0.1f).SetEase(Ease.Flash);
+            children[i].DOAnchorPosX(0, 0.1f).SetEase(Ease.Flash);
             decreasement -= 14.5f;
             yield return new WaitForSeconds(0.05f);
             children[i].gameObject.SetActive(false);

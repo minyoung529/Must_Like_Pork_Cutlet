@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PanelBase : MonoBehaviour
 {
+    Image sdfsdf;
     [SerializeField]
     protected Text nameText;
     [SerializeField]

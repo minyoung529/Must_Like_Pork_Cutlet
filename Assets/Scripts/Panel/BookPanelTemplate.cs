@@ -38,8 +38,8 @@ public class BookPanelTemplate : PanelBase
         index = num;
         Debug.Log(index);
 
-        SetUp();
         SetData();
+        SetUp();
     }
 
     private ButtonState JudgeState(int num)
@@ -64,18 +64,21 @@ public class BookPanelTemplate : PanelBase
         switch (buttonState)
         {
             case ButtonState.cutlet:
-                //if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
+                if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
                 itemImage.sprite = GameManager.Instance.uiManager.GetCutletSprite()[index];
+                Lock(cutlet.GetIsSold());
                 break;
 
             case ButtonState.partTimer:
                 if (Compare(GameManager.Instance.CurrentUser.partTimerList.Count)) break;
                 itemImage.sprite = GameManager.Instance.uiManager.GetPartTimerSprite()[index];
+                Lock(partTimer.GetIsSold());
                 break;
 
             case ButtonState.hammer:
                 if (Compare(GameManager.Instance.CurrentUser.hammerList.Count)) break;
                 itemImage.sprite = GameManager.Instance.uiManager.GetHammerSprites()[index];
+                Lock(hammer.GetIsSold());
                 break;
         }
 
@@ -120,14 +123,17 @@ public class BookPanelTemplate : PanelBase
         switch(buttonState)
         {
             case ButtonState.cutlet:
+                if (!cutlet.GetIsSold()) return;
                 SetLeftInformation(cutlet.name, cutlet.info, itemImage.sprite);
                 break;
 
             case ButtonState.partTimer:
+                if (!partTimer.GetIsSold()) return;
                 SetLeftInformation(partTimer.name, partTimer.story, itemImage.sprite);
                 break;
 
             case ButtonState.hammer:
+                if (!hammer.GetIsSold()) return;
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
                 break;
 
@@ -147,5 +153,19 @@ public class BookPanelTemplate : PanelBase
         infoText.text = info;
         detailInfoText.text = info;
         leftImage.sprite = sprite;
+    }
+
+    private void Lock(bool isSold)
+    {
+        if(!isSold)
+        {
+            itemImage.color = Color.black;
+            buttonImage.color = Color.gray;
+        }
+        else
+        {
+            itemImage.color = Color.white;
+            buttonImage.color = Color.white;
+        }
     }
 }

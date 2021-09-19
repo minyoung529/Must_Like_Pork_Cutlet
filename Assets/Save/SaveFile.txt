@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 1608772,
+    "money": 1617204,
     "userHammer": "나무 망치",
     "partTimerList": [
         {

@@ -7,6 +7,8 @@ public class Cutlet
 {
     public int code;
     public string name;
+    [TextArea]
+    public string info;
     public int addMoney;
     public ulong price;
     public int level;

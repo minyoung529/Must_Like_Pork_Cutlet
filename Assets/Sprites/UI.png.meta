@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: 8586885197115800619
     second: UI_4
+  - first:
+      213: 8160775752198118580
+    second: UI_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,9 +124,9 @@ TextureImporter:
       name: UI_0
       rect:
         serializedVersion: 2
-        x: 29
+        x: 14
         y: 39
-        width: 512
+        width: 511
         height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -142,10 +145,10 @@ TextureImporter:
       name: UI_1
       rect:
         serializedVersion: 2
-        x: 603
-        y: 41
+        x: 586
+        y: 42
         width: 254
-        height: 311
+        height: 310
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +166,10 @@ TextureImporter:
       name: UI_2
       rect:
         serializedVersion: 2
-        x: 903
-        y: 24
+        x: 886
+        y: 23
         width: 330
-        height: 335
+        height: 337
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +187,10 @@ TextureImporter:
       name: UI_3
       rect:
         serializedVersion: 2
-        x: 1282
-        y: 29
-        width: 600
-        height: 400
+        x: 1265
+        y: 28
+        width: 601
+        height: 402
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +208,10 @@ TextureImporter:
       name: UI_4
       rect:
         serializedVersion: 2
-        x: 1932
-        y: 29
-        width: 600
-        height: 400
+        x: 1916
+        y: 28
+        width: 601
+        height: 402
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,6 +221,27 @@ TextureImporter:
       bones: []
       spriteID: b2cb52d679eba2770800000000000000
       internalID: 8586885197115800619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_5
+      rect:
+        serializedVersion: 2
+        x: 2549
+        y: 183
+        width: 168
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bcd3691f46e04170800000000000000
+      internalID: 8160775752198118580
       vertices: []
       indices: 
       edges: []

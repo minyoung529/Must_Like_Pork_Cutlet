@@ -6,7 +6,7 @@ public class CutletPanel : PanelBase
 {
     private Cutlet cutlet;
 
-    public override void Init(int num, Sprite sprite)
+    public override void Init(int num, Sprite sprite = null, int state = 0)
     {
         maxLevel = 5;
 

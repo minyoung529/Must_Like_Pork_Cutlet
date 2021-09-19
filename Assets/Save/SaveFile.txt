@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 44928,
+    "money": 56783,
     "userHammer": "나무 망치",
     "partTimerList": [
         {
@@ -189,9 +189,9 @@
         {
             "code": 1,
             "name": "치즈 돈가스",
-            "addMoney": 116,
+            "addMoney": 197,
             "price": 114,
-            "level": 4,
+            "level": 6,
             "isSold": true
         },
         {

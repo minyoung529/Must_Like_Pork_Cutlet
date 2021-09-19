@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
         InstantiatePanel(randomHammerTemplate, randomHammerTransform, 10);
     }
 
-    private void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count, Sprite[] sprites = null)
+    public void InstantiatePanel(PanelBase template, RectTransform rectTransform, int count, Sprite[] sprites = null)
     {
         GameObject obj;
         PanelBase panel;
@@ -377,6 +377,11 @@ public class UIManager : MonoBehaviour
     public Sprite[] GetPartTimerSprite()
     {
         return partTimerSprites;
+    }
+
+    public Sprite[] GetCutletSprite()
+    {
+        return cutletSprites;
     }
 
     public void ActiveHammerInfo(int index)

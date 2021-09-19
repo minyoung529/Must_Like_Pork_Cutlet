@@ -19,7 +19,7 @@ public class PanelBase : MonoBehaviour
     protected int num;
     protected int maxLevel;
 
-    public virtual void Init(int num, Sprite sprite)
+    public virtual void Init(int num, Sprite sprite = null, int state = 0)
     {
         this.num = num;
         itemImage.sprite = sprite;

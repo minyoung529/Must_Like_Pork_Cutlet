@@ -59,7 +59,7 @@ public class BookPanelTemplate : PanelBase
         return ButtonState.cutlet;
     }
 
-    protected override void SetUp()
+    public override void SetUp()
     {
         switch (buttonState)
         {

@@ -7,7 +7,7 @@ using DG.Tweening;
 public class MenuButton : MonoBehaviour, IPointerUpHandler
 {
     List<RectTransform> children = new List<RectTransform>();
-    private bool isActive;
+    private bool isActive = true;
 
 
     private void Start()

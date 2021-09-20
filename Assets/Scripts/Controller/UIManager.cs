@@ -19,10 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform partTimersTransform;
     [SerializeField] private Transform cutletsTransform;
 
-    [Header("돈 텍스트")]
+    [Header("재화 텍스트")]
     [SerializeField] private Text moneyText;
-    private Text countText;
-    private Text mpsAndCutletText;
+    [SerializeField] private Text diamondText;
+    [SerializeField] private Text countText;
+    [SerializeField] private Text mpsAndCutletText;
 
     [Header("손님")]
     [SerializeField] private Image guest;
@@ -143,6 +144,8 @@ public class UIManager : MonoBehaviour
         if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
             GameManager.Instance.AddMoney(GameManager.Instance.GetCutletPrice(), true);
+            GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
+            GameManager.Instance.questManager.UpdateQuest();
             UpdatePanel();
 
             count -= 10;
@@ -154,7 +157,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePanel()
     {
-        moneyText.text = GameManager.Instance.CurrentUser.money + "원";
+        moneyText.text = string.Format("{0}원", GameManager.Instance.CurrentUser.money);
+        diamondText.text = string.Format("{0}", GameManager.Instance.CurrentUser.diamond);
         mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원", GameManager.Instance.GetCutletPrice(), GameManager.Instance.GetMPS());
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -178,9 +182,6 @@ public class UIManager : MonoBehaviour
         cutletTransform = cutletPanelTemplate.transform.parent;
         partTimerTransform = partTimerpanelTemplate.transform.parent;
         hammerTransform = hammerPanelTemplate.transform.parent;
-
-        countText = moneyText.transform.parent.GetChild(1).gameObject.GetComponent<Text>();
-        mpsAndCutletText = moneyText.transform.parent.GetChild(2).gameObject.GetComponent<Text>();
 
         partTimersImage = new Image[partTimers.Count];
         cutletsImage = new Image[cutletsTransform.childCount];

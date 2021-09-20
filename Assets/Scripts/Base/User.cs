@@ -8,10 +8,17 @@ public class User
     public string nickname;
     public ulong onClickMoney;
     public ulong money;
+    public int diamond;
     [SerializeField] private string userHammer;
     public List<PartTimer> partTimerList;
     public List<Hammer> hammerList;
     public List<Cutlet> cutlets;
+    [SerializeField] private List<Quest> questLists;
+
+    public List<Quest> Quests
+    {
+        get { return questLists; }
+    }
 
     public string GetNickname()
     {

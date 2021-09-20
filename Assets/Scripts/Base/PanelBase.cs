@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PanelBase : MonoBehaviour
 {
-    Image sdfsdf;
     [SerializeField]
     protected Text nameText;
     [SerializeField]
@@ -27,7 +26,7 @@ public class PanelBase : MonoBehaviour
         SetUp();
     }
 
-    protected virtual void SetUp() { }
+    public virtual void SetUp() { }
 
     protected virtual string QuestionMark(string name)
     {

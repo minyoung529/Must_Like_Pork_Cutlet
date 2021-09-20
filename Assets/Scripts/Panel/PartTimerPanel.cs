@@ -16,7 +16,7 @@ public class PartTimerPanel : PanelBase
         maxLevel = 10;
     }
 
-    protected override void SetUp()
+    public override void SetUp()
     {
         nameText.text = partTimer?.name;
         priceText.text = partTimer?.price + "¿ø";
@@ -41,6 +41,8 @@ public class PartTimerPanel : PanelBase
 
         GameManager.Instance.uiManager.UpdatePanel();
         GameManager.Instance.uiManager.ActivePartTimers();
+        GameManager.Instance.CurrentUser.Quests[3].PlusCurValue(1);
+        GameManager.Instance.questManager.UpdateQuest();
 
         SetSoldItem();
         SetUp();

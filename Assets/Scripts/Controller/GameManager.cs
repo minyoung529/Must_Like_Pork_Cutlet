@@ -66,7 +66,8 @@ public class GameManager : MonoSingleton<GameManager>
             }
         }
 
-        //uiManager.Smooth();
+        user.Quests[1].PlusCurValue(1);
+        questManager.UpdateQuest();
         uiManager.UpdatePanel();
     }
 
@@ -137,6 +138,12 @@ public class GameManager : MonoSingleton<GameManager>
         else
             CurrentUser.money -= money;
 
+        uiManager.UpdatePanel();
+    }
+
+    public void AddDiamond(int diamond)
+    {
+        CurrentUser.diamond += diamond;
         uiManager.UpdatePanel();
     }
 

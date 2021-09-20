@@ -18,7 +18,7 @@ public class CutletPanel : PanelBase
         SetSoldItem();
     }
 
-    protected override void SetUp()
+    public override void SetUp()
     {
         nameText.text = cutlet?.name;
         levelText.text = cutlet?.level + " Level";
@@ -38,6 +38,9 @@ public class CutletPanel : PanelBase
         cutlet.LevelUp();
         GameManager.Instance.SetCutletPrice();
         GameManager.Instance.uiManager.UpdatePanel();
+        GameManager.Instance.CurrentUser.Quests[2].PlusCurValue(1);
+        GameManager.Instance.questManager.UpdateQuest();
+
         SetUp();
         SetSoldItem();
     }

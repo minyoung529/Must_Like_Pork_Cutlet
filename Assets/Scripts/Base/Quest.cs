@@ -23,10 +23,24 @@ public class Quest
     }
 
     public void SetMaxValue(int value)
-        => maxValue = value;
+    {
+        maxValue = value;
+    }
 
     public void SetCurValue(int value)
-        => maxValue = value;
+    {
+        if (currentValue >= maxValue) return;
+        currentValue = value;
+    }
+
+    public void PlusCurValue(int value)
+    {
+        if (currentValue >= maxValue) return;
+        currentValue += value;
+    }
+
+    public void SetCurValueZero()
+    => currentValue = 0;
 
     public int GetReward()
     {

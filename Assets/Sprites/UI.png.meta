@@ -22,7 +22,19 @@ TextureImporter:
     second: UI_5
   - first:
       213: 7448113381798972013
-    second: UI_6
+    second: Quest_1
+  - first:
+      213: 7843416716369364892
+    second: Quest_2
+  - first:
+      213: -6595680761151332689
+    second: Quest_3
+  - first:
+      213: -273060469431498887
+    second: Diamond
+  - first:
+      213: 8391660652416901024
+    second: Money
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,12 +139,12 @@ TextureImporter:
       name: UI_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 359
+        x: 58
+        y: 385
         width: 512
-        height: 212
+        height: 210
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,12 +160,12 @@ TextureImporter:
       name: UI_1
       rect:
         serializedVersion: 2
-        x: 603
-        y: 362
-        width: 253
+        x: 632
+        y: 388
+        width: 254
         height: 310
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,12 +181,12 @@ TextureImporter:
       name: UI_2
       rect:
         serializedVersion: 2
-        x: 902
-        y: 343
-        width: 331
-        height: 337
+        x: 932
+        y: 369
+        width: 330
+        height: 336
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +202,12 @@ TextureImporter:
       name: UI_3
       rect:
         serializedVersion: 2
-        x: 1281
-        y: 350
-        width: 600
-        height: 399
+        x: 1310
+        y: 375
+        width: 601
+        height: 401
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,12 +223,12 @@ TextureImporter:
       name: UI_4
       rect:
         serializedVersion: 2
-        x: 1933
-        y: 350
+        x: 1962
+        y: 375
         width: 600
-        height: 399
+        height: 401
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,12 +244,12 @@ TextureImporter:
       name: UI_5
       rect:
         serializedVersion: 2
-        x: 2565
-        y: 503
-        width: 168
-        height: 160
+        x: 2589
+        y: 411
+        width: 340
+        height: 285
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,15 +262,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_6
+      name: Quest_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 40
-        width: 340
-        height: 286
+        x: 20
+        y: 125
+        width: 168
+        height: 160
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,6 +278,90 @@ TextureImporter:
       bones: []
       spriteID: d6a06f0b8a30d5760800000000000000
       internalID: 7448113381798972013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest_2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 125
+        width: 169
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c978e8482f969dc60800000000000000
+      internalID: 7843416716369364892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest_3
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 125
+        width: 167
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae52bb0b4f6774a0800000000000000
+      internalID: -6595680761151332689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 83
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977855523f4e53cf0800000000000000
+      internalID: -273060469431498887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Money
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 17
+        width: 96
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af9ee607ea257470800000000000000
+      internalID: 8391660652416901024
       vertices: []
       indices: 
       edges: []

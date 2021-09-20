@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class PartTimerPanel : PanelBase
 {
     private PartTimer partTimer;
+    private ParticleSystem particle;
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
         partTimer = GameManager.Instance.CurrentUser.partTimerList[num];
+        particle = GetComponentInChildren<ParticleSystem>();
         base.Init(num, sprite);
         SetSoldItem();
         maxLevel = 10;
@@ -38,6 +40,7 @@ public class PartTimerPanel : PanelBase
 
         GameManager.Instance.AddMoney(partTimer.price, false);
         partTimer.LevelUp();
+        particle.Play();
 
         GameManager.Instance.uiManager.UpdatePanel();
         GameManager.Instance.uiManager.ActivePartTimers();

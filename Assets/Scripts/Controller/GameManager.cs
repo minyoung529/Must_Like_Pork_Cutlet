@@ -157,7 +157,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         foreach (Cutlet cutlet in user.cutlets)
         {
-            cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
+            if (!cutlet.isSold)
+            {
+                Debug.Log(cutlet.name);
+                cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
+            }
         }
     }
 

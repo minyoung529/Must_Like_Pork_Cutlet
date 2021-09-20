@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
 
-        if (GameManager.Instance.RandomSelecting(5f))
+        if (GameManager.Instance.RandomSelecting(0.5f))
         {
             cutlet.CriticalHit(1);
             return;

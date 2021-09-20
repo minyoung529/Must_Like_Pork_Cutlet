@@ -17,7 +17,6 @@ public class Cutlet
 
     public void LevelUp()
     {
-        // 0 1 2 3 4 
         level++;
         price += (ulong)
             Mathf.RoundToInt(Mathf.Pow(level - 1, 2) *

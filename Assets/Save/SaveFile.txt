@@ -1,8 +1,8 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 58405,
-    "diamond": 100,
+    "money": 15543,
+    "diamond": 0,
     "userHammer": "나무 망치",
     "partTimerList": [
         {
@@ -10,30 +10,30 @@
             "name": "코끼리 아저씨",
             "englishName": "Elephant",
             "story": "평범한 디자인 회사의 사원이었다. 반복된 삶에 회의를 느껴 돈가스 알바에 지원했다.\n\n친절한 아저씨이지만 일하면서 흥얼거리는 콧노래는 정말 못 들어주겠다고 한다.\n\n큰 앞발로 돈가스를 두드리고 있다. 때문에 손님들이 지진이 난 줄 아는 경우도 종종 있다.",
-            "level": 18,
-            "price": 47801,
+            "level": 0,
+            "price": 9900,
             "mps": 1,
-            "isSold": true
+            "isSold": false
         },
         {
             "code": 1,
             "name": "냥냥펀치선수",
             "englishName": "Cat",
             "story": "어떤 냥냥복싱 대회든 주름잡고 다니던 전설의 냥냥펀치 챔피언 선수.\r\n\r\n선수 시절 돈가스를 너무 좋아해서 알바에 지원했다.\r\n\r\n화려하고 파격적이 머리 스타일 때문에 냥아치라는 오해를 받지만, 사실은 순박한 시골 고양이.\r\n\r\n빠른 냥냥펀치로 돈가스를 두드린다. 가끔 너무 세게 두드려서 고기가 찢어지기도 한다.\r\n",
-            "level": 11,
-            "price": 54927,
+            "level": 0,
+            "price": 50000,
             "mps": 5,
-            "isSold": true
+            "isSold": false
         },
         {
             "code": 2,
             "name": "말랑도치",
             "englishName": "Hedgehog",
             "story": "뾰족한 것을 싫어하는 고슴도치. 배에는 말랑말랑한 핑크 하트가 있다.\r\n\r\n뾰족한 집에서 가출하고 돈을 벌기 위해 돈가스 알바에 지원했다. 가출한 이유는 아무에게도 말한 적 없다.\r\n\r\n가시를 쓸 것 같지만, 작은 손으로 돈가스를 두드린다고 한다.\r\n",
-            "level": 1,
-            "price": 120021,
+            "level": 0,
+            "price": 120000,
             "mps": 10,
-            "isSold": true
+            "isSold": false
         },
         {
             "code": 3,
@@ -89,7 +89,7 @@
     "hammerList": [
         {
             "code": 0,
-            "amoung": 0,
+            "amount": 30,
             "name": "나무 망치",
             "grade": "common",
             "info": "나무로 만든 평범한 나무 망치. 나무 틈에서 벌레가 나온다는 괴소문도 있다.",
@@ -100,7 +100,7 @@
         },
         {
             "code": 1,
-            "amoung": 0,
+            "amount": 0,
             "name": "녹슨 망치",
             "grade": "common",
             "info": "오래된 녹슨 망치. 아직은 쓸만하다며 박박 우길 수 있는 정도이다.",
@@ -111,7 +111,7 @@
         },
         {
             "code": 2,
-            "amoung": 0,
+            "amount": 0,
             "name": "짱돌 망치",
             "grade": "common",
             "info": "짱돌을 꾹꾹 뭉쳐 만든 망치. 무기로 쓰면 망치 중 가장 세다고 한다.",
@@ -122,7 +122,7 @@
         },
         {
             "code": 3,
-            "amoung": 0,
+            "amount": 0,
             "name": "철 망치",
             "grade": "common",
             "info": "아주 깔끔한 철 망치. 할인해서 인터넷으로 샀다고 한다. 가성비가 좋다.",
@@ -133,7 +133,7 @@
         },
         {
             "code": 4,
-            "amoung": 0,
+            "amount": 0,
             "name": "금 망치",
             "grade": "common",
             "info": "반짝반짝 블링블링 금 망치. 손잡이에 있는 테두리가 이따금씩 환하게 빛난다.",
@@ -144,7 +144,7 @@
         },
         {
             "code": 5,
-            "amoung": 0,
+            "amount": 0,
             "name": "상어이빨 망치",
             "grade": "rare",
             "info": "상어의 이빨을 가지고 만든 망치. 이에는 Z자 상처가 나있다. 무슨 일이었을까?",
@@ -155,7 +155,7 @@
         },
         {
             "code": 6,
-            "amoung": 0,
+            "amount": 0,
             "name": "마시멜로우 망치",
             "grade": "rare",
             "info": "말랑말랑 마시멜로우 망치. 조금 그을렸지만 역시 정말 맛있다.",
@@ -166,7 +166,7 @@
         },
         {
             "code": 7,
-            "amoung": 0,
+            "amount": 0,
             "name": "솜 망치",
             "grade": "rare",
             "info": "복실복실 몽글몽글 솜 망치. 솜이라 해서 약할 거라고 생각하면... 큰 오산이다.",
@@ -177,7 +177,7 @@
         },
         {
             "code": 8,
-            "amoung": 0,
+            "amount": 0,
             "name": "무지개 망치",
             "grade": "legendary",
             "info": "어느날 천사가 내려준 돈가스 망치이다. 천사가 왜 망치를 가지고 다니는 걸까?",
@@ -192,19 +192,19 @@
             "code": 0,
             "name": "오리지널 돈가스",
             "info": "",
-            "addMoney": 188,
-            "price": 7315,
-            "level": 7,
+            "addMoney": 561,
+            "price": 47608,
+            "level": 11,
             "isSold": true
         },
         {
             "code": 1,
             "name": "치즈 돈가스",
             "info": "",
-            "addMoney": 64,
-            "price": 114,
-            "level": 0,
-            "isSold": false
+            "addMoney": 197,
+            "price": 6692,
+            "level": 6,
+            "isSold": true
         },
         {
             "code": 2,
@@ -275,28 +275,28 @@
             "code": 0,
             "questName": "돈가스 판매",
             "maxValue": 200,
-            "currentValue": 5,
+            "currentValue": 0,
             "reward": 50
         },
         {
             "code": 1,
             "questName": "플레이 시간",
             "maxValue": 3600,
-            "currentValue": 2172,
+            "currentValue": 17,
             "reward": 20
         },
         {
             "code": 2,
             "questName": "돈가스 업그레이드",
             "maxValue": 15,
-            "currentValue": 6,
+            "currentValue": 15,
             "reward": 10
         },
         {
             "code": 3,
             "questName": "알바생 업그레이드",
             "maxValue": 15,
-            "currentValue": 13,
+            "currentValue": 0,
             "reward": 10
         },
         {

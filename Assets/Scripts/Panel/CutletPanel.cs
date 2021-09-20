@@ -5,6 +5,7 @@ using UnityEngine;
 public class CutletPanel : PanelBase
 {
     private Cutlet cutlet;
+    private ParticleSystem particle;
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
@@ -16,6 +17,7 @@ public class CutletPanel : PanelBase
 
         SetUp();
         SetSoldItem();
+        particle = GetComponentInChildren<ParticleSystem>();
     }
 
     public override void SetUp()
@@ -40,6 +42,7 @@ public class CutletPanel : PanelBase
         GameManager.Instance.uiManager.UpdatePanel();
         GameManager.Instance.CurrentUser.Quests[2].PlusCurValue(1);
         GameManager.Instance.questManager.UpdateQuest();
+        particle.Play();
 
         SetUp();
         SetSoldItem();

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Hammer
 {
     public int code;
-    public int amoung;
+    public int amount;
     public string name;
     public string grade;
     [TextArea]

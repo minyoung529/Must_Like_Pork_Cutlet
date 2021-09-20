@@ -36,7 +36,6 @@ public class BookPanelTemplate : PanelBase
     {
         buttonState = JudgeState(state);
         index = num;
-        Debug.Log(index);
 
         SetData();
         SetUp();

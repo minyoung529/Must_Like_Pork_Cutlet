@@ -49,4 +49,5 @@ public class QuestPanel : PanelBase
             GameManager.Instance.uiManager.UpdatePanel();
         }
     }
+
 }

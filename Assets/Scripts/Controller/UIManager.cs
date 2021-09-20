@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
 
     [Header("재화 텍스트")]
     [SerializeField] private Text moneyText;
-    [SerializeField] private Text diamondText;
     [SerializeField] private Text countText;
     [SerializeField] private Text mpsAndCutletText;
 
@@ -34,40 +33,34 @@ public class UIManager : MonoBehaviour
     [Header("랜덤 뽑기")]
     [SerializeField] private RectTransform randomHammerTransform;
 
-    [Header("설명 패널")]
-    [SerializeField] private HammerInformation hammerInformation;
-    [SerializeField] private PartTimerInformation partTimerInformation;
-
     [Header("메인 스크롤")]
     [SerializeField] private ScrollRect scrollRect;
 
-    private Transform hammerTransform;
-    private Transform cutletTransform;
-    private Transform partTimerTransform;
+    private ErrorMessage message;
+
+    private HammerInformation hammerInformation;
+    private PartTimerInformation partTimerInformation;
 
     private int count = 0;
 
     private List<PanelBase> upgradePanels = new List<PanelBase>();
     private List<PanelBase> randomPanel = new List<PanelBase>();
 
-    [Header("메인 돈가스")]
-    [SerializeField] private CutletMove cutlet;
+    private CutletMove cutlet;
     #endregion
 
     private Sprite[] partTimerSprites;
     private Sprite[] cutletSprites;
     private Sprite[] hammerSprites;
     private Sprite[] guestSprites;
+
     private Image[] partTimersImage;
     private Image[] cutletsImage;
     private Image[] randomHammerImage = new Image[10];
 
-    private List<HammerPanel> hammerPanels;
-    private List<CutletPanel> cutletPanels;
-    private List<PartTimerPanel> partTimerPanels;
-
     private void Start()
     {
+
         FirstSetting();
         ActivePartTimers();
 
@@ -75,15 +68,13 @@ public class UIManager : MonoBehaviour
         {
             randomHammerImage[i] = randomHammerTransform.GetChild(i + 1).gameObject.GetComponent<Image>();
         }
-
-        RandomHammer(10);
     }
 
     private void SettingUpgradePanel()
     {
-        InstantiatePanel(hammerPanelTemplate, hammerTransform, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
-        InstantiatePanel(cutletPanelTemplate, cutletTransform, GameManager.Instance.CurrentUser.cutlets.Count, cutletSprites);
-        InstantiatePanel(partTimerpanelTemplate, partTimerTransform, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerSprites);
+        InstantiatePanel(hammerPanelTemplate, hammerPanelTemplate.transform.parent, GameManager.Instance.CurrentUser.hammerList.Count, hammerSprites);
+        InstantiatePanel(cutletPanelTemplate, cutletPanelTemplate.transform.parent, GameManager.Instance.CurrentUser.cutlets.Count, cutletSprites);
+        InstantiatePanel(partTimerpanelTemplate, partTimerpanelTemplate.transform.parent, GameManager.Instance.CurrentUser.partTimerList.Count, partTimerSprites);
         InstantiatePanel(randomHammerTemplate, randomHammerTransform, 10);
     }
 
@@ -157,8 +148,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePanel()
     {
-        moneyText.text = string.Format("{0}원", GameManager.Instance.CurrentUser.money);
-        diamondText.text = string.Format("{0}", GameManager.Instance.CurrentUser.diamond);
+        moneyText.text = string.Format("{0}원\n{1}", GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
         mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원", GameManager.Instance.GetCutletPrice(), GameManager.Instance.GetMPS());
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -169,19 +159,23 @@ public class UIManager : MonoBehaviour
     public void SetContent(RectTransform content)
     {
         scrollRect.content = content;
-        hammerTransform.gameObject.SetActive(false);
-        cutletTransform.gameObject.SetActive(false);
-        partTimerTransform.gameObject.SetActive(false);
+        hammerPanelTemplate.transform.parent.gameObject.SetActive(false);
+        cutletPanelTemplate.transform.parent.gameObject.SetActive(false);
+        partTimerpanelTemplate.transform.parent.gameObject.SetActive(false);
         content.gameObject.SetActive(true);
     }
 
     private void FirstSetting()
     {
-        List<PartTimer> partTimers = GameManager.Instance.CurrentUser.partTimerList;
+        cutlet = FindObjectOfType<CutletMove>();
+        message = FindObjectOfType<ErrorMessage>();
+        hammerInformation = FindObjectOfType<HammerInformation>();
+        partTimerInformation = FindObjectOfType<PartTimerInformation>();
+        hammerInformation.gameObject.SetActive(false);
+        partTimerInformation.gameObject.SetActive(false);
+        message.gameObject.SetActive(false);
 
-        cutletTransform = cutletPanelTemplate.transform.parent;
-        partTimerTransform = partTimerpanelTemplate.transform.parent;
-        hammerTransform = hammerPanelTemplate.transform.parent;
+        List<PartTimer> partTimers = GameManager.Instance.CurrentUser.partTimerList;
 
         partTimersImage = new Image[partTimers.Count];
         cutletsImage = new Image[cutletsTransform.childCount];
@@ -413,4 +407,56 @@ public class UIManager : MonoBehaviour
     {
         return partTimerInformation;
     }
+
+    public void OnClickRandomHammer(int num)
+    {
+        if (GameManager.Instance.CurrentUser.diamond < num * 10)
+        {
+            message.OnClickMessage("돈이 부족합니다.", true);
+            return;
+        }
+
+        RandomHammer(num);
+        GameManager.Instance.AddDiamond(-num * 10);
+        StartCoroutine(WaitingRandom(num));
+        UpdatePanel();
+    }
+
+    private IEnumerator WaitingRandom(int amount)
+    {
+        float time = 0f;
+
+        foreach (PanelBase randomPanel in randomPanel)
+        {
+            randomPanel.gameObject.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(0.8f);
+
+        randomHammerTransform.parent.parent.DOScale(1f, 0.4f).SetEase(Ease.InOutQuad).OnComplete(() => randomHammerTransform.parent.parent.DOShakeScale(1f));
+
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < amount)
+            {
+                if (randomPanel[i].GetHammer().grade == "rare")
+                    time = 0.3f;
+                else if (randomPanel[i].GetHammer().grade == "legendary")
+                    time = 0.5f;
+                else
+                    time = 0f;
+
+                randomPanel[i].transform.DOScale(0.3f, 0f);
+                randomPanel[i].gameObject.SetActive(true);
+                yield return new WaitForSeconds(time);
+                randomPanel[i].transform.DOScale(1f, 0.3f);
+            }
+
+            else
+            {
+                randomPanel[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
 }

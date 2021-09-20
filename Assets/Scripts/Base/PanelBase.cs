@@ -5,16 +5,11 @@ using UnityEngine.UI;
 
 public class PanelBase : MonoBehaviour
 {
-    [SerializeField]
-    protected Text nameText;
-    [SerializeField]
-    protected Text priceText;
-    [SerializeField]
-    protected Text levelText;
-    [SerializeField]
-    protected Image itemImage;
-    [SerializeField]
-    protected Image buttonImage;
+    [SerializeField] protected Text nameText;
+    [SerializeField] protected Text priceText;
+    [SerializeField] protected Text levelText;
+    [SerializeField] protected Image itemImage;
+    [SerializeField] protected Image buttonImage;
 
     protected int num;
     protected int maxLevel;
@@ -109,7 +104,10 @@ public class PanelBase : MonoBehaviour
     }
 
     protected virtual bool IsSecret() { return false; }
-
     public virtual void SetActiveCheck() { }
     public virtual void Mounting() { }
+    public virtual Hammer GetHammer()
+    {
+        return null;
+    }
 }

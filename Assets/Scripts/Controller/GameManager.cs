@@ -51,6 +51,12 @@ public class GameManager : MonoSingleton<GameManager>
             user.money += 100000;
             uiManager.UpdatePanel();
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            user.diamond += 100;
+            uiManager.UpdatePanel();
+        }
     }
 
     public void EarnMoneyPerSecond()

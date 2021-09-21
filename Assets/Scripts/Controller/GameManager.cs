@@ -161,7 +161,7 @@ public class GameManager : MonoSingleton<GameManager>
             if (!cutlet.isSold)
             {
                 Debug.Log(cutlet.name);
-                cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 2) * Mathf.Pow(cutlet.code + 1, 3.85f) - 1 * cutlet.code + 1 + 100));
+                cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 3) * Mathf.Pow(cutlet.code + 1, 3.95f) - 1 * cutlet.code + 1 + 128));
             }
         }
     }
@@ -173,26 +173,26 @@ public class GameManager : MonoSingleton<GameManager>
         else return false;
     }
 
-    public float Randoms(params float[] percentages)
-    {
-        float max = 0;
-        float random = 0;
+    //public float Randoms(params float[] percentages)
+    //{
+    //    float max = 0;
+    //    float random = 0;
 
-        foreach (float percentage in percentages)
-        {
-            max += percentage;
-        }
+    //    foreach (float percentage in percentages)
+    //    {
+    //        max += percentage;
+    //    }
 
-        random = Random.Range(0f, max);
+    //    random = Random.Range(0f, max);
 
-        foreach (float percentage in percentages)
-        {
-            if (random < percentage)
-            {
-                return percentage;
-            }
-        }
+    //    foreach (float percentage in percentages)
+    //    {
+    //        if (random < percentage)
+    //        {
+    //            return percentage;
+    //        }
+    //    }
 
-        return 0;
-    }
+    //    return 0;
+    //}
 }

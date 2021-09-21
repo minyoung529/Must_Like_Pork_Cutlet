@@ -64,6 +64,12 @@ public class BookPanelTemplate : PanelBase
         {
             case ButtonState.cutlet:
                 if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
+                Debug.Log(itemImage.sprite);
+                Debug.Log(GameManager.Instance.UIManager.GetCutletSprite());
+                Debug.Log(GameManager.Instance.UIManager.GetCutletSprite()[index]);
+                Debug.Log(GameManager.Instance.UIManager);
+                Debug.Log(itemImage);
+
                 itemImage.sprite = GameManager.Instance.UIManager.GetCutletSprite()[index];
                 Lock(cutlet.GetIsSold());
                 break;

@@ -13,6 +13,6 @@ public class ActiveScale : MonoBehaviour
 
     public void InActive()
     {
-        transform.DOScale(0f, 0.4f).OnComplete(() => gameObject.SetActive(false));
+        transform.DOScale(0f, 0.2f).OnComplete(() => gameObject.SetActive(false));
     }
 }

@@ -27,9 +27,10 @@ public class Guest : MonoBehaviour
         transform.DOLocalMove(new Vector2(randomX, 20), 0f);
         transform.DOLocalMove(new Vector2(randomX, 45f), 0.4f);
 
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.UIManager.SwapCutletsImage();
+        yield return new WaitForSeconds(0.4f);
 
         transform.DOLocalMove(new Vector2(randomX, 20f), 0.3f).OnComplete(() => Despawn());
-        GameManager.Instance.UIManager.SwapCutletsImage();
     }
 }

@@ -24,13 +24,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-#if UNITY_EDITOR
         SAVE_PATH = Application.dataPath + "/Save";
-#endif
-
-#if UNITY_ANDROID
-        SAVE_PATH = Application.persistentDataPath + "/Save";
-#endif
+        //SAVE_PATH = Application.persistentDataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
@@ -116,7 +111,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Debug.Log("SaveToJson");
 
-        SAVE_PATH = Application.dataPath + "/Save";
+        SAVE_PATH = Application.persistentDataPath + "/Save";
 
         if (user == null) return;
         string json = JsonUtility.ToJson(user, true);
@@ -124,6 +119,11 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     private void OnApplicationQuit()
+    {
+        SaveToJson();
+    }
+
+    private void OnApplicationPause()
     {
         SaveToJson();
     }

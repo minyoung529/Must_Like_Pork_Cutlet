@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 900,
+    "money": 1300,
     "diamond": 0,
     "userHammer": "나무 망치",
     "partTimerList": [
@@ -89,7 +89,7 @@
     "hammerList": [
         {
             "code": 0,
-            "amount": 10,
+            "amount": 30,
             "name": "나무 망치",
             "grade": "common",
             "info": "나무로 만든 평범한 나무 망치. 나무 틈에서 벌레가 나온다는 괴소문도 있다.",
@@ -178,9 +178,31 @@
         {
             "code": 8,
             "amount": 0,
+            "name": "파리채 망치",
+            "grade": "rare",
+            "info": "할머니 댁에서 주워온 게 아니라... 나름 거금을 들여 사온 고급 파리채 망치이다.",
+            "clickCount": 5,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0
+        },
+        {
+            "code": 9,
+            "amount": 0,
             "name": "무지개 망치",
             "grade": "legendary",
             "info": "어느날 천사가 내려준 돈가스 망치이다. 천사가 왜 망치를 가지고 다니는 걸까?",
+            "clickCount": 5,
+            "clickPerMoney": 0,
+            "criticalHit": 0.0,
+            "level": 0
+        },
+        {
+            "code": 10,
+            "amount": 0,
+            "name": "비린내 망치",
+            "grade": "legendary",
+            "info": "거금을 주고 산 오묘한 색의 생선 모형이다. 이름처럼 뻐끔거리지는 않는다.",
             "clickCount": 5,
             "clickPerMoney": 0,
             "criticalHit": 0.0,
@@ -275,14 +297,14 @@
             "code": 0,
             "questName": "돈가스 판매",
             "maxValue": 200,
-            "currentValue": 9,
+            "currentValue": 13,
             "reward": 50
         },
         {
             "code": 1,
             "questName": "플레이 시간",
             "maxValue": 3600,
-            "currentValue": 109,
+            "currentValue": 31,
             "reward": 20
         },
         {

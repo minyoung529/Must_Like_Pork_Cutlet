@@ -60,7 +60,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
         FirstSetting();
         ActivePartTimers();
 
@@ -363,17 +362,17 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 4) // 0-9
+        if (rand < 4) // 0-3
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 32) //10 - 49
+        else if (rand < 27) //3 - 26
         {
             rand = Random.Range(commonCnt, rareCnt);
         }
 
-        else
+        else // 27 - 100
         {
             rand = Random.Range(0, commonCnt);
         }
@@ -417,7 +416,15 @@ public class UIManager : MonoBehaviour
     public void ActiveHammerInfo(int index)
     {
         hammerInformation.gameObject.SetActive(true);
+        hammerInformation.transform.DOScale(1f,0.3f);
         hammerInformation.SetIndex(index);
+    }
+
+    public void ActivePartTimerInfo(int index)
+    {
+        partTimerInformation.gameObject.SetActive(true);
+        partTimerInformation.transform.DOScale(1f, 0.3f);
+        partTimerInformation.SetIndex(index);
     }
 
     public void SetHammer()
@@ -438,11 +445,6 @@ public class UIManager : MonoBehaviour
         }
 
         upgradePanels[index].Mounting();
-    }
-
-    public PartTimerInformation partTimerInfo()
-    {
-        return partTimerInformation;
     }
 
     public void OnClickRandomHammer(int num)
@@ -470,20 +472,19 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.8f);
 
-        randomHammerTransform.parent.parent.DOScale(1f, 0.4f).SetEase(Ease.InOutQuad).OnComplete(() => randomHammerTransform.parent.parent.DOShakeScale(1f));
+        randomHammerTransform.parent.parent.DOScale(1f, 0.2f);
 
         for (int i = 0; i < 10; i++)
         {
             if (i < amount)
             {
                 if (randomPanel[i].GetHammer().grade == "rare")
-                    time = 0.3f;
+                    time = 0.4f;
                 else if (randomPanel[i].GetHammer().grade == "legendary")
-                    time = 0.5f;
+                    time = 0.8f;
                 else
                     time = 0f;
 
-                randomPanel[i].transform.DOScale(0.3f, 0f);
                 randomPanel[i].gameObject.SetActive(true);
                 yield return new WaitForSeconds(time);
                 randomPanel[i].transform.DOScale(1f, 0.3f);

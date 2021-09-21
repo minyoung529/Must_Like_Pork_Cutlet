@@ -24,7 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        SAVE_PATH = Application.dataPath + "/Save";
+        SAVE_PATH = Application.persistentDataPath + "/Save";
         //SAVE_PATH = Application.persistentDataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
         {
@@ -119,11 +119,6 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     private void OnApplicationQuit()
-    {
-        SaveToJson();
-    }
-
-    private void OnApplicationPause()
     {
         SaveToJson();
     }

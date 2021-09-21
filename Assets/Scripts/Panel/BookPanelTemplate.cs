@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BookPanelTemplate : PanelBase
 {
-    private Sprite[] sprites;
     private int index;
 
     private PartTimer partTimer;
@@ -64,13 +63,8 @@ public class BookPanelTemplate : PanelBase
         {
             case ButtonState.cutlet:
                 if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
-                Debug.Log(itemImage.sprite);
-                Debug.Log(GameManager.Instance.UIManager.GetCutletSprite());
-                Debug.Log(GameManager.Instance.UIManager.GetCutletSprite()[index]);
-                Debug.Log(GameManager.Instance.UIManager);
-                Debug.Log(itemImage);
-
-                itemImage.sprite = GameManager.Instance.UIManager.GetCutletSprite()[index];
+                itemImage.sprite = GameManager.Instance.UIManager?.GetCutletSprite()[index];
+                Debug.Log(gameObject.name);
                 Lock(cutlet.GetIsSold());
                 break;
 

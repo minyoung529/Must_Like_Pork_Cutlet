@@ -362,12 +362,12 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 4) // 0-3
+        if (rand < 2) // 0-3
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 27) //3 - 26
+        else if (rand < 23) //3 - 26
         {
             rand = Random.Range(commonCnt, rareCnt);
         }

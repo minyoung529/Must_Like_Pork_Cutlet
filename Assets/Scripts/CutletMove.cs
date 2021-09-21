@@ -17,6 +17,8 @@ public class CutletMove : MonoBehaviour
     [SerializeField] private SpriteRenderer criticalUI;
     [SerializeField] private Sprite[] sprites;
 
+    [SerializeField] private Transform offset;
+
     private void Start()
     {
         particle = GetComponentInChildren<ParticleSystem>();
@@ -25,6 +27,7 @@ public class CutletMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         //나중에 옮기기
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/Cutlet");
+        transform.position = new Vector2(offset.position.x, transform.position.y);
     }
 
     public void Move()
@@ -39,9 +42,9 @@ public class CutletMove : MonoBehaviour
 
     private IEnumerator Moving()
     {
-        transform.DOMove(new Vector2(-2.7f, transform.position.y), 0.2f);
+        transform.DOMove(new Vector2(offset.position.x - 2f, transform.position.y), 0.2f);
         yield return new WaitForSeconds(0.2f);
-        transform.position = new Vector3(-1.3f, transform.position.y);
+        transform.position = new Vector3(offset.position.x, transform.position.y);
     }
 
     public void SetSprite(int num)

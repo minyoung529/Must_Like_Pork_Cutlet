@@ -23,6 +23,9 @@ public class HammerInformation : MonoBehaviour
     [SerializeField] private Text nextAmountText;
     [SerializeField] private Text fusionAmountText;
 
+    [SerializeField] private Text fusionName;
+    [SerializeField] private Text fusionNextHammerName;
+
     [SerializeField] private ParticleSystem particle;
 
     protected int index = 0;
@@ -44,7 +47,8 @@ public class HammerInformation : MonoBehaviour
         myAmountText.text = string.Format("{0}(<color=red>-{1}</color>)", hammer.amount, hammerAmount * 5);
         nextAmountText.text = string.Format("{0}(<color=lime>+{1}</color>)", nextHammer.amount, hammerAmount);
         fusionAmountText.text = hammerAmount.ToString();
-
+        fusionName.text = hammer.name;
+        fusionNextHammerName.text = nextHammer.name;
         SetColor(hammer.grade, grade, gradeOutline);
         SetColor(nextHammer.grade, null, nextGradeOutline);
     }

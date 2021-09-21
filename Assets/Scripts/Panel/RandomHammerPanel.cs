@@ -9,7 +9,6 @@ public class RandomHammerPanel : PanelBase
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
         hammer = GameManager.Instance.CurrentUser.hammerList.Find(x => x.code == num);
-        Debug.Log(hammer.name);
         hammer.amount++;
         hammer.SetIsSold(true);
         SetColor(hammer.grade);

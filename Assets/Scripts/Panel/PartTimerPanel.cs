@@ -42,10 +42,10 @@ public class PartTimerPanel : PanelBase
         partTimer.LevelUp();
         particle.Play();
 
-        GameManager.Instance.uiManager.UpdatePanel();
-        GameManager.Instance.uiManager.ActivePartTimers();
+        GameManager.Instance.UIManager.UpdatePanel();
+        GameManager.Instance.UIManager.ActivePartTimers();
         GameManager.Instance.CurrentUser.Quests[3].PlusCurValue(1);
-        GameManager.Instance.questManager.UpdateQuest();
+        GameManager.Instance.QuestManager.UpdateQuest();
 
         SetSoldItem();
         SetUp();

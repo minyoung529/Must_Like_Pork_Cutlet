@@ -64,19 +64,19 @@ public class BookPanelTemplate : PanelBase
         {
             case ButtonState.cutlet:
                 if (Compare(GameManager.Instance.CurrentUser.cutlets.Count)) break;
-                itemImage.sprite = GameManager.Instance.uiManager.GetCutletSprite()[index];
+                itemImage.sprite = GameManager.Instance.UIManager.GetCutletSprite()[index];
                 Lock(cutlet.GetIsSold());
                 break;
 
             case ButtonState.partTimer:
                 if (Compare(GameManager.Instance.CurrentUser.partTimerList.Count)) break;
-                itemImage.sprite = GameManager.Instance.uiManager.GetPartTimerSprite()[index];
+                itemImage.sprite = GameManager.Instance.UIManager.GetPartTimerSprite()[index];
                 Lock(partTimer.GetIsSold());
                 break;
 
             case ButtonState.hammer:
                 if (Compare(GameManager.Instance.CurrentUser.hammerList.Count)) break;
-                itemImage.sprite = GameManager.Instance.uiManager.GetHammerSprites()[index];
+                itemImage.sprite = GameManager.Instance.UIManager.GetHammerSprites()[index];
                 Lock(hammer.GetIsSold());
                 break;
         }

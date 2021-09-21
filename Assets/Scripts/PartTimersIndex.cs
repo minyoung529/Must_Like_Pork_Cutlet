@@ -16,6 +16,6 @@ public class PartTimersIndex : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.Instance.uiManager.partTimerInfo().SetIndex(index);
+        GameManager.Instance.UIManager.partTimerInfo().SetIndex(index);
     }
 }

@@ -13,7 +13,7 @@ public class HammerPanel : PanelBase
 
     public void OnClickHammer()
     {
-        GameManager.Instance.uiManager.ActiveHammerInfo(hammer.code);
+        GameManager.Instance.UIManager.ActiveHammerInfo(hammer.code);
     }
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
@@ -29,8 +29,10 @@ public class HammerPanel : PanelBase
     {
         if (hammer.grade == "common")
             buttonImage.color = new Color32(207, 207, 207, 255);
+
         else if (hammer.grade == "rare")
             buttonImage.color = new Color32(190, 150, 250, 255);
+
         else if (hammer.grade == "legendary")
             buttonImage.color = new Color32(255, 216, 76, 255);
     }
@@ -84,9 +86,9 @@ public class HammerPanel : PanelBase
     {
         if (!hammer.GetIsSold()) return;
         GameManager.Instance.CurrentUser.UserHammer(hammer.name);
-        GameManager.Instance.uiManager.CheckHammer();
+        GameManager.Instance.UIManager.CheckHammer();
         checkImage.gameObject.SetActive(true);
-        GameManager.Instance.uiManager.ChangeHammerSprite(itemImage.sprite);
+        GameManager.Instance.UIManager.ChangeHammerSprite(itemImage.sprite);
     }
 
     public override void Inactive()

@@ -1,7 +1,7 @@
 ﻿{
     "nickname": "",
     "onClickMoney": 0,
-    "money": 15543,
+    "money": 900,
     "diamond": 0,
     "userHammer": "나무 망치",
     "partTimerList": [
@@ -89,7 +89,7 @@
     "hammerList": [
         {
             "code": 0,
-            "amount": 30,
+            "amount": 10,
             "name": "나무 망치",
             "grade": "common",
             "info": "나무로 만든 평범한 나무 망치. 나무 틈에서 벌레가 나온다는 괴소문도 있다.",
@@ -192,19 +192,19 @@
             "code": 0,
             "name": "오리지널 돈가스",
             "info": "",
-            "addMoney": 561,
-            "price": 47608,
-            "level": 11,
+            "addMoney": 0,
+            "price": 0,
+            "level": 1,
             "isSold": true
         },
         {
             "code": 1,
             "name": "치즈 돈가스",
             "info": "",
-            "addMoney": 197,
-            "price": 6692,
-            "level": 6,
-            "isSold": true
+            "addMoney": 64,
+            "price": 114,
+            "level": 0,
+            "isSold": false
         },
         {
             "code": 2,
@@ -275,21 +275,21 @@
             "code": 0,
             "questName": "돈가스 판매",
             "maxValue": 200,
-            "currentValue": 0,
+            "currentValue": 9,
             "reward": 50
         },
         {
             "code": 1,
             "questName": "플레이 시간",
             "maxValue": 3600,
-            "currentValue": 17,
+            "currentValue": 109,
             "reward": 20
         },
         {
             "code": 2,
             "questName": "돈가스 업그레이드",
             "maxValue": 15,
-            "currentValue": 15,
+            "currentValue": 0,
             "reward": 10
         },
         {

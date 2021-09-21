@@ -20,8 +20,9 @@ public class CutletMove : MonoBehaviour
     private void Start()
     {
         particle = GetComponentInChildren<ParticleSystem>();
-        particleRenderer = particle.gameObject.GetComponent<ParticleSystemRenderer>();
+        particleRenderer = particle.GetComponent<ParticleSystemRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        //나중에 옮기기
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/Cutlet");
     }
 
@@ -29,7 +30,7 @@ public class CutletMove : MonoBehaviour
     {
         particle.Play();
 
-        if (GameManager.Instance.uiManager.GetCount() > GameManager.Instance.GetMaxCutletCnt() - 1)
+        if (GameManager.Instance.UIManager.GetCount() > GameManager.Instance.GetMaxCutletCnt() - 1)
         {
             StartCoroutine(Moving());
         }
@@ -56,10 +57,11 @@ public class CutletMove : MonoBehaviour
     public void CriticalHit(int num)
     {
         StartCoroutine(CriticalUI(num));
+
         if (num == 1) return;
-        hammer.DOColor(Color.red, 0.1f).OnComplete(() => hammer.DOColor(Color.white, 0.1f));
+
         spriteRenderer.DOColor(Color.red, 0.1f).OnComplete(() => spriteRenderer.DOColor(Color.white, 0.1f));
-        particle.startSize = 0.3f;
+        particle.startSize = 0.3f; //이ㅏㅅㅇ해ㅠㅠ
         particleRenderer.material = criticalMaterial;
         particle.DOPlay();
         StartCoroutine(WaitingToChangeMaterial());

@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.AddMoney(GameManager.Instance.GetCutletPrice(), true);
             GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
-            GameManager.Instance.questManager.UpdateQuest();
+            GameManager.Instance.QuestManager.UpdateQuest();
             UpdatePanel();
 
             count -= 10;
@@ -269,25 +269,57 @@ public class UIManager : MonoBehaviour
     IEnumerator InstantiateGuest()
     {
         float time = Random.Range(2f, 4.5f);
-        float randomX = Random.Range(-32.4f, 32.4f);
-
+        GameObject obj;
         yield return new WaitForSeconds(time);
 
-        guest.sprite = guestSprites[Random.Range(0, 2)];
-        guest.gameObject.SetActive(true);
-        guest.transform.DOLocalMove(new Vector2(randomX, 45f), 0.4f);
+        if(!CheckPool("Guest"))
+        {
+            obj = Instantiate(guest.gameObject, guest.transform.parent);
+        }
 
-        yield return new WaitForSeconds(0.4f);
+        else
+        {
+            obj = ReturnPoolObj("Guest");
+            obj.transform.SetParent(guest.transform.parent);
+        }
 
-        guest.transform.DOLocalMove(new Vector2(randomX, 20f), 0.3f);
-
-        cutletsImage[0].color = Color.clear;
-        cutletsImage[0].transform.SetAsLastSibling();
-        SwapCutletsImage();
+        obj.SetActive(true);
     }
 
-    private void SwapCutletsImage()
+    private bool CheckPool(string name)
     {
+        Transform pool = GameManager.Instance.Pool;
+
+        for (int i = 0; i < pool.childCount; i++)
+        {
+            if (pool.GetChild(i).name.Contains(name))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private GameObject ReturnPoolObj(string name)
+    {
+        Transform pool = GameManager.Instance.Pool;
+
+        for (int i = 0; i < pool.childCount; i++)
+        {
+            if (pool.GetChild(i).name.Contains(name))
+            {
+                return pool.GetChild(i).gameObject;
+            }
+        }
+
+        return null;
+    }
+    public void SwapCutletsImage()
+    {
+        cutletsImage[0].color = Color.clear;
+        cutletsImage[0].transform.SetAsLastSibling();
+
         Image temp = cutletsImage[0];
 
         for (int i = 0; i < cutletsImage.Length; i++)
@@ -375,6 +407,11 @@ public class UIManager : MonoBehaviour
     public Sprite[] GetCutletSprite()
     {
         return cutletSprites;
+    }
+
+    public Sprite[] GetGuestSprite()
+    {
+        return guestSprites;
     }
 
     public void ActiveHammerInfo(int index)

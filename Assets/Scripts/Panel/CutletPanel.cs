@@ -39,9 +39,9 @@ public class CutletPanel : PanelBase
         cutlet = GameManager.Instance.CurrentUser.cutlets.Find(x => x.name == cutlet.name);
         cutlet.LevelUp();
         GameManager.Instance.SetCutletPrice();
-        GameManager.Instance.uiManager.UpdatePanel();
+        GameManager.Instance.UIManager.UpdatePanel();
         GameManager.Instance.CurrentUser.Quests[2].PlusCurValue(1);
-        GameManager.Instance.questManager.UpdateQuest();
+        GameManager.Instance.QuestManager.UpdateQuest();
         particle.Play();
 
         SetUp();

@@ -14,17 +14,23 @@ public class GameManager : MonoSingleton<GameManager>
 
     private ulong cutletMoney = 100;
     private ulong mpsMoney = 0;
-    private int clickCount;
 
-    public UIManager uiManager { get; private set; }
-    public QuestManager questManager { get; private set; }
+    public UIManager UIManager { get; private set; }
+    public QuestManager QuestManager { get; private set; }
+    [SerializeField] Transform poolTransform;
+    public Transform Pool { get { return poolTransform; } }
 
     private int maxCutletCnt = 10;
 
     private void Awake()
     {
+#if UNITY_EDITOR
         SAVE_PATH = Application.dataPath + "/Save";
-        //Application.persistentDataPath (나중에 안드로이드)
+#endif
+
+#if UNITY_ANDROID
+        SAVE_PATH = Application.persistentDataPath + "/Save";
+#endif
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
@@ -37,8 +43,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        uiManager = GetComponent<UIManager>();
-        questManager = GetComponent<QuestManager>();
+        UIManager = GetComponent<UIManager>();
+        QuestManager = GetComponent<QuestManager>();
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         SetUser();
         SetCutletPrice();
@@ -49,13 +55,13 @@ public class GameManager : MonoSingleton<GameManager>
         if (Input.GetKeyDown(KeyCode.A))
         {
             user.money += 100000;
-            uiManager.UpdatePanel();
+            UIManager.UpdatePanel();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             user.diamond += 100;
-            uiManager.UpdatePanel();
+            UIManager.UpdatePanel();
         }
     }
 
@@ -73,8 +79,8 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         user.Quests[1].PlusCurValue(1);
-        questManager.UpdateQuest();
-        uiManager.UpdatePanel();
+        QuestManager.UpdateQuest();
+        UIManager.UpdatePanel();
     }
 
     public void SetCutletPrice()
@@ -144,13 +150,13 @@ public class GameManager : MonoSingleton<GameManager>
         else
             CurrentUser.money -= money;
 
-        uiManager.UpdatePanel();
+        UIManager.UpdatePanel();
     }
 
     public void AddDiamond(int diamond)
     {
         CurrentUser.diamond += diamond;
-        uiManager.UpdatePanel();
+        UIManager.UpdatePanel();
     }
 
     private void SetUser()

@@ -46,7 +46,7 @@ public class QuestPanel : PanelBase
             GameManager.Instance.AddDiamond(quest.GetReward());
             quest.SetCurValueZero();
             SetUp();
-            GameManager.Instance.uiManager.UpdatePanel();
+            GameManager.Instance.UIManager.UpdatePanel();
         }
     }
 

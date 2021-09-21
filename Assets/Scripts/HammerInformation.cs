@@ -26,7 +26,7 @@ public class HammerInformation : MonoBehaviour
         ability.text
         = string.Format("다짐력 {0}\n다짐당 +{1}원\n치명타 +{2}%",
         hammer.clickCount, hammer.clickPerMoney, hammer.criticalHit);
-        itemImage.sprite = GameManager.Instance.uiManager.GetHammerSprites()[hammer.code];
+        itemImage.sprite = GameManager.Instance.UIManager.GetHammerSprites()[hammer.code];
         SetColor();
     }
 

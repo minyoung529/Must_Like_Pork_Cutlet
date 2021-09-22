@@ -29,13 +29,11 @@ public class Quest
 
     public void SetCurValue(int value)
     {
-        if (currentValue >= maxValue) return;
         currentValue = value;
     }
 
     public void PlusCurValue(int value)
     {
-        if (currentValue >= maxValue) return;
         currentValue += value;
     }
 

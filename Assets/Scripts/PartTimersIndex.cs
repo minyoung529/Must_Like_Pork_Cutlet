@@ -16,6 +16,7 @@ public class PartTimersIndex : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (transform.parent.parent.name.Contains("Lobby")) return;
         GameManager.Instance.UIManager.ActivePartTimerInfo(index);
     }
 }

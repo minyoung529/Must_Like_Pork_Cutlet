@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutletPanel : PanelBase
 {
     private Cutlet cutlet;
     private ParticleSystem particle;
 
+    [SerializeField] private Text addMoneyText;
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
-        maxLevel = 5;
+        maxLevel = 10;
 
         base.Init(num, sprite);
         this.num = num;
@@ -23,8 +25,9 @@ public class CutletPanel : PanelBase
     public override void SetUp()
     {
         nameText.text = cutlet?.name;
-        levelText.text = cutlet?.level + " Level";
-        priceText.text = cutlet?.price + "¿ø";
+        levelText.text = string.Format("{0} Level", cutlet?.level);
+        priceText.text = string.Format("{0}¿ø", cutlet?.price);
+        addMoneyText.text = string.Format("+{0}¿ø", cutlet?.addMoney); 
     }
 
     public void OnClickCutlet()

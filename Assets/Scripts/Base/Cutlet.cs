@@ -18,12 +18,15 @@ public class Cutlet
     public void LevelUp()
     {
         level++;
-        price += (ulong)
-            Mathf.RoundToInt(Mathf.Pow(level - 1, 2) *
-            (Mathf.Pow(level, code == 0 ? 2 : 2 + code * 0.06f) - 1 * level + 50) *
-            Mathf.Pow(1.6f, code));
 
-        addMoney += Mathf.RoundToInt(Mathf.Pow(level, 1.54f) * 2.9f);
+        price += (ulong)Mathf.RoundToInt(
+            (Mathf.Pow(level + 1, 1.8f) *
+            Mathf.Pow(level + 1, 1.25f) +
+            Mathf.Pow(level, 1.2f) + code) *
+            (code + 1) * 1.2f);
+
+
+        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 1.54f) * Mathf.Pow(code + 1, 1.14f));
         isSold = true;
     }
 
@@ -35,5 +38,10 @@ public class Cutlet
     public void SetPrice(ulong price)
     {
         this.price = price;
+    }
+
+    public void SetAddMoney(int addMoney)
+    {
+        this.addMoney = addMoney;
     }
 }

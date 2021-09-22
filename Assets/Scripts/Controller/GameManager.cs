@@ -33,7 +33,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         LoadFromJson();
 
-        user.hammerList[0].SetIsSold(true);
+        user.hammerList[0].amount++;
     }
 
     private void Start()
@@ -156,12 +156,30 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void SetUser()
     {
+        float plus;
+
         foreach (Cutlet cutlet in user.cutlets)
         {
             if (!cutlet.isSold)
             {
-                Debug.Log(cutlet.name);
-                cutlet.SetPrice((ulong)Mathf.Round(Mathf.Pow(cutlet.code, 3) * Mathf.Pow(cutlet.code + 1, 3.95f) - 1 * cutlet.code + 1 + 128));
+                plus = (cutlet.code > 0) ? 4390 * Mathf.Pow(cutlet.code, 1.2f) : 128;
+                Debug.Log(cutlet.code);
+                cutlet.SetPrice((ulong)Mathf.Round
+                    (Mathf.Pow(cutlet.code + 2.3f, cutlet.code > 0 ? 0.4f * cutlet.code : 1)
+                    * Mathf.Pow(cutlet.code + 2, 3.35f) + plus));
+
+                cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 1, 5.4f)));
+            }
+        }
+
+        foreach (PartTimer partTimer in user.partTimerList)
+        {
+            //if (!partTimer.isSold)
+            {
+                partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.2f) + 9900
+                    * Mathf.Pow(partTimer.code + 1, partTimer.code * 0.3f) * partTimer.code * 2f + 9900));
+
+                //=ROUND(POWER(E15+1,E15*0.2)+9900*POWER(E15+1,E15*0.3)*(E15*1.7) + 9900,0)
             }
         }
     }

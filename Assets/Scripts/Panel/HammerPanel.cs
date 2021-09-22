@@ -13,6 +13,7 @@ public class HammerPanel : PanelBase
 
     public void OnClickHammer()
     {
+        //여기계속오류
         GameManager.Instance.UIManager.ActiveHammerInfo(hammer.code);
     }
 
@@ -71,7 +72,7 @@ public class HammerPanel : PanelBase
 
     private void SetSoldItem()
     {
-        if (!hammer.GetIsSold())
+        if (hammer.amount == 0)
         {
             itemImage.color = Color.black;
         }
@@ -84,7 +85,7 @@ public class HammerPanel : PanelBase
 
     public override void Mounting()
     {
-        if (!hammer.GetIsSold()) return;
+        if (hammer.amount == 0) return;
         GameManager.Instance.CurrentUser.UserHammer(hammer.name);
         GameManager.Instance.UIManager.CheckHammer();
         checkImage.gameObject.SetActive(true);
@@ -93,7 +94,7 @@ public class HammerPanel : PanelBase
 
     public override void Inactive()
     {
-        if (!hammer.GetIsSold())
+        if (hammer.amount == 0)
         {
             buttonImage.color = Color.gray;
         }

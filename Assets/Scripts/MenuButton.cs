@@ -35,7 +35,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         float increasement = 0f;
         for (int i = 0; i < children.Count; i++)
         {
-            increasement -= 14.5f;
+            increasement -= 126f;
             children[i].gameObject.SetActive(true);
             children[i].DOAnchorPosX(increasement, 0.1f).SetEase(Ease.Flash);
             yield return new WaitForSeconds(0.05f);
@@ -46,12 +46,9 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
 
     private IEnumerator UnSetMenu()
     {
-        float decreasement = 14.5f * (children.Count - 1);
-
         for (int i = children.Count - 1; i > -1; i--)
         {
-            children[i].DOAnchorPosX(0, 0.1f).SetEase(Ease.Flash);
-            decreasement -= 14.5f;
+            children[i].DOAnchorPosX(0f, 0.1f).SetEase(Ease.Flash);
             yield return new WaitForSeconds(0.05f);
             children[i].gameObject.SetActive(false);
         }

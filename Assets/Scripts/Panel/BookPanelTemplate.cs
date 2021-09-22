@@ -77,7 +77,6 @@ public class BookPanelTemplate : PanelBase
             case ButtonState.hammer:
                 if (Compare(GameManager.Instance.CurrentUser.hammerList.Count)) break;
                 itemImage.sprite = GameManager.Instance.UIManager.GetHammerSprites()[index];
-                Lock(hammer.GetIsSold());
                 break;
         }
 
@@ -132,7 +131,7 @@ public class BookPanelTemplate : PanelBase
                 break;
 
             case ButtonState.hammer:
-                if (!hammer.GetIsSold()) return;
+                if (hammer.amount == 0) return;
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
                 break;
 

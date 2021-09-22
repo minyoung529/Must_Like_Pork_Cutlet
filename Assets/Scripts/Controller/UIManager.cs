@@ -103,7 +103,6 @@ public class UIManager : MonoBehaviour
         template.gameObject.SetActive(false);
     }
 
-    [Obsolete]
     public void OnClickPork()
     {
         Hammer hammer = GameManager.Instance.CurrentUser.GetHammer();
@@ -116,7 +115,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit + 5f))
+        if (GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit))
         {
             count += hammer.clickCount + 2;
             cutlet.CriticalHit(0);
@@ -457,6 +456,7 @@ public class UIManager : MonoBehaviour
 
         RandomHammer(num);
         GameManager.Instance.AddDiamond(-num * 10);
+        GameManager.Instance.CurrentUser.Quests[4].PlusCurValue(num);
         StartCoroutine(WaitingRandom(num));
         UpdatePanel();
     }

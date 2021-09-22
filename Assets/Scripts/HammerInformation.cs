@@ -164,6 +164,7 @@ public class HammerInformation : MonoBehaviour
         if (hammerAmount == 0) return;
         hammer.amount -= hammerAmount * 5;
         nextHammer.amount += hammerAmount;
+        GameManager.Instance.CurrentUser.Quests[5].PlusCurValue(hammerAmount);
         particle.Play();
         SetUp();
     }

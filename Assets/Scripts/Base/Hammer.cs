@@ -13,15 +13,5 @@ public class Hammer
     public int clickPerMoney;
     public float criticalHit;
     public int level;
-    private bool isSold;
 
-    public bool GetIsSold()
-    {
-        return isSold;
-    }
-
-    public void SetIsSold(bool isSold)
-    {
-        this.isSold = isSold;
-    }
 }

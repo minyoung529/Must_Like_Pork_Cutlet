@@ -24,4 +24,9 @@ public class PartTimer
     {
         return isSold;
     }
+
+    public void SetPrice(ulong price)
+    {
+        this.price = price;
+    }
 }

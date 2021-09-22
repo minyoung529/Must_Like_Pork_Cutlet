@@ -16,7 +16,7 @@ public class QuestPanel : PanelBase
 
         nameText.text = quest.questName;
         levelText.text = quest.GetReward().ToString();
-        priceText.text = string.Format("{0} / {1}", Mathf.Clamp(quest.GetCurValue(),0, quest.GetMaxValue()), quest.GetMaxValue());
+        priceText.text = string.Format("{0} / {1}", quest.GetCurValue(), quest.GetMaxValue());
         slider.maxValue = quest.GetMaxValue();
     }
 

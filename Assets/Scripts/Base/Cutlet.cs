@@ -7,12 +7,14 @@ public class Cutlet
 {
     public int code;
     public string name;
+
     [TextArea]
     public string info;
+
     public int addMoney;
     public ulong price;
     public int level;
-    public bool isSold;
+    public bool isReward;
 
 
     public void LevelUp()
@@ -27,12 +29,11 @@ public class Cutlet
 
 
         addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 1.54f) * Mathf.Pow(code + 1, 1.14f));
-        isSold = true;
     }
 
     public bool GetIsSold()
     {
-        return isSold;
+        return (level > 0);
     }
 
     public void SetPrice(ulong price)
@@ -44,4 +45,8 @@ public class Cutlet
     {
         this.addMoney = addMoney;
     }
+
+
+    public void SetIsReward(bool isReward) { this.isReward = isReward; }
+
 }

@@ -17,7 +17,7 @@ public class PartTimerInformation : HammerInformation
         detailText.text = partTimer.story;
         ability.text = string.Format("ÃÊ´ç {0}¿ø", partTimer.mps);
 
-        itemImage.sprite = GameManager.Instance.UIManager.GetPartTimerSprite()[CheckIndex(partTimer)];
+        itemImage.sprite = GameManager.Instance.UIManager.partTimerSprites[CheckIndex(partTimer)];
     }
 
     private int CheckIndex(PartTimer partTimer)

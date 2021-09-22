@@ -34,7 +34,7 @@ public class CutletMove : MonoBehaviour
     {
         particle.Play();
 
-        if (GameManager.Instance.UIManager.GetCount() > GameManager.Instance.GetMaxCutletCnt() - 1)
+        if (GameManager.Instance.UIManager.GetCount() > GameManager.Instance.maxCutletCnt - 1)
         {
             StartCoroutine(Moving());
         }

@@ -12,20 +12,21 @@ public class GameManager : MonoSingleton<GameManager>
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
 
-    private ulong cutletMoney = 100;
-    private ulong mpsMoney = 0;
+    public ulong cutletMoney { get; private set; } = 100;
+    public int maxCutletCnt { get; private set; } = 10;
+    public ulong mpsMoney { get; private set; } = 0;
 
     public UIManager UIManager { get; private set; }
     public QuestManager QuestManager { get; private set; }
-    [SerializeField] Transform poolTransform;
-    public Transform Pool { get { return poolTransform; } }
 
-    private int maxCutletCnt = 10;
+
+    [SerializeField] private Transform poolTransform;
+    public Transform Pool { get { return poolTransform; } }
 
     private void Awake()
     {
         SAVE_PATH = Application.persistentDataPath + "/Save";
-        //SAVE_PATH = Application.persistentDataPath + "/Save";
+        //SAVE_PATH = Application.dataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
@@ -34,9 +35,10 @@ public class GameManager : MonoSingleton<GameManager>
         LoadFromJson();
 
         user.hammerList[0].amount++;
+        user.cutlets[0].level++;
     }
 
-    private void Start()
+    public void Start()
     {
         UIManager = GetComponent<UIManager>();
         QuestManager = GetComponent<QuestManager>();
@@ -45,15 +47,15 @@ public class GameManager : MonoSingleton<GameManager>
         SetCutletPrice();
     }
 
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.Space))
         {
             user.money += 100000;
             UIManager.UpdatePanel();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             user.diamond += 100;
             UIManager.UpdatePanel();
@@ -123,21 +125,6 @@ public class GameManager : MonoSingleton<GameManager>
         SaveToJson();
     }
 
-    public int GetMaxCutletCnt()
-    {
-        return maxCutletCnt;
-    }
-
-    public ulong GetCutletPrice()
-    {
-        return cutletMoney;
-    }
-
-    public ulong GetMPS()
-    {
-        return mpsMoney;
-    }
-
     public void AddMoney(ulong money, bool isAdd)
     {
         if (isAdd)
@@ -160,13 +147,12 @@ public class GameManager : MonoSingleton<GameManager>
 
         foreach (Cutlet cutlet in user.cutlets)
         {
-            if (!cutlet.isSold)
+            if (!cutlet.GetIsSold())
             {
                 plus = (cutlet.code > 0) ? 4390 * Mathf.Pow(cutlet.code, 1.2f) : 128;
-                Debug.Log(cutlet.code);
                 cutlet.SetPrice((ulong)Mathf.Round
-                    (Mathf.Pow(cutlet.code + 2.3f, cutlet.code > 0 ? 0.4f * cutlet.code : 1)
-                    * Mathf.Pow(cutlet.code + 2, 3.35f) + plus));
+                    (Mathf.Pow(cutlet.code + 2.8f, cutlet.code > 0 ? 0.6f * cutlet.code : 1)
+                    * Mathf.Pow(cutlet.code + 2, 3.95f) + plus));
 
                 cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 1, 5.4f)));
             }
@@ -174,7 +160,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         foreach (PartTimer partTimer in user.partTimerList)
         {
-            //if (!partTimer.isSold)
+            if (!partTimer.GetIsSold())
             {
                 partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.2f) + 9900
                     * Mathf.Pow(partTimer.code + 1, partTimer.code * 0.3f) * partTimer.code * 2f + 9900));

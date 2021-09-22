@@ -8,6 +8,8 @@ public class QuestPanel : PanelBase
     [SerializeField] Slider slider;
     private Quest quest;
     private int index;
+    private bool isReward = false;
+    public bool IsReward { get { return isReward; } }
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
@@ -30,11 +32,13 @@ public class QuestPanel : PanelBase
 
         if (cur < max)
         {
+            isReward = false;
             buttonImage.color = new Color32(164, 164, 164, 255);
         }
 
         else
         {
+            isReward = true;
             buttonImage.color = new Color32(255, 217, 0, 255);
         }
     }
@@ -44,9 +48,19 @@ public class QuestPanel : PanelBase
         if(quest.GetCurValue() >= quest.GetMaxValue())
         {
             GameManager.Instance.AddDiamond(quest.GetReward());
-            quest.SetCurValueZero();
+            quest.SetCurValue(quest.GetCurValue()- quest.GetMaxValue());
             SetUp();
             GameManager.Instance.UIManager.UpdatePanel();
+
+            if (quest.GetCurValue() >= quest.GetMaxValue())
+            {
+                isReward = true;
+            }
+
+            else
+            {
+                isReward = false;
+            }
         }
     }
 

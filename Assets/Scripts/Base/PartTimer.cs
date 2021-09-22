@@ -11,22 +11,23 @@ public class PartTimer
     public int level;
     public ulong price;
     public int mps;
-    public bool isSold;
+    public bool isReward;
 
     public void LevelUp()
     {
         level++;
         price += (ulong)Mathf.RoundToInt(Mathf.Pow(level - 1, 2) * Mathf.Pow(level, 1.15f) - 1 * level + 22);
-        isSold = true;
     }
 
     public bool GetIsSold()
     {
-        return isSold;
+        return (level > 0);
     }
 
     public void SetPrice(ulong price)
     {
         this.price = price;
     }
+
+    public void SetIsReward(bool isReward) { this.isReward = isReward; }
 }

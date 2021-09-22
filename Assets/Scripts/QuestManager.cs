@@ -5,9 +5,9 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     private List<Quest> questLists;
-    private List<PanelBase> questPanels = new List<PanelBase>();
+    private List<QuestPanel> questPanels = new List<QuestPanel>();
 
-    [SerializeField] private PanelBase panelBase;
+    [SerializeField] private QuestPanel panelBase;
     [SerializeField] private Transform contents;
 
     void Start()
@@ -16,15 +16,16 @@ public class QuestManager : MonoBehaviour
         InstantiatePanel(panelBase, contents, questLists.Count);
     }
 
-    public void InstantiatePanel(PanelBase template, Transform transform, int count)
+    public void InstantiatePanel(QuestPanel template, Transform transform, int count)
     {
         GameObject obj;
-        PanelBase panel;
+        QuestPanel panel;
 
         for (int i = 0; i < count; i++)
         {
             obj = Instantiate(template.gameObject, transform);
-            panel = obj.GetComponent<PanelBase>();
+            obj.name = string.Format("Quest {0}", i);
+            panel = obj.GetComponent<QuestPanel>();
             questPanels.Add(panel);
             panel.Init(i);
             obj.SetActive(true);
@@ -36,9 +37,23 @@ public class QuestManager : MonoBehaviour
 
     public void UpdateQuest()
     {
-        foreach(PanelBase panel in questPanels)
+        foreach (QuestPanel panel in questPanels)
         {
             panel.SetUp();
         }
+    }
+
+    public bool CheckIsReward()
+    {
+        foreach (QuestPanel panel in questPanels)
+        {
+            if (panel.IsReward)
+            {
+                Debug.Log(panel.name);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

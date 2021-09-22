@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class BookButton : MonoBehaviour
 {
-    [SerializeField] private PanelBase panelBase;
-    private List<PanelBase> panels = new List<PanelBase>();
+    [SerializeField] private BookPanelTemplate panelBase;
+    private List<BookPanelTemplate> panels = new List<BookPanelTemplate>();
+
+    private BookPanelTemplate bookPanelTemplate;
 
     void Start()
     {
         User user = GameManager.Instance.CurrentUser;
         int count = Mathf.Max(user.cutlets.Count, user.partTimerList.Count, user.hammerList.Count);
         InstantiatePanel(panelBase, panelBase.transform.parent, count);
+        OnClickCategory(0);
+        panels[0].OnClickButton();
     }
 
-    public void InstantiatePanel(PanelBase template, Transform transform, int count)
+    public void InstantiatePanel(BookPanelTemplate template, Transform transform, int count)
     {
         GameObject obj;
-        PanelBase panel;
+        BookPanelTemplate panel;
 
         for (int i = 0; i < count; i++)
         {
             obj = Instantiate(template.gameObject, transform);
-            panel = obj.GetComponent<PanelBase>();
+            panel = obj.GetComponent<BookPanelTemplate>();
             panels.Add(panel);
             obj.SetActive(true);
             continue;
         }
-
         template.gameObject.SetActive(false);
     }
 
@@ -42,5 +45,29 @@ public class BookButton : MonoBehaviour
     public void OnClickIllustratedBook()
     {
         OnClickCategory(0);
+    }
+
+    public void SetPanel(BookPanelTemplate panel)
+    {
+        bookPanelTemplate = panel;
+    }
+
+    public void OnClickReward()
+    {
+        bookPanelTemplate.OnClickReward();
+    }
+
+    public bool CheckIsReward()
+    {
+        foreach(BookPanelTemplate panel in panels)
+        {
+            if (panel.IsReward())
+            {
+                Debug.Log(panel.name);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

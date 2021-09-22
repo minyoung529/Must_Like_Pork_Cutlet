@@ -8,15 +8,29 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
 {
     List<RectTransform> children = new List<RectTransform>();
     private bool isActive = true;
+    private BookButton bookButton;
 
+    private int illustratedBook = 0;
+    private int randomHammer = 1;
+    private int quest = 2;
+    private int setting = 4;
 
     private void Start()
     {
+        bookButton = FindObjectOfType<BookButton>();
+
         for (int i = 0; i < transform.childCount; i++)
         {
             children.Add(transform.GetChild(i).GetComponent<RectTransform>());
         }
     }
+
+    private void Update()
+    {
+        CheckQuest();
+        CheckIllustratedBook();
+    }
+
     public void OnPointerUp(PointerEventData eventData)
     {
         if (!isActive)
@@ -40,6 +54,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
             children[i].DOAnchorPosX(increasement, 0.1f).SetEase(Ease.Flash);
             yield return new WaitForSeconds(0.05f);
         }
+
         isActive = true;
         yield break;
     }
@@ -55,5 +70,30 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
 
         isActive = false;
         yield break;
+    }
+
+    private void CheckQuest()
+    {
+        if(GameManager.Instance.QuestManager.CheckIsReward())
+        {
+            children[quest].GetChild(0).gameObject.SetActive(true);
+        }
+
+        else
+        {
+            children[quest].GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
+    private void CheckIllustratedBook()
+    {
+        if(bookButton.CheckIsReward())
+        {
+            children[illustratedBook].GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            children[illustratedBook].GetChild(0).gameObject.SetActive(false);
+        }
     }
 }

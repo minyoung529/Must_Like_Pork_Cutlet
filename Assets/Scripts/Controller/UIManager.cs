@@ -49,10 +49,10 @@ public class UIManager : MonoBehaviour
     private CutletMove cutlet;
     #endregion
 
-    private Sprite[] partTimerSprites;
-    private Sprite[] cutletSprites;
-    private Sprite[] hammerSprites;
-    private Sprite[] guestSprites;
+    public Sprite[] partTimerSprites { get; private set; }
+    public Sprite[] cutletSprites { get; private set; }
+    public Sprite[] hammerSprites { get; private set; }
+    public Sprite[] guestSprites { get; private set; }
 
     private Image[] partTimersImage;
     private Image[] cutletsImage;
@@ -130,9 +130,9 @@ public class UIManager : MonoBehaviour
         cutlet.Move();
         cutlet.SetSprite(count);
 
-        if (count > GameManager.Instance.GetMaxCutletCnt() - 1)
+        if (count > GameManager.Instance.maxCutletCnt - 1)
         {
-            GameManager.Instance.AddMoney(GameManager.Instance.GetCutletPrice(), true);
+            GameManager.Instance.AddMoney(GameManager.Instance.cutletMoney, true);
             GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
             GameManager.Instance.QuestManager.UpdateQuest();
             UpdatePanel();
@@ -146,8 +146,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePanel()
     {
-        moneyText.text = string.Format("{0}원\n{1}", GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
-        mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원", GameManager.Instance.GetCutletPrice(), GameManager.Instance.GetMPS());
+        moneyText.text = string.Format("{0}원\n{1}",
+            GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
+
+        mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원",
+            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney);
+
         foreach (PanelBase upgradePanels in upgradePanels)
         {
             upgradePanels.Inactive();
@@ -224,7 +228,7 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.CurrentUser.cutlets.Count; i++)
         {
-            if (GameManager.Instance.CurrentUser.cutlets[i].isSold)
+            if (GameManager.Instance.CurrentUser.cutlets[i].GetIsSold())
                 num++;
         }
 
@@ -392,26 +396,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public Sprite[] GetHammerSprites()
-    {
-        return hammerSprites;
-    }
-
-    public Sprite[] GetPartTimerSprite()
-    {
-        return partTimerSprites;
-    }
-
-    public Sprite[] GetCutletSprite()
-    {
-        return cutletSprites;
-    }
-
-    public Sprite[] GetGuestSprite()
-    {
-        return guestSprites;
-    }
-
     public void ActiveHammerInfo(int index)
     {
         hammerInformation.gameObject.SetActive(true);
@@ -496,5 +480,4 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
 }

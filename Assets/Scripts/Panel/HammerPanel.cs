@@ -86,6 +86,7 @@ public class HammerPanel : PanelBase
     public override void Mounting()
     {
         if (hammer.amount == 0) return;
+
         GameManager.Instance.CurrentUser.UserHammer(hammer.name);
         GameManager.Instance.UIManager.CheckHammer();
         checkImage.gameObject.SetActive(true);

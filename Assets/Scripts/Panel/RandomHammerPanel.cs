@@ -10,6 +10,7 @@ public class RandomHammerPanel : PanelBase
     {
         hammer = GameManager.Instance.CurrentUser.hammerList.Find(x => x.code == num);
         hammer.amount++;
+        hammer.SetIsReward(true);
         SetColor(hammer.grade);
         GameManager.Instance.UIManager.UpdatePanel();
         base.Init(num, sprite);

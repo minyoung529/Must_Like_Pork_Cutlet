@@ -463,8 +463,8 @@ public class UIManager : MonoBehaviour
                 else
                     time = 0f;
 
-                randomPanel[i].gameObject.SetActive(true);
                 yield return new WaitForSeconds(time);
+                randomPanel[i].gameObject.SetActive(true);
                 randomPanel[i].transform.DOScale(1f, 0.3f);
             }
 

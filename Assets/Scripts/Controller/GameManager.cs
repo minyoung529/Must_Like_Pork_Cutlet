@@ -34,8 +34,12 @@ public class GameManager : MonoSingleton<GameManager>
 
         LoadFromJson();
 
-        user.hammerList[0].amount++;
-        user.cutlets[0].level++;
+        if (user == null)
+        {
+            user.hammerList[0].amount++;
+            user.cutlets[0].level++;
+        }
+
     }
 
     public void Start()
@@ -199,4 +203,5 @@ public class GameManager : MonoSingleton<GameManager>
 
     //    return 0;
     //}
+
 }

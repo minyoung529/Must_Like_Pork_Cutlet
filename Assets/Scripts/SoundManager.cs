@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SoundManager : MonoSingleton<SoundManager>
 {
     private AudioSource backgroundAudioSource;
     private AudioSource effectAudioSource;
+
+    [SerializeField] private AudioClip lobbyBGM;
+    [SerializeField] private AudioClip gameBGM;
 
     private void Awake()
     {
@@ -13,8 +17,26 @@ public class SoundManager : MonoSingleton<SoundManager>
         backgroundAudioSource = GetComponent<AudioSource>();
         effectAudioSource = GetComponentInChildren<AudioSource>();
 
-        Debug.Log(backgroundAudioSource.gameObject.name);
-        Debug.Log(effectAudioSource.gameObject.name);
+        LobbyBackground();
     }
 
+    public void LobbyBackground()
+    {
+        backgroundAudioSource.clip = lobbyBGM;
+        backgroundAudioSource.Play();
+    }
+
+    public void OnClickStart()
+    {
+        StartCoroutine(FadeSound(gameBGM));
+    }
+
+    private IEnumerator FadeSound(AudioClip clip)
+    {
+        backgroundAudioSource.DOFade(0f, 2f);
+        yield return new WaitForSeconds(1.5f);
+        backgroundAudioSource.clip = clip;
+        backgroundAudioSource.Play();
+        backgroundAudioSource.DOFade(1f, 2f);
+    }
 }

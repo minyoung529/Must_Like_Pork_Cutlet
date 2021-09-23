@@ -208,7 +208,6 @@ public class BookPanelTemplate : PanelBase
         {
             if (cutlet.GetIsSold() && !cutlet.isReward)
             {
-                Debug.Log(cutlet.name);
                 return true;
             }
         }

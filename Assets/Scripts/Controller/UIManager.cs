@@ -56,17 +56,11 @@ public class UIManager : MonoBehaviour
 
     private Image[] partTimersImage;
     private Image[] cutletsImage;
-    private Image[] randomHammerImage = new Image[10];
 
     private void Start()
     {
         FirstSetting();
         ActivePartTimers();
-
-        for (int i = 0; i < 10; i++)
-        {
-            randomHammerImage[i] = randomHammerTransform.GetChild(i + 1).gameObject.GetComponent<Image>();
-        }
     }
 
     private void SettingUpgradePanel()
@@ -89,7 +83,6 @@ public class UIManager : MonoBehaviour
 
             if (template == randomHammerTemplate)
             {
-                panel.Init(0, null);
                 randomPanel.Add(panel);
                 obj.SetActive(true);
                 continue;
@@ -370,7 +363,7 @@ public class UIManager : MonoBehaviour
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 23) //3 - 26
+        else if (rand < 8) 
         {
             rand = Random.Range(commonCnt, rareCnt);
         }
@@ -456,6 +449,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.8f);
 
+        randomHammerTransform.parent.parent.gameObject.SetActive(true);
         randomHammerTransform.parent.parent.DOScale(1f, 0.2f);
 
         for (int i = 0; i < 10; i++)
@@ -479,5 +473,10 @@ public class UIManager : MonoBehaviour
                 randomPanel[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void OnClickStart()
+    {
+        Camera.main.transform.DOLocalMoveY(0f, 1f);
     }
 }

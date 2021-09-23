@@ -63,7 +63,6 @@ public class BookButton : MonoBehaviour
         {
             if (panel.IsReward())
             {
-                Debug.Log(panel.name);
                 return true;
             }
         }

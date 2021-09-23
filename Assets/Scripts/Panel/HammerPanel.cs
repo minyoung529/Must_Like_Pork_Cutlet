@@ -76,6 +76,10 @@ public class HammerPanel : PanelBase
         {
             itemImage.color = Color.black;
         }
+        else
+        {
+            itemImage.color = Color.white;
+        }
     }
 
     public override void SetActiveCheck()
@@ -98,6 +102,20 @@ public class HammerPanel : PanelBase
         if (hammer.amount == 0)
         {
             buttonImage.color = Color.gray;
+
+            if (hammer.isSold)
+            {
+                itemImage.color = Color.white;
+                return;
+            }
+
+            itemImage.color = Color.black;
+        }
+
+        else
+        {
+            buttonImage.color = Color.white;
+            itemImage.color = Color.white;
         }
     }
 }

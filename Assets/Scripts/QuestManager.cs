@@ -49,7 +49,6 @@ public class QuestManager : MonoBehaviour
         {
             if (panel.IsReward)
             {
-                Debug.Log(panel.name);
                 return true;
             }
         }

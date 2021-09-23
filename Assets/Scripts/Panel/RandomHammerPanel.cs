@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomHammerPanel : PanelBase
 {
-    Hammer hammer;
+    private Hammer hammer;
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {

@@ -22,6 +22,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip rewardSound;
     [SerializeField] private AudioClip levelUpSound;
     [SerializeField] private AudioClip ddiringSound;
+    [SerializeField] private AudioClip tadaSound;
 
     private void Awake()
     {
@@ -89,5 +90,8 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void DdiringSound()
         => effectAudioSource.PlayOneShot(ddiringSound);
+
+    public void TadaSound()
+    => effectAudioSource.PlayOneShot(tadaSound);
 
 }

@@ -6671,7 +6671,7 @@ RectTransform:
   m_GameObject: {fileID: 145628503}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 164193265}
   - {fileID: 1958312269}
@@ -23494,7 +23494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00000044354, y: 2732009.2}
+  m_AnchoredPosition: {x: 0.00000044354, y: 3298635.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &770925437
@@ -23569,7 +23569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 108}
+  m_AnchoredPosition: {x: 6, y: 61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!199 &781210263
@@ -23721,7 +23721,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.1
+      scalar: 1.42
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -23774,7 +23774,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6.35
+      scalar: 8.77
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -31316,6 +31316,7 @@ MonoBehaviour:
   rewardSound: {fileID: 8300000, guid: 3fc7a91888c9555499690cc959778923, type: 3}
   levelUpSound: {fileID: 8300000, guid: 31b57b31338027c4095ff6a8fda53dd3, type: 3}
   ddiringSound: {fileID: 8300000, guid: 252f0488cfa0fc444951844ac130fa01, type: 3}
+  tadaSound: {fileID: 8300000, guid: 834845fc7fbff104fb6d9d27861fbfcc, type: 3}
 --- !u!4 &994596697
 Transform:
   m_ObjectHideFlags: 0
@@ -38775,10 +38776,10 @@ RectTransform:
   m_Father: {fileID: 1145556457}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 436, y: -185.1}
-  m_SizeDelta: {x: 872, y: 370.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 370.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204769999
 MonoBehaviour:
@@ -50343,10 +50344,10 @@ RectTransform:
   m_Father: {fileID: 1702779975}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 401.25, y: -134.70999}
-  m_SizeDelta: {x: 802.5, y: 260.8}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 260.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742277168
 MonoBehaviour:
@@ -51459,10 +51460,10 @@ RectTransform:
   m_Father: {fileID: 1145556457}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 436, y: -371.8225}
-  m_SizeDelta: {x: 872, y: 0.245}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804425125
 MonoBehaviour:
@@ -52101,7 +52102,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 52, y: -306.5}
-  m_SizeDelta: {x: -92.2, y: -306.5}
+  m_SizeDelta: {x: -92.2, y: -378.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1869827106
 MonoBehaviour:
@@ -52894,10 +52895,10 @@ RectTransform:
   m_Father: {fileID: 1702779975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 401.25, y: -1.435}
-  m_SizeDelta: {x: 802.5, y: 2.87}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 2.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1944247670
 MonoBehaviour:
@@ -53177,6 +53178,18 @@ MonoBehaviour:
       - m_Target: {fileID: 145628507}
         m_TargetAssemblyTypeName: ActiveScale, Assembly-CSharp
         m_MethodName: Inactive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1674924257}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: StopRandomPanelParticle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

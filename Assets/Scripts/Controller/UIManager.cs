@@ -164,10 +164,16 @@ public class UIManager : MonoBehaviour
 
     private void FirstSetting()
     {
+        partTimerSprites = Resources.LoadAll<Sprite>("Sprites/PartTimerImage");
+        cutletSprites = Resources.LoadAll<Sprite>("Sprites/CutletImage");
+        guestSprites = Resources.LoadAll<Sprite>("Sprites/Guest");
+        hammerSprites = Resources.LoadAll<Sprite>("Sprites/Hammer");
+
         cutlet = FindObjectOfType<CutletMove>();
         message = FindObjectOfType<ErrorMessage>();
         hammerInformation = FindObjectOfType<HammerInformation>();
         partTimerInformation = FindObjectOfType<PartTimerInformation>();
+
         hammerInformation.gameObject.SetActive(false);
         partTimerInformation.gameObject.SetActive(false);
         message.gameObject.SetActive(false);
@@ -187,10 +193,7 @@ public class UIManager : MonoBehaviour
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
 
-        partTimerSprites = Resources.LoadAll<Sprite>("Sprites/PartTimerImage");
-        cutletSprites = Resources.LoadAll<Sprite>("Sprites/CutletImage");
-        guestSprites = Resources.LoadAll<Sprite>("Sprites/Guest");
-        hammerSprites = Resources.LoadAll<Sprite>("Sprites/Hammer");
+        
 
         SettingUpgradePanel();
 
@@ -451,6 +454,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.8f);
 
+        SoundManager.Instance.TadaSound();
         randomHammerTransform.parent.parent.gameObject.SetActive(true);
         randomHammerTransform.parent.parent.DOScale(1f, 0.2f);
 
@@ -467,6 +471,7 @@ public class UIManager : MonoBehaviour
 
                 randomPanel[i].transform.DOScale(0f, 0f);
                 yield return new WaitForSeconds(time);
+                SoundManager.Instance.LevelUpSound();
                 randomPanel[i].gameObject.SetActive(true);
                 randomPanel[i].transform.DOScale(1f, 0.3f);
                 yield return new WaitForSeconds(0.3f);
@@ -489,6 +494,14 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.CurrentUser.hammerList.Count; i++)
         {
             upgradePanels[index].Mounting();
+        }
+    }
+
+    public void StopRandomPanelParticle()
+    {
+        foreach(PanelBase panel in randomPanel)
+        {
+            panel.Inactive();
         }
     }
 }

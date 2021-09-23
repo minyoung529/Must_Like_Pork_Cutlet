@@ -123,6 +123,7 @@ public class BookPanelTemplate : PanelBase
         switch (buttonState)
         {
             case ButtonState.cutlet:
+                if (cutlet == null) return;
                 if (!cutlet.GetIsSold()) return;
                 SoundManager.Instance.BpButton();
                 SetLeftInformation(cutlet.name, cutlet.info, itemImage.sprite);
@@ -130,6 +131,7 @@ public class BookPanelTemplate : PanelBase
                 break;
 
             case ButtonState.partTimer:
+                if (partTimer == null) return;
                 if (!partTimer.GetIsSold()) return;
                 SoundManager.Instance.BpButton();
                 SetLeftInformation(partTimer.name, partTimer.story, itemImage.sprite);
@@ -137,6 +139,7 @@ public class BookPanelTemplate : PanelBase
                 break;
 
             case ButtonState.hammer:
+                if (hammer == null) return;
                 if (hammer.amount == 0) return;
                 SoundManager.Instance.BpButton();
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
@@ -193,7 +196,6 @@ public class BookPanelTemplate : PanelBase
         {
             if (hammer.isSold && !hammer.isReward)
             {
-                Debug.Log(hammer.name);
                 return true;
             }
         }
@@ -202,7 +204,6 @@ public class BookPanelTemplate : PanelBase
         {
             if (partTimer.GetIsSold() && !partTimer.isReward)
             {
-                Debug.Log(partTimer.name);
                 return true;
             }
         }

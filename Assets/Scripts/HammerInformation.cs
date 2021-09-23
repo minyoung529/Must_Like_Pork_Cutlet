@@ -43,14 +43,20 @@ public class HammerInformation : MonoBehaviour
             hammerAmount = hammer.amount / 5;
 
         itemImage.sprite = GameManager.Instance.UIManager.hammerSprites[hammer.code];
-        nextItemImage.sprite = GameManager.Instance.UIManager.hammerSprites[nextHammer.code];
+        
         myAmountText.text = string.Format("{0}(<color=red>-{1}</color>)", hammer.amount, hammerAmount * 5);
-        nextAmountText.text = string.Format("{0}(<color=lime>+{1}</color>)", nextHammer.amount, hammerAmount);
+
+        if(hammer.code != GameManager.Instance.CurrentUser.hammerList.Count - 1)
+        {
+            fusionNextHammerName.text = nextHammer.name;
+            nextItemImage.sprite = GameManager.Instance.UIManager.hammerSprites[nextHammer.code];
+            nextAmountText.text = string.Format("{0}(<color=lime>+{1}</color>)", nextHammer.amount, hammerAmount);
+            SetColor(nextHammer.grade, null, nextGradeOutline);
+        }
+
         fusionAmountText.text = hammerAmount.ToString();
         fusionName.text = hammer.name;
-        fusionNextHammerName.text = nextHammer.name;
         SetColor(hammer.grade, grade, gradeOutline);
-        SetColor(nextHammer.grade, null, nextGradeOutline);
     }
 
     public virtual void Next()

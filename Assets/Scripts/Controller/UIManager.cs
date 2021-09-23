@@ -128,6 +128,8 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.AddMoney(GameManager.Instance.cutletMoney, true);
             GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
             GameManager.Instance.QuestManager.UpdateQuest();
+
+            SoundManager.Instance.MoneySound();
             UpdatePanel();
 
             count -= 10;
@@ -267,7 +269,7 @@ public class UIManager : MonoBehaviour
         GameObject obj;
         yield return new WaitForSeconds(time);
 
-        if(!CheckPool("Guest"))
+        if (!CheckPool("Guest"))
         {
             obj = Instantiate(guest.gameObject, guest.transform.parent);
         }
@@ -358,17 +360,17 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 2) // 0-3
+        if (rand < 2)
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 8) 
+        else if (rand < 8)
         {
             rand = Random.Range(commonCnt, rareCnt);
         }
 
-        else // 27 - 100
+        else
         {
             rand = Random.Range(0, commonCnt);
         }
@@ -392,7 +394,7 @@ public class UIManager : MonoBehaviour
     public void ActiveHammerInfo(int index)
     {
         hammerInformation.gameObject.SetActive(true);
-        hammerInformation.transform.DOScale(1f,0.3f);
+        hammerInformation.transform.DOScale(1f, 0.3f);
         hammerInformation.SetIndex(index);
     }
 
@@ -463,9 +465,11 @@ public class UIManager : MonoBehaviour
                 else
                     time = 0f;
 
+                randomPanel[i].transform.DOScale(0f, 0f);
                 yield return new WaitForSeconds(time);
                 randomPanel[i].gameObject.SetActive(true);
                 randomPanel[i].transform.DOScale(1f, 0.3f);
+                yield return new WaitForSeconds(0.3f);
             }
 
             else
@@ -478,5 +482,13 @@ public class UIManager : MonoBehaviour
     public void OnClickStart()
     {
         Camera.main.transform.DOLocalMoveY(0f, 1f);
+    }
+
+    public void MountingHammer(int index)
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentUser.hammerList.Count; i++)
+        {
+            upgradePanels[index].Mounting();
+        }
     }
 }

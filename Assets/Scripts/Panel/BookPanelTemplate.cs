@@ -124,18 +124,21 @@ public class BookPanelTemplate : PanelBase
         {
             case ButtonState.cutlet:
                 if (!cutlet.GetIsSold()) return;
+                SoundManager.Instance.BpButton();
                 SetLeftInformation(cutlet.name, cutlet.info, itemImage.sprite);
                 bookButton.SetPanel(this);
                 break;
 
             case ButtonState.partTimer:
                 if (!partTimer.GetIsSold()) return;
+                SoundManager.Instance.BpButton();
                 SetLeftInformation(partTimer.name, partTimer.story, itemImage.sprite);
                 bookButton.SetPanel(this);
                 break;
 
             case ButtonState.hammer:
                 if (hammer.amount == 0) return;
+                SoundManager.Instance.BpButton();
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
                 bookButton.SetPanel(this);
                 break;
@@ -219,6 +222,7 @@ public class BookPanelTemplate : PanelBase
     {
         if (!CheckIsRewarded()) return;
         GameManager.Instance.AddDiamond(30);
+        SoundManager.Instance.RewardSound();
 
         switch (buttonState)
         {

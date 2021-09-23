@@ -29,6 +29,7 @@ public class Guest : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.UIManager.SwapCutletsImage();
+        SoundManager.Instance.NyamSound();
         yield return new WaitForSeconds(0.4f);
 
         transform.DOLocalMove(new Vector2(randomX, 150f), 0.3f).OnComplete(() => Despawn());

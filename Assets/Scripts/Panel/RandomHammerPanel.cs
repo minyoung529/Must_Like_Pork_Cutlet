@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class RandomHammerPanel : PanelBase
 {
+    private ParticleSystem particle;
+    private ParticleSystem.MainModule mainModule;
+
     private Hammer hammer;
+
+    private void Start()
+    {
+        particle = GetComponentInChildren<ParticleSystem>();
+        mainModule = particle.main;
+    }
 
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
         hammer = GameManager.Instance.CurrentUser.hammerList.Find(x => x.code == num);
         hammer.amount++;
-        hammer.SetIsReward(true);
+        hammer.SetIsSold(true);
         SetColor(hammer.grade);
         GameManager.Instance.UIManager.UpdatePanel();
         base.Init(num, sprite);
@@ -35,5 +44,15 @@ public class RandomHammerPanel : PanelBase
     public override Hammer GetHammer()
     {
         return hammer;
+    }
+
+    private void SetParticle()
+    {
+        if(hammer.grade == "common")
+        {
+            particle.gameObject.SetActive(false);
+        }
+
+        mainModule.startColor = new ParticleSystem.MinMaxGradient(Color.white, )
     }
 }

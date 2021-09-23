@@ -45,6 +45,7 @@ public class CutletPanel : PanelBase
         GameManager.Instance.UIManager.UpdatePanel();
         GameManager.Instance.CurrentUser.Quests[2].PlusCurValue(1);
         GameManager.Instance.QuestManager.UpdateQuest();
+        SoundManager.Instance.LevelUpSound();
         particle.Play();
 
         SetUp();

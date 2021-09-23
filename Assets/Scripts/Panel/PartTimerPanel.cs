@@ -21,8 +21,8 @@ public class PartTimerPanel : PanelBase
     public override void SetUp()
     {
         nameText.text = partTimer?.name;
-        priceText.text = partTimer?.price + "¿ø";
-        levelText.text = partTimer?.level + " Level";
+        priceText.text = string.Format("{0}¿ø", partTimer?.price);
+        levelText.text = string.Format("{0} Level",partTimer?.level);
     }
 
     protected override void SecretInfo()
@@ -41,6 +41,7 @@ public class PartTimerPanel : PanelBase
         GameManager.Instance.AddMoney(partTimer.price, false);
         partTimer.LevelUp();
         particle.Play();
+        SoundManager.Instance.LevelUpSound();
 
         GameManager.Instance.UIManager.UpdatePanel();
         GameManager.Instance.UIManager.ActivePartTimers();

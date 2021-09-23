@@ -164,6 +164,12 @@ public class HammerInformation : MonoBehaviour
         if (hammerAmount == 0) return;
         hammer.amount -= hammerAmount * 5;
         nextHammer.amount += hammerAmount;
+        nextHammer.SetIsSold(true);
+        if(hammer.amount == 0)
+        {
+            GameManager.Instance.CurrentUser.UserHammer(nextHammer.name);
+            GameManager.Instance.UIManager.MountingHammer(nextHammer.code);
+        }
         GameManager.Instance.CurrentUser.Quests[5].PlusCurValue(hammerAmount);
         particle.Play();
         SetUp();

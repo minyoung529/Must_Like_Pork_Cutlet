@@ -51,7 +51,7 @@ public class QuestPanel : PanelBase
             quest.SetCurValue(quest.GetCurValue()- quest.GetMaxValue());
             SetUp();
             GameManager.Instance.UIManager.UpdatePanel();
-
+            SoundManager.Instance.DdiringSound();
             if (quest.GetCurValue() >= quest.GetMaxValue())
             {
                 isReward = true;
@@ -63,5 +63,4 @@ public class QuestPanel : PanelBase
             }
         }
     }
-
 }

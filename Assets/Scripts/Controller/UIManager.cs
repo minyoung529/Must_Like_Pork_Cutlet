@@ -144,8 +144,8 @@ public class UIManager : MonoBehaviour
         moneyText.text = string.Format("{0}원\n{1}",
             GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
 
-        mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원",
-            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney);
+        mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원 / 클릭당 {2}원",
+            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney,GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
 
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -363,12 +363,12 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 2)
+        if (rand < 1)
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 8)
+        else if (rand < 6)
         {
             rand = Random.Range(commonCnt, rareCnt);
         }

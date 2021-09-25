@@ -23,12 +23,20 @@ public class Cutlet
 
         price += (ulong)Mathf.RoundToInt(
             (Mathf.Pow(level + 1, 1.8f) *
-            Mathf.Pow(level + 1, 1.25f) +
+            Mathf.Pow(level + 1, 2.25f) +
             Mathf.Pow(level, 1.2f) + code) *
             (code + 1) * 1.2f);
 
 
-        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 1.54f) * Mathf.Pow(code + 1, 1.14f));
+        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 3f) * Mathf.Pow(code + 1, 3.2f));
+    }
+
+    public int GetNextAddMoney()
+    {
+        if (!GetIsSold())
+            return addMoney;
+
+        return Mathf.RoundToInt(Mathf.Pow(level + 2, 1.54f) * Mathf.Pow(code + 1, 1.2f));
     }
 
     public bool GetIsSold()
@@ -45,7 +53,6 @@ public class Cutlet
     {
         this.addMoney = addMoney;
     }
-
 
     public void SetIsReward(bool isReward) { this.isReward = isReward; }
 

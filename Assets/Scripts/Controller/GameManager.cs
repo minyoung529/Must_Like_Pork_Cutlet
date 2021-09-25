@@ -39,7 +39,6 @@ public class GameManager : MonoSingleton<GameManager>
             user.hammerList[0].amount++;
             user.cutlets[0].level++;
         }
-
     }
 
     public void Start()
@@ -49,6 +48,16 @@ public class GameManager : MonoSingleton<GameManager>
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         SetUser();
         SetCutletPrice();
+
+        if(user.isTutorial)
+        {
+            Camera.main.transform.position = new Vector3(0f, 3f);
+        }
+
+        else
+        {
+            Camera.main.transform.position = new Vector3(3f, 0f);
+        }
     }
 
     public void Update()
@@ -86,10 +95,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void SetCutletPrice()
     {
+        cutletMoney = 100;
+
         foreach (Cutlet cutlet in user.cutlets)
         {
             if (cutlet.GetIsSold())
+            {
                 cutletMoney += (ulong)cutlet.addMoney;
+            }
         }
     }
 
@@ -155,10 +168,10 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 plus = (cutlet.code > 0) ? 4390 * Mathf.Pow(cutlet.code, 1.2f) : 128;
                 cutlet.SetPrice((ulong)Mathf.Round
-                    (Mathf.Pow(cutlet.code + 2.8f, cutlet.code > 0 ? 0.6f * cutlet.code : 1)
-                    * Mathf.Pow(cutlet.code + 2, 3.95f) + plus));
+                    (Mathf.Pow(cutlet.code + 3.3f, cutlet.code > 0 ? 0.8f * cutlet.code : 1)
+                    * Mathf.Pow(cutlet.code + 2, 4.65f) + plus));
 
-                cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 1, 5.4f)));
+                cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 2, 5)));
             }
         }
 

@@ -27,7 +27,7 @@ public class CutletPanel : PanelBase
         nameText.text = cutlet?.name;
         levelText.text = string.Format("{0} Level", cutlet?.level);
         priceText.text = string.Format("{0}¿ø", cutlet?.price);
-        addMoneyText.text = string.Format("+{0}¿ø", cutlet?.addMoney); 
+        addMoneyText.text = string.Format("+{0}¿ø", cutlet?.GetNextAddMoney()); 
     }
 
     public void OnClickCutlet()

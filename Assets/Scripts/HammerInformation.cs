@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class HammerInformation : MonoBehaviour
 {
+    #region 정보 변수
     [SerializeField] private Text grade;
     [SerializeField] protected Text itemName;
     [SerializeField] protected Text information;
     [SerializeField] protected Text ability;
-    [SerializeField] private Text nextAbility;
 
     [SerializeField] protected Text levelText;
 
@@ -18,7 +18,9 @@ public class HammerInformation : MonoBehaviour
 
     [SerializeField] private Image nextItemImage;
     [SerializeField] private Outline nextGradeOutline;
+    #endregion
 
+    #region 융합 변수
     [SerializeField] private Text myAmountText;
     [SerializeField] private Text nextAmountText;
     [SerializeField] private Text fusionAmountText;
@@ -27,6 +29,7 @@ public class HammerInformation : MonoBehaviour
     [SerializeField] private Text fusionNextHammerName;
 
     [SerializeField] private ParticleSystem particle;
+    #endregion
 
     protected int index = 0;
     private int hammerAmount = 0;
@@ -37,16 +40,18 @@ public class HammerInformation : MonoBehaviour
 
     protected virtual void SetUp()
     {
-        UpdateEnforce();
+        UpdateInfo();
 
         if (isFirst)
+        {
             hammerAmount = hammer.amount / 5;
+        }
 
         itemImage.sprite = GameManager.Instance.UIManager.hammerSprites[hammer.code];
-        
+
         myAmountText.text = string.Format("{0}(<color=red>-{1}</color>)", hammer.amount, hammerAmount * 5);
 
-        if(hammer.code != GameManager.Instance.CurrentUser.hammerList.Count - 1)
+        if (hammer.code != GameManager.Instance.CurrentUser.hammerList.Count - 1)
         {
             fusionNextHammerName.text = nextHammer.name;
             nextItemImage.sprite = GameManager.Instance.UIManager.hammerSprites[nextHammer.code];
@@ -57,6 +62,7 @@ public class HammerInformation : MonoBehaviour
         fusionAmountText.text = hammerAmount.ToString();
         fusionName.text = hammer.name;
         SetColor(hammer.grade, grade, gradeOutline);
+        ActiveFusion();
     }
 
     public virtual void Next()
@@ -78,6 +84,7 @@ public class HammerInformation : MonoBehaviour
         }
 
         SetUp();
+        ActiveFusion();
     }
 
     public virtual void Previous()
@@ -94,6 +101,7 @@ public class HammerInformation : MonoBehaviour
         }
 
         SetUp();
+        ActiveFusion();
     }
 
     public void Plus()
@@ -147,6 +155,7 @@ public class HammerInformation : MonoBehaviour
         }
 
         SetUp();
+        ActiveFusion();
     }
 
     public int GetIndex()
@@ -154,7 +163,7 @@ public class HammerInformation : MonoBehaviour
         return index;
     }
 
-    private void UpdateEnforce()
+    private void UpdateInfo()
     {
         grade.text = hammer.grade;
         itemName.text = hammer.name;
@@ -171,13 +180,29 @@ public class HammerInformation : MonoBehaviour
         hammer.amount -= hammerAmount * 5;
         nextHammer.amount += hammerAmount;
         nextHammer.SetIsSold(true);
-        if(hammer.amount == 0)
+
+        if (hammer.amount == 0)
         {
             GameManager.Instance.CurrentUser.UserHammer(nextHammer.name);
             GameManager.Instance.UIManager.MountingHammer(nextHammer.code);
         }
+
         GameManager.Instance.CurrentUser.Quests[5].PlusCurValue(hammerAmount);
+        SoundManager.Instance.DdiringSound();
         particle.Play();
         SetUp();
+    }
+
+    private void ActiveFusion()
+    {
+        if (hammer.code == GameManager.Instance.CurrentUser.hammerList.Count - 1)
+        {
+            myAmountText.transform.parent.gameObject.SetActive(false);
+        }
+
+        else
+        {
+            myAmountText.transform.parent.gameObject.SetActive(true);
+        }
     }
 }

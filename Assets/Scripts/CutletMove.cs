@@ -27,7 +27,7 @@ public class CutletMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         //나중에 옮기기
         cutletSprites = Resources.LoadAll<Sprite>("Sprites/Cutlet");
-        transform.position = new Vector2(offset.position.x, transform.position.y);
+        transform.position = new Vector3(offset.position.x, transform.position.y, 10);
     }
 
     public void Move()
@@ -78,7 +78,7 @@ public class CutletMove : MonoBehaviour
 
     private IEnumerator CriticalUI(int num)
     {
-        criticalUI.transform.DOScale(1.3f,0.1f);
+        criticalUI.transform.DOScale(1.3f, 0.1f);
         criticalUI.sprite = sprites[num];
 
         yield return new WaitForSeconds(0.2f);

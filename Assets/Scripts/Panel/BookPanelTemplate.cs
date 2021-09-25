@@ -140,7 +140,7 @@ public class BookPanelTemplate : PanelBase
 
             case ButtonState.hammer:
                 if (hammer == null) return;
-                if (hammer.amount == 0) return;
+                if (!hammer.isSold) return;
                 SoundManager.Instance.BpButton();
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
                 bookButton.SetPanel(this);

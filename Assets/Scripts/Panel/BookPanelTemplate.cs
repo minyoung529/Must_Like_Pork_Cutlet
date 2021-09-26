@@ -17,6 +17,7 @@ public class BookPanelTemplate : PanelBase
     [SerializeField] private GameObject plate;
     [SerializeField] private BookButton bookButton;
     [SerializeField] private Image reward;
+    [SerializeField] private GameObject effect;
 
     private enum ButtonState
     {
@@ -40,6 +41,8 @@ public class BookPanelTemplate : PanelBase
 
         SetData();
         SetUp();
+
+        ActiveEffect();
     }
 
     private ButtonState JudgeState(int num)
@@ -145,7 +148,6 @@ public class BookPanelTemplate : PanelBase
                 SetLeftInformation(hammer.name, hammer.info, itemImage.sprite);
                 bookButton.SetPanel(this);
                 break;
-
         }
     }
 
@@ -248,21 +250,29 @@ public class BookPanelTemplate : PanelBase
         switch (buttonState)
         {
             case ButtonState.cutlet:
+                if (cutlet == null) return false;
                 if (cutlet.GetIsSold() && !cutlet.isReward)
                     return true;
                 break;
 
             case ButtonState.partTimer:
+                if (partTimer == null) return false;
                 if (partTimer.GetIsSold() && !partTimer.isReward)
                     return true;
                 break;
 
             case ButtonState.hammer:
+                if (hammer == null) return false;
                 if (hammer.isSold && !hammer.isReward)
                     return true;
                 break;
         }
 
         return false;
+    }
+
+    public void ActiveEffect()
+    {
+        effect.SetActive(CheckIsRewarded());
     }
 }

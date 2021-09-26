@@ -42,9 +42,9 @@ public class CutletMove : MonoBehaviour
 
     private IEnumerator Moving()
     {
-        transform.DOMove(new Vector2(offset.position.x - 2f, transform.position.y), 0.2f);
+        transform.DOMove(new Vector3(offset.position.x - 2f, transform.position.y, 10), 0.2f);
         yield return new WaitForSeconds(0.2f);
-        transform.position = new Vector3(offset.position.x, transform.position.y);
+        transform.position = new Vector3(offset.position.x, transform.position.y, 10);
     }
 
     public void SetSprite(int num)
@@ -83,6 +83,6 @@ public class CutletMove : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        criticalUI.transform.localScale = Vector2.zero; ;
+        criticalUI.transform.localScale = Vector2.zero;
     }
 }

@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class MenuButton : MonoBehaviour, IPointerUpHandler
 {
+    [SerializeField] private GameObject effect;
     List<RectTransform> children = new List<RectTransform>();
     private bool isActive = true;
     private BookButton bookButton;
@@ -13,7 +14,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
     private int illustratedBook = 0;
     private int randomHammer = 1;
     private int quest = 2;
-    private int setting = 4;
+    private int setting = 3;
 
     private void Start()
     {
@@ -29,6 +30,16 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
     {
         CheckQuest();
         CheckIllustratedBook();
+
+        if((CheckQuest() || CheckIllustratedBook()) && !isActive)
+        {
+            effect.SetActive(true);
+        }
+
+        else
+        {
+            effect.SetActive(false);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -47,7 +58,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
     private IEnumerator SetMenu()
     {
         float increasement = 0f;
-        for (int i = 0; i < children.Count; i++)
+        for (int i = 0; i < children.Count - 1; i++)
         {
             increasement -= 126f;
             children[i].gameObject.SetActive(true);
@@ -61,7 +72,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
 
     private IEnumerator UnSetMenu()
     {
-        for (int i = children.Count - 1; i > -1; i--)
+        for (int i = children.Count - 2; i > -1; i--)
         {
             children[i].DOAnchorPosX(0f, 0.1f).SetEase(Ease.Flash);
             yield return new WaitForSeconds(0.05f);
@@ -72,28 +83,32 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         yield break;
     }
 
-    private void CheckQuest()
+    private bool CheckQuest()
     {
         if(GameManager.Instance.QuestManager.CheckIsReward())
         {
             children[quest].GetChild(0).gameObject.SetActive(true);
+            return true;
         }
 
         else
         {
             children[quest].GetChild(0).gameObject.SetActive(false);
+            return false;
         }
     }
 
-    private void CheckIllustratedBook()
+    private bool CheckIllustratedBook()
     {
         if(bookButton.CheckIsReward())
         {
             children[illustratedBook].GetChild(0).gameObject.SetActive(true);
+            return true;
         }
         else
         {
             children[illustratedBook].GetChild(0).gameObject.SetActive(false);
+            return false;
         }
     }
 }

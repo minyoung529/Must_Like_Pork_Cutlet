@@ -55,11 +55,14 @@ public class BookButton : MonoBehaviour
     public void OnClickReward()
     {
         bookPanelTemplate.OnClickReward();
+
+        foreach (BookPanelTemplate panel in panels)
+            panel.ActiveEffect();
     }
 
     public bool CheckIsReward()
     {
-        foreach(BookPanelTemplate panel in panels)
+        foreach (BookPanelTemplate panel in panels)
         {
             if (panel.IsReward())
             {

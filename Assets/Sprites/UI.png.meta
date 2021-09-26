@@ -44,6 +44,9 @@ TextureImporter:
   - first:
       213: -8346291274449466048
     second: New
+  - first:
+      213: -343943630576144839
+    second: Quest_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,10 +151,10 @@ TextureImporter:
       name: UI_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 385
-        width: 513
-        height: 211
+        x: 48
+        y: 386
+        width: 511
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,7 +175,7 @@ TextureImporter:
         x: 621
         y: 387
         width: 254
-        height: 311
+        height: 310
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,9 +194,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 920
-        y: 370
+        y: 369
         width: 331
-        height: 336
+        height: 337
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,9 +214,9 @@ TextureImporter:
       name: UI_3
       rect:
         serializedVersion: 2
-        x: 1284
+        x: 1283
         y: 385
-        width: 417
+        width: 419
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -254,9 +257,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 125
+        y: 126
         width: 167
-        height: 160
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,9 +278,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 189
-        y: 125
+        y: 126
         width: 167
-        height: 160
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,9 +299,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 363
-        y: 125
+        y: 126
         width: 169
-        height: 160
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,9 +320,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 32
-        width: 84
-        height: 73
+        y: 33
+        width: 83
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,7 +340,7 @@ TextureImporter:
       name: Money
       rect:
         serializedVersion: 2
-        x: 150
+        x: 151
         y: 18
         width: 97
         height: 101
@@ -358,9 +361,9 @@ TextureImporter:
       name: Effect
       rect:
         serializedVersion: 2
-        x: 289
+        x: 290
         y: 62
-        width: 34
+        width: 32
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -379,10 +382,10 @@ TextureImporter:
       name: UI_12
       rect:
         serializedVersion: 2
-        x: 2209
-        y: 410
-        width: 341
-        height: 287
+        x: 2210
+        y: 411
+        width: 340
+        height: 285
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -400,10 +403,10 @@ TextureImporter:
       name: Quest_4
       rect:
         serializedVersion: 2
-        x: 541
-        y: 125
-        width: 168
-        height: 160
+        x: 540
+        y: 126
+        width: 169
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -421,9 +424,9 @@ TextureImporter:
       name: New
       rect:
         serializedVersion: 2
-        x: 356
+        x: 357
         y: 78
-        width: 20
+        width: 19
         height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -434,6 +437,27 @@ TextureImporter:
       bones: []
       spriteID: 04d4f727e440c2c80800000000000000
       internalID: -8346291274449466048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 126
+        width: 169
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e20cc17111a3bf0800000000000000
+      internalID: -343943630576144839
       vertices: []
       indices: 
       edges: []

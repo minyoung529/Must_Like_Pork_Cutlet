@@ -23,12 +23,12 @@ public class Cutlet
 
         price += (ulong)Mathf.RoundToInt(
             (Mathf.Pow(level + 1, 1.8f) *
-            Mathf.Pow(level + 1, 2.25f) +
-            Mathf.Pow(level, 1.2f) + code) *
+            Mathf.Pow(level + 1, 2f) +
+            Mathf.Pow(code, 1.2f) + code) *
             (code + 1) * 1.2f);
 
 
-        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 3f) * Mathf.Pow(code + 1, 3.2f));
+        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1, 2.1f) * Mathf.Pow(code + 1, 3.6f));
     }
 
     public int GetNextAddMoney()

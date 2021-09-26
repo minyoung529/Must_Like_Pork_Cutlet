@@ -62,7 +62,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.R))
         {
             user.money += 100000;
             UIManager.UpdatePanel();

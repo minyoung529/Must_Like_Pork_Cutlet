@@ -36,6 +36,17 @@ public class UIManager : MonoBehaviour
     [Header("메인 스크롤")]
     [SerializeField] private ScrollRect scrollRect;
 
+    [Header("슬라이더")]
+    [SerializeField] private Slider playerSlider;
+    [SerializeField] private Slider enemySlider;
+
+    [Header("파이트 패널")]
+    [SerializeField] private GameObject fightPanel;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private GameObject defeatPanel;
+    [SerializeField] private Text fightCountText;
+
+
     private ErrorMessage message;
 
     private HammerInformation hammerInformation;
@@ -145,7 +156,7 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
 
         mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원 / 클릭당 {2}원",
-            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney,GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
+            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney, GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
 
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -193,7 +204,7 @@ public class UIManager : MonoBehaviour
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
 
-        
+
 
         SettingUpgradePanel();
 
@@ -346,7 +357,7 @@ public class UIManager : MonoBehaviour
     {
         List<Hammer> hammerList = GameManager.Instance.CurrentUser.hammerList;
 
-        int rand = Random.Range(0, 100);
+        float rand = Random.Range(0f, 100f);
         int commonCnt = 0;
         int rareCnt = 0;
 
@@ -363,14 +374,15 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (rand < 1)
+        if (rand < 0.4f)
         {
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 6)
+        else if (rand < 3.5f)
         {
             rand = Random.Range(commonCnt, rareCnt);
+            Debug.Log("레어레어레어");
         }
 
         else
@@ -378,7 +390,7 @@ public class UIManager : MonoBehaviour
             rand = Random.Range(0, commonCnt);
         }
 
-        return rand;
+        return (int)rand;
     }
 
     public void ChangeHammerSprite(Sprite sprite)
@@ -499,9 +511,54 @@ public class UIManager : MonoBehaviour
 
     public void StopRandomPanelParticle()
     {
-        foreach(PanelBase panel in randomPanel)
+        foreach (PanelBase panel in randomPanel)
         {
             panel.Inactive();
         }
+    }
+
+    public void PlayerClickInFight()
+    {
+        playerSlider.value++;
+    }
+
+    private IEnumerator EnemyClick()
+    {
+        float random;
+        Debug.Log("df");
+
+        while (enemySlider.value != enemySlider.maxValue || playerSlider.value != playerSlider.maxValue)
+        {
+            Debug.Log("sd");
+            random = Random.Range(0.05f, 0.15f);
+            yield return new WaitForSeconds(random);
+            enemySlider.value++;
+        }
+    }
+
+    public void FightPanelPosition()
+    {
+        fightPanel.transform.DOMoveY(-3, 0f);
+    }
+
+    public void StartFignt()
+    {
+        StartCoroutine(CountText());
+    }
+
+    private IEnumerator CountText()
+    {
+        int count = 3;
+        fightCountText.transform.parent.DOScale(1f, 0.3f);
+        yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            fightCountText.text = count.ToString();
+            count--;
+            yield return new WaitForSeconds(1f);
+        }
+        fightCountText.transform.parent.DOScale(0f, 0.3f);
+        StartCoroutine(EnemyClick());
     }
 }

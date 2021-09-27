@@ -42,6 +42,8 @@ public class BookButton : MonoBehaviour
         }
     }
 
+    //도감을 클릭할 때마다 각 데이터의 새 거로 다시 끼워주는거야
+
     public void OnClickIllustratedBook()
     {
         OnClickCategory(0);

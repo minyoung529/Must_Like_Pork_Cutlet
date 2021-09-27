@@ -16,8 +16,12 @@ public class PartTimer
     public void LevelUp()
     {
         level++;
-        price += (ulong)Mathf.RoundToInt(Mathf.Pow(level - 1, 2) * Mathf.Pow(level, 1.15f) - 1 * level + 22);
-        mps += (int)(mps * 1.7f);
+        price += (ulong)Mathf.RoundToInt(Mathf.Pow(level, 2) * Mathf.Pow(code, 1.5f) - level + 22);
+
+        if (mps == 1)
+            mps++;
+        else
+            mps += (int)(mps * 0.5f);
     }
 
     public bool GetIsSold()

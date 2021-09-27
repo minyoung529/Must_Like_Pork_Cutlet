@@ -40,13 +40,16 @@ TextureImporter:
     second: Effect
   - first:
       213: -4532114073746202998
-    second: UI_12
+    second: UI_5
   - first:
       213: -8346291274449466048
     second: New
   - first:
       213: -343943630576144839
     second: Quest_5
+  - first:
+      213: 7301787903208175943
+    second: UI_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,10 +154,10 @@ TextureImporter:
       name: UI_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 386
-        width: 511
-        height: 210
+        x: 33
+        y: 384
+        width: 512
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +175,10 @@ TextureImporter:
       name: UI_1
       rect:
         serializedVersion: 2
-        x: 621
-        y: 387
-        width: 254
-        height: 310
+        x: 612
+        y: 392
+        width: 551
+        height: 680
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +196,10 @@ TextureImporter:
       name: UI_2
       rect:
         serializedVersion: 2
-        x: 920
+        x: 1243
         y: 369
-        width: 331
-        height: 337
+        width: 330
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,9 +217,9 @@ TextureImporter:
       name: UI_3
       rect:
         serializedVersion: 2
-        x: 1283
-        y: 385
-        width: 419
+        x: 1605
+        y: 384
+        width: 418
         height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -235,10 +238,10 @@ TextureImporter:
       name: UI_4
       rect:
         serializedVersion: 2
-        x: 1734
+        x: 2056
         y: 386
         width: 418
-        height: 329
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,9 +259,9 @@ TextureImporter:
       name: Quest_1
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 126
-        width: 167
+        width: 162
         height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -277,9 +280,9 @@ TextureImporter:
       name: Quest_2
       rect:
         serializedVersion: 2
-        x: 189
+        x: 174
         y: 126
-        width: 167
+        width: 168
         height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -298,9 +301,9 @@ TextureImporter:
       name: Quest_3
       rect:
         serializedVersion: 2
-        x: 363
+        x: 350
         y: 126
-        width: 169
+        width: 168
         height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -319,10 +322,10 @@ TextureImporter:
       name: Diamond
       rect:
         serializedVersion: 2
-        x: 36
-        y: 33
+        x: 23
+        y: 32
         width: 83
-        height: 71
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +343,10 @@ TextureImporter:
       name: Money
       rect:
         serializedVersion: 2
-        x: 151
+        x: 136
         y: 18
         width: 97
-        height: 101
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,9 +364,9 @@ TextureImporter:
       name: Effect
       rect:
         serializedVersion: 2
-        x: 290
+        x: 276
         y: 62
-        width: 32
+        width: 31
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -379,13 +382,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_12
+      name: UI_5
       rect:
         serializedVersion: 2
-        x: 2210
-        y: 411
+        x: 2532
+        y: 410
         width: 340
-        height: 285
+        height: 286
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,9 +406,9 @@ TextureImporter:
       name: Quest_4
       rect:
         serializedVersion: 2
-        x: 540
+        x: 527
         y: 126
-        width: 169
+        width: 168
         height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -424,10 +427,10 @@ TextureImporter:
       name: New
       rect:
         serializedVersion: 2
-        x: 357
-        y: 78
-        width: 19
-        height: 19
+        x: 342
+        y: 77
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,9 +448,9 @@ TextureImporter:
       name: Quest_5
       rect:
         serializedVersion: 2
-        x: 720
+        x: 707
         y: 126
-        width: 169
+        width: 167
         height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -458,6 +461,27 @@ TextureImporter:
       bones: []
       spriteID: 93e20cc17111a3bf0800000000000000
       internalID: -343943630576144839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_6
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 619
+        width: 167
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749b7f35969255560800000000000000
+      internalID: 7301787903208175943
       vertices: []
       indices: 
       edges: []

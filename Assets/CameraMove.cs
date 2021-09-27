@@ -9,4 +9,9 @@ public class CameraMove : MonoBehaviour
     {
         transform.DOMoveY(-3f, 1f);
     }
+
+    public void MainSceneMoving()
+    {
+        transform.DOMove(Vector3.zero, 1f);
+    }
 }

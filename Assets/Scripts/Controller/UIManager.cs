@@ -525,14 +525,24 @@ public class UIManager : MonoBehaviour
     private IEnumerator EnemyClick()
     {
         float random;
-        Debug.Log("df");
 
-        while (enemySlider.value != enemySlider.maxValue || playerSlider.value != playerSlider.maxValue)
+        while (enemySlider.value != enemySlider.maxValue && playerSlider.value != playerSlider.maxValue)
         {
-            Debug.Log("sd");
             random = Random.Range(0.05f, 0.15f);
             yield return new WaitForSeconds(random);
             enemySlider.value++;
+        }
+
+        if(enemySlider.value == enemySlider.maxValue)
+        {
+            defeatPanel.SetActive(true);
+            defeatPanel.transform.DOScale(1f, 0.3f);
+        }
+
+        else if (playerSlider.value == playerSlider.maxValue)
+        {
+            victoryPanel.SetActive(true);
+            victoryPanel.transform.DOScale(1f, 0.3f);
         }
     }
 
@@ -558,7 +568,7 @@ public class UIManager : MonoBehaviour
             count--;
             yield return new WaitForSeconds(1f);
         }
-        fightCountText.transform.parent.DOScale(0f, 0.3f);
+        fightCountText.transform.parent.DOScale(0f, 0.3f).SetEase(Ease.InBounce);
         StartCoroutine(EnemyClick());
     }
 }

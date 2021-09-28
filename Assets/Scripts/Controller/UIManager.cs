@@ -547,6 +547,7 @@ public class UIManager : MonoBehaviour
         {
             defeatPanel.SetActive(true);
             defeatPanel.transform.DOScale(1f, 0.3f);
+            SoundManager.Instance.DefeatSound();
         }
 
         else if (playerSlider.value == playerSlider.maxValue)
@@ -554,8 +555,8 @@ public class UIManager : MonoBehaviour
             victoryPanel.SetActive(true);
             victoryPanel.transform.DOScale(1f, 0.3f);
             GameManager.Instance.CurrentUser.diamond += 10;
+            SoundManager.Instance.VictorySound();
         }
-
     }
 
     public void FightPanelPosition()
@@ -578,6 +579,7 @@ public class UIManager : MonoBehaviour
         {
             fightCountText.text = count.ToString();
             count--;
+            SoundManager.Instance.CountSound();
             yield return new WaitForSeconds(1f);
         }
         fightCountText.transform.parent.DOScale(0f, 0.3f).SetEase(Ease.InBounce);

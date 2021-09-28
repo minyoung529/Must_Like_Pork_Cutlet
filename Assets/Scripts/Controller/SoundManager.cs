@@ -10,6 +10,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     [SerializeField] private AudioClip lobbyBGM;
     [SerializeField] private AudioClip gameBGM;
+    [SerializeField] private AudioClip fightBGM;
 
     [SerializeField] private AudioClip popButton;
     [SerializeField] private AudioClip bpButton;
@@ -24,6 +25,12 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip ddiringSound;
     [SerializeField] private AudioClip tadaSound;
 
+    [SerializeField] private AudioClip countSound;
+    [SerializeField] private AudioClip victorySound;
+    [SerializeField] private AudioClip defeatSound;
+
+    [SerializeField] private AudioClip fightClick;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -34,10 +41,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         StartCoroutine(EffectSound());
     }
 
-    private void Update()
-    {
-        backgroundAudioSource.volume = 0f;
-    }
+    //private void Update()
+    //{
+    //    backgroundAudioSource.volume = 0f;
+    //}
 
     public void LobbyBackground()
     {
@@ -47,7 +54,14 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void OnClickStart()
     {
+        backgroundAudioSource.pitch = 1.25f;
         StartCoroutine(FadeSound(gameBGM));
+    }
+
+    public void OnClickFight()
+    {
+        backgroundAudioSource.pitch = 1.25f;
+        StartCoroutine(FadeSound(fightBGM));
     }
 
     private IEnumerator FadeSound(AudioClip clip)
@@ -97,6 +111,17 @@ public class SoundManager : MonoSingleton<SoundManager>
         => effectAudioSource.PlayOneShot(ddiringSound);
 
     public void TadaSound()
-    => effectAudioSource.PlayOneShot(tadaSound);
+        => effectAudioSource.PlayOneShot(tadaSound);
 
+    public void CountSound()
+        => effectAudioSource.PlayOneShot(countSound);
+
+    public void VictorySound()
+        => effectAudioSource.PlayOneShot(victorySound);
+
+    public void DefeatSound()
+        => effectAudioSource.PlayOneShot(defeatSound);
+
+    public void FightClickSound()
+        => effectAudioSource.PlayOneShot(fightClick);
 }

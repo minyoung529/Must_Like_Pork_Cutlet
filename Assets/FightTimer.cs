@@ -32,6 +32,7 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
         cameraMove.FightCameraMoving();
         GameManager.Instance.UIManager.StartFignt();
         fight.SetActive(true);
+        SoundManager.Instance.OnClickFight();
         GameManager.Instance.CurrentUser.neighborFight++;
         enemyText.text = string.Format("¿·Áý µ·°¡½º ¾ÆÀú¾¾ / Level {0}", GameManager.Instance.CurrentUser.neighborFight);
     }

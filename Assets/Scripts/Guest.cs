@@ -25,7 +25,7 @@ public class Guest : MonoBehaviour
         transform.SetSiblingIndex(0);
         guestImage.sprite = GameManager.Instance.UIManager.guestSprites[Random.Range(0, 4)];
         transform.DOLocalMove(new Vector2(randomX, 150f), 0f);
-        transform.DOLocalMove(new Vector2(randomX, 347f), 0.4f);
+        transform.DOLocalMove(new Vector2(randomX, 280f), 0.4f);
 
         yield return new WaitForSeconds(0.5f);
 

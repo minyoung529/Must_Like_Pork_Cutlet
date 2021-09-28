@@ -170,7 +170,7 @@ public class HammerInformation : MonoBehaviour
         levelText.text = hammer.level.ToString();
         information.text = hammer.info;
         ability.text
-        = string.Format("다짐력 {0}\n다짐당 +{1}원\n치명타 +{2}%",
+        = string.Format("다짐력 {0}\n다짐당 +{1}원\n치명타 +{2:0.0#}%",
         hammer.clickCount, hammer.clickPerMoney, hammer.criticalHit);
     }
 
@@ -204,5 +204,17 @@ public class HammerInformation : MonoBehaviour
         {
             myAmountText.transform.parent.gameObject.SetActive(true);
         }
+    }
+
+    public void Enforce()
+    {
+        if (!hammer.isSold) return;
+        if (GameManager.Instance.CurrentUser.diamond < 10) return;
+
+        GameManager.Instance.CurrentUser.diamond -= 10;
+        GameManager.Instance.UIManager.UpdatePanel();
+        hammer.Enforce();
+        particle.Play();
+        UpdateInfo();
     }
 }

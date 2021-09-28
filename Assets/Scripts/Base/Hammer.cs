@@ -26,4 +26,14 @@ public class Hammer
     {
         this.isSold = isSold;
     }
+
+    public void Enforce()
+    {
+        level++;
+        //2.8 + 0.01 = 2.81
+        criticalHit += 0.01f;
+        clickPerMoney += (int)(clickPerMoney * 0.05f);
+        if (clickPerMoney <= 20)
+            clickPerMoney++;
+    }
 }

@@ -49,7 +49,7 @@ public class GameManager : MonoSingleton<GameManager>
         SetUser();
         SetCutletPrice();
 
-        if(user.isTutorial)
+        if (user.isTutorial)
         {
             Camera.main.transform.position = new Vector3(0f, 3f);
         }
@@ -58,6 +58,8 @@ public class GameManager : MonoSingleton<GameManager>
         {
             Camera.main.transform.position = new Vector3(3f, 0f);
         }
+
+        ConvertMoneyText(234233334);
     }
 
     public void Update()
@@ -194,27 +196,31 @@ public class GameManager : MonoSingleton<GameManager>
         else return false;
     }
 
-    //public float Randoms(params float[] percentages)
-    //{
-    //    float max = 0;
-    //    float random = 0;
+    public string ConvertMoneyText(ulong money)
+    {
+        string moneyStr = "";
+        string[] unitStr = { "만", "억", "조", "경", "해" };
+        ulong offset = 10000;
+        ulong extra = 0;
 
-    //    foreach (float percentage in percentages)
-    //    {
-    //        max += percentage;
-    //    }
+        //20000
+        if (money > offset)
+        {
+            for (int i = 4; i >= 0; i--)
+            {
+                if (money >= Mathf.Pow(offset, i + 1))
+                {
+                    moneyStr += string.Format("{0}{1}", (ulong)(money / Mathf.Pow(offset, i + 1)), unitStr[i]);
 
-    //    random = Random.Range(0f, max);
+                    if (i == 0)
+                    {
+                        extra = money % offset;
+                    }
+                }
+            }
+        }
 
-    //    foreach (float percentage in percentages)
-    //    {
-    //        if (random < percentage)
-    //        {
-    //            return percentage;
-    //        }
-    //    }
-
-    //    return 0;
-    //}
-
+        Debug.Log(string.Format("{0}{1}원", moneyStr, extra));
+        return string.Format("{0}{1}원", moneyStr, extra);
+    }
 }

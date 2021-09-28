@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject defeatPanel;
     [SerializeField] private Text fightCountText;
 
+    [Header("인게임 패널")]
+    [SerializeField] private GameObject inGameCanvas;
+
 
     private ErrorMessage message;
 
@@ -533,7 +536,7 @@ public class UIManager : MonoBehaviour
             enemySlider.value++;
         }
 
-        if(enemySlider.value == enemySlider.maxValue)
+        if (enemySlider.value == enemySlider.maxValue)
         {
             defeatPanel.SetActive(true);
             defeatPanel.transform.DOScale(1f, 0.3f);
@@ -543,7 +546,9 @@ public class UIManager : MonoBehaviour
         {
             victoryPanel.SetActive(true);
             victoryPanel.transform.DOScale(1f, 0.3f);
+            GameManager.Instance.CurrentUser.diamond += 10;
         }
+
     }
 
     public void FightPanelPosition()
@@ -570,5 +575,21 @@ public class UIManager : MonoBehaviour
         }
         fightCountText.transform.parent.DOScale(0f, 0.3f).SetEase(Ease.InBounce);
         StartCoroutine(EnemyClick());
+    }
+
+    public void ActiveInGame(bool isActive)
+    {
+        if(!isActive)
+        {
+            inGameCanvas.transform.DOScale(new Vector3(0, 1, 0), 0f);
+        }
+
+        if (isActive)
+        {
+            inGameCanvas.transform.DOScale(1f, 0f);
+
+            playerSlider.value = 0;
+            enemySlider.value = 0;
+        }
     }
 }

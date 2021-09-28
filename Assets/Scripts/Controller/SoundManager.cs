@@ -34,6 +34,11 @@ public class SoundManager : MonoSingleton<SoundManager>
         StartCoroutine(EffectSound());
     }
 
+    private void Update()
+    {
+        backgroundAudioSource.volume = 0f;
+    }
+
     public void LobbyBackground()
     {
         backgroundAudioSource.clip = lobbyBGM;

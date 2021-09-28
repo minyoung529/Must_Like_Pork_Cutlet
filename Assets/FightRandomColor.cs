@@ -17,13 +17,11 @@ public class FightRandomColor : MonoBehaviour
 
     private void OnEnable()
     {
-        isEnable = true;
         StartCoroutine(RandomColor());
     }
 
     private void OnDisable()
     {
-        isEnable = false;
         fightTimer.SetFillAmount(0f);
     }
 
@@ -31,7 +29,7 @@ public class FightRandomColor : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        while (isEnable)
+        while (gameObject.activeSelf)
         {
             image.DOColor(new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255), 0.5f);
             yield return new WaitForSeconds(0.5f);

@@ -9,34 +9,47 @@ public class CutletPanel : PanelBase
     private ParticleSystem particle;
 
     [SerializeField] private Text addMoneyText;
+
+    private void Start()
+    {
+        particle = GetComponentInChildren<ParticleSystem>();
+    }
+
     public override void Init(int num, Sprite sprite = null, int state = 0)
     {
         maxLevel = 10;
 
-        base.Init(num, sprite);
-        this.num = num;
         cutlet = GameManager.Instance.CurrentUser.cutlets[num];
-
-        SetUp();
         SetSoldItem();
-        particle = GetComponentInChildren<ParticleSystem>();
+
+        base.Init(num, sprite);
+
+        cutlet = GameManager.Instance.CurrentUser.cutlets[num];
     }
 
     public override void SetUp()
     {
-        nameText.text = cutlet?.name;
-        levelText.text = string.Format("{0} Level", cutlet?.level);
-        priceText.text = string.Format("{0}¿ø", cutlet?.price);
-        addMoneyText.text = string.Format("+{0}¿ø", cutlet?.GetNextAddMoney()); 
+        nameText.text = cutlet.name;
+        levelText.text = string.Format("{0} Level", cutlet.level);
+        priceText.text = GameManager.Instance.ConvertMoneyText(cutlet.price);
+        addMoneyText.text = string.Format("+{0}¿ø", cutlet.GetNextAddMoney());
     }
 
     public void OnClickCutlet()
     {
+        if(!GameManager.Instance.CurrentUser.isTutorial)
+        {
+            GameManager.Instance.TutorialManager.SetIsDoing(false);
+            GameManager.Instance.TutorialManager.Next();
+        }
+
         if (GameManager.Instance.CurrentUser.money < cutlet.price)
             return;
 
         if (num != 0)
+        {
             if (IsSecret()) return;
+        }
 
         GameManager.Instance.AddMoney(cutlet.price, false);
         cutlet = GameManager.Instance.CurrentUser.cutlets.Find(x => x.name == cutlet.name);

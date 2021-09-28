@@ -32,7 +32,7 @@ public class FirstStory : MonoBehaviour
 
     private IEnumerator StoryTelling()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(0.1f);
 
         for (int i = 0; i < storyImages.Length; i++)
         {
@@ -50,7 +50,7 @@ public class FirstStory : MonoBehaviour
             }
 
             storyImages[i].DOFade(0f, 1f);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         gameObject.SetActive(false);

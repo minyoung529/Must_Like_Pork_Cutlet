@@ -13,7 +13,6 @@ public class HammerPanel : PanelBase
 
     public void OnClickHammer()
     {
-        //여기계속오류
         GameManager.Instance.UIManager.ActiveHammerInfo(hammer.code);
     }
 
@@ -29,13 +28,19 @@ public class HammerPanel : PanelBase
     private void SetColor()
     {
         if (hammer.grade == "common")
+        {
             buttonImage.color = new Color32(207, 207, 207, 255);
+        }
 
         else if (hammer.grade == "rare")
+        {
             buttonImage.color = new Color32(190, 150, 250, 255);
+        }
 
         else if (hammer.grade == "legendary")
+        {
             buttonImage.color = new Color32(255, 216, 76, 255);
+        }
     }
 
     private void ChangeLine()
@@ -114,7 +119,7 @@ public class HammerPanel : PanelBase
 
         else
         {
-            buttonImage.color = Color.white;
+            SetColor();
             itemImage.color = Color.white;
         }
     }

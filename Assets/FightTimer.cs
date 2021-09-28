@@ -6,15 +6,17 @@ using UnityEngine.EventSystems;
 
 public class FightTimer : MonoBehaviour, IPointerUpHandler
 {
-    float maxTime = 120f;
+    int maxTime = 360;
+    int curTime = 0;
 
     Image fillImage;
     private bool isFight = false;
 
     CameraMove cameraMove;
 
-    [SerializeField]
-    GameObject fight;
+    [SerializeField] GameObject fight;
+    [SerializeField] Text timerText;
+    [SerializeField] Text enemyText;
 
     void Start()
     {
@@ -30,6 +32,8 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
         cameraMove.FightCameraMoving();
         GameManager.Instance.UIManager.StartFignt();
         fight.SetActive(true);
+        GameManager.Instance.CurrentUser.neighborFight++;
+        enemyText.text = string.Format("¿·Áý µ·°¡½º ¾ÆÀú¾¾ / Level {0}", GameManager.Instance.CurrentUser.neighborFight);
     }
 
     IEnumerator Timer()
@@ -37,15 +41,33 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if(fillImage.fillAmount != 1)
+            if (fillImage.fillAmount != 1)
             {
+                if (isFight)
+                {
+                    timerText.gameObject.SetActive(true);
+                }
+
+                curTime--;
                 fillImage.fillAmount += 1 / maxTime;
+
+                if (curTime / 60 < 1)
+                    timerText.text = string.Format("{0}ÃÊ", curTime % 60);
+
+                else
+                    timerText.text = string.Format("{0}ºÐ {1}ÃÊ", curTime / 60, curTime % 60);
+
                 isFight = false;
             }
 
             else
             {
                 fillImage.fillAmount = Mathf.Clamp(fillImage.fillAmount, 0, 1f);
+                if (!isFight)
+                {
+                    timerText.gameObject.SetActive(false);
+                    curTime = 360;
+                }
                 isFight = true;
             }
         }

@@ -21,7 +21,7 @@ public class PartTimerPanel : PanelBase
     public override void SetUp()
     {
         nameText.text = partTimer?.name;
-        priceText.text = string.Format("{0}¿ø", partTimer?.price);
+        priceText.text = GameManager.Instance.ConvertMoneyText(partTimer.price);
         levelText.text = string.Format("{0} Level",partTimer?.level);
     }
 

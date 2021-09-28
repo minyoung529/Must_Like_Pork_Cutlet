@@ -18,6 +18,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public UIManager UIManager { get; private set; }
     public QuestManager QuestManager { get; private set; }
+    public TutorialManager TutorialManager { get; private set; }
 
 
     [SerializeField] private Transform poolTransform;
@@ -37,7 +38,6 @@ public class GameManager : MonoSingleton<GameManager>
         if (user == null)
         {
             user.hammerList[0].amount++;
-            user.cutlets[0].level++;
         }
     }
 
@@ -45,6 +45,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         UIManager = GetComponent<UIManager>();
         QuestManager = GetComponent<QuestManager>();
+        TutorialManager = GetComponent<TutorialManager>();
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         SetUser();
         SetCutletPrice();
@@ -59,7 +60,7 @@ public class GameManager : MonoSingleton<GameManager>
             Camera.main.transform.position = new Vector3(3f, 0f);
         }
 
-        ConvertMoneyText(234233334);
+        ConvertMoneyText(5345344533);
     }
 
     public void Update()
@@ -210,17 +211,12 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 if (money >= Mathf.Pow(offset, i + 1))
                 {
-                    moneyStr += string.Format("{0}{1}", (ulong)(money / Mathf.Pow(offset, i + 1)), unitStr[i]);
-
-                    if (i == 0)
-                    {
-                        extra = money % offset;
-                    }
+                    moneyStr += string.Format("{0}{1} ", (int)(money / Mathf.Pow(offset, i + 1)), unitStr[i]);
+                    money -= (ulong)((int)(money / Mathf.Pow(offset, i + 1)) * Mathf.Pow(offset, i + 1));
                 }
             }
         }
 
-        Debug.Log(string.Format("{0}{1}¿ø", moneyStr, extra));
-        return string.Format("{0}{1}¿ø", moneyStr, extra);
+        return string.Format("{0}{1}¿ø", moneyStr, money);
     }
 }

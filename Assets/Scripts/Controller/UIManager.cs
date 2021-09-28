@@ -139,6 +139,12 @@ public class UIManager : MonoBehaviour
 
         if (count > GameManager.Instance.maxCutletCnt - 1)
         {
+            if(!GameManager.Instance.CurrentUser.isTutorial)
+            {
+                GameManager.Instance.TutorialManager.SetIsDoing(false);
+                GameManager.Instance.TutorialManager.Next();
+            }
+
             GameManager.Instance.AddMoney(GameManager.Instance.cutletMoney, true);
             GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
             GameManager.Instance.QuestManager.UpdateQuest();
@@ -155,11 +161,14 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePanel()
     {
-        moneyText.text = string.Format("{0}원\n{1}",
-            GameManager.Instance.CurrentUser.money, GameManager.Instance.CurrentUser.diamond);
+        moneyText.text = string.Format("{0}\n{1}",
+            GameManager.Instance.ConvertMoneyText(GameManager.Instance.CurrentUser.money),
+            GameManager.Instance.CurrentUser.diamond);
 
         mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원 / 클릭당 {2}원",
-            GameManager.Instance.cutletMoney, GameManager.Instance.mpsMoney, GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
+            GameManager.Instance.cutletMoney,
+            GameManager.Instance.mpsMoney,
+            GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
 
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -206,8 +215,6 @@ public class UIManager : MonoBehaviour
         {
             cutletsImage[i] = cutletsTransform.GetChild(i).gameObject.GetComponent<Image>();
         }
-
-
 
         SettingUpgradePanel();
 

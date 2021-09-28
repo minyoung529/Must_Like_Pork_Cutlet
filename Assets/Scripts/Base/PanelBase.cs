@@ -59,7 +59,7 @@ public class PanelBase : MonoBehaviour
             itemImage.color = Color.white;
         }
 
-        priceText.text = price + "¿ø";
+        priceText.text = GameManager.Instance.ConvertMoneyText(price);
         buttonImage.color = new Color32(0, 0, 0, 121);
 
         if (num > 0)

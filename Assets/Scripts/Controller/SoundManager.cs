@@ -8,9 +8,10 @@ public class SoundManager : MonoSingleton<SoundManager>
     private AudioSource backgroundAudioSource;
     private AudioSource effectAudioSource;
 
-    [SerializeField] private AudioClip lobbyBGM;
+    [SerializeField] private AudioClip[] lobbyBGMs;
     [SerializeField] private AudioClip gameBGM;
     [SerializeField] private AudioClip fightBGM;
+    [SerializeField] private AudioClip tutorialBGM;
 
     [SerializeField] private AudioClip popButton;
     [SerializeField] private AudioClip bpButton;
@@ -48,15 +49,23 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void LobbyBackground()
     {
-        backgroundAudioSource.clip = lobbyBGM;
+        backgroundAudioSource.clip = RandomLobbyBGM();
+        backgroundAudioSource.pitch = 1;
         backgroundAudioSource.Play();
     }
 
     public void OnClickStart()
     {
-        backgroundAudioSource.pitch = 1.25f;
+        backgroundAudioSource.pitch = 1;
         StartCoroutine(FadeSound(gameBGM));
     }
+
+    public void TutorialBackground()
+    {
+        backgroundAudioSource.pitch = 1;
+        StartCoroutine(FadeSound(tutorialBGM));
+    }
+
 
     public void OnClickFight()
     {
@@ -124,4 +133,9 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void FightClickSound()
         => effectAudioSource.PlayOneShot(fightClick);
+
+    private AudioClip RandomLobbyBGM()
+    {
+        return lobbyBGMs[Random.Range(0, lobbyBGMs.Length)];
+    }
 }

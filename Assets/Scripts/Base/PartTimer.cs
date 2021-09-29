@@ -21,12 +21,22 @@ public class PartTimer
         if (mps == 1)
             mps++;
         else
-            mps += (int)(mps * 0.5f);
+            mps += (int)(mps * 0.7f);
     }
 
     public bool GetIsSold()
     {
         return (level > 0);
+    }
+
+    public int GetNextMPS()
+    {
+        return mps + (int)(mps * 0.7f);
+    }
+
+    public void SetMPS(int mps)
+    {
+        this.mps = mps;
     }
 
     public void SetPrice(ulong price)

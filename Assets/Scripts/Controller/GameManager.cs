@@ -26,8 +26,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        SAVE_PATH = Application.persistentDataPath + "/Save";
-        //SAVE_PATH = Application.dataPath + "/Save";
+        //SAVE_PATH = Application.persistentDataPath + "/Save";
+        SAVE_PATH = Application.dataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
@@ -38,6 +38,8 @@ public class GameManager : MonoSingleton<GameManager>
         if (user == null)
         {
             user.hammerList[0].amount++;
+            user.hammerList[0].SetIsSold(true);
+
         }
     }
 
@@ -47,6 +49,7 @@ public class GameManager : MonoSingleton<GameManager>
         QuestManager = GetComponent<QuestManager>();
         TutorialManager = GetComponent<TutorialManager>();
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
+        InvokeRepeating("SaveToJson", 1f, 60f);
         SetUser();
         SetCutletPrice();
 
@@ -59,8 +62,6 @@ public class GameManager : MonoSingleton<GameManager>
         {
             Camera.main.transform.position = new Vector3(3f, 0f);
         }
-
-        ConvertMoneyText(5345344533);
     }
 
     public void Update()
@@ -172,7 +173,7 @@ public class GameManager : MonoSingleton<GameManager>
                 plus = (cutlet.code > 0) ? 4390 * Mathf.Pow(cutlet.code, 1.2f) : 128;
                 cutlet.SetPrice((ulong)Mathf.Round
                     (Mathf.Pow(cutlet.code + 3.3f, cutlet.code > 0 ? 0.8f * cutlet.code : 1)
-                    * Mathf.Pow(cutlet.code + 2, 4.65f) + plus));
+                    * Mathf.Pow(cutlet.code + 2, 4f) + plus));
 
                 cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 2, 5)));
             }
@@ -182,8 +183,10 @@ public class GameManager : MonoSingleton<GameManager>
         {
             if (!partTimer.GetIsSold())
             {
-                partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.2f) + 9900
-                    * Mathf.Pow(partTimer.code + 1, partTimer.code * 0.3f) * partTimer.code * 2f + 9900));
+                partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) + 9900
+                    * Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) * partTimer.code * 2f + 9900 * 1.5f));
+
+                partTimer.SetMPS(Mathf.RoundToInt((partTimer.code - 1) * Mathf.Pow(partTimer.code + 1, 6f)) + 1);
 
                 //=ROUND(POWER(E15+1,E15*0.2)+9900*POWER(E15+1,E15*0.3)*(E15*1.7) + 9900,0)
             }

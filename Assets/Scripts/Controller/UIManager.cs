@@ -165,10 +165,10 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.ConvertMoneyText(GameManager.Instance.CurrentUser.money),
             GameManager.Instance.CurrentUser.diamond);
 
-        mpsAndCutletText.text = string.Format("돈가스 가격 {0}원 / 초당 {1}원 / 클릭당 {2}원",
-            GameManager.Instance.cutletMoney,
-            GameManager.Instance.mpsMoney,
-            GameManager.Instance.CurrentUser.GetHammer().clickPerMoney);
+        mpsAndCutletText.text = string.Format("돈가스 가격 {0} / 초당 {1} / 클릭당 {2}",
+            GameManager.Instance.ConvertMoneyText(GameManager.Instance.cutletMoney),
+            GameManager.Instance.ConvertMoneyText(GameManager.Instance.mpsMoney),
+            GameManager.Instance.ConvertMoneyText((ulong) GameManager.Instance.CurrentUser.GetHammer().clickPerMoney));
 
         foreach (PanelBase upgradePanels in upgradePanels)
         {

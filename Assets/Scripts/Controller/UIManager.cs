@@ -668,4 +668,10 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(7f);
         goldCutlet.rectTransform.DOScale(0f, 0.3f).OnComplete(() => goldCutlet.gameObject.SetActive(false));
     }
+
+    public void SetBGMVolume(Slider slider)
+        => GameManager.Instance.CurrentUser.bgmVolume = slider.value;
+
+    public void SetEffectSoundVolume(Slider slider)
+        => GameManager.Instance.CurrentUser.effectSoundVolume = slider.value;
 }

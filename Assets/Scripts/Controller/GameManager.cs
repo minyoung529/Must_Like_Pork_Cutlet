@@ -36,7 +36,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         LoadFromJson();
-
     }
 
     public void Start()
@@ -140,6 +139,7 @@ public class GameManager : MonoSingleton<GameManager>
             Debug.Log("Save, Load");
             SaveToJson();
             LoadFromJson();
+
         }
     }
 

@@ -38,14 +38,12 @@ public class SoundManager : MonoSingleton<SoundManager>
         backgroundAudioSource = GetComponent<AudioSource>();
         effectAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
 
+        backgroundAudioSource.volume = GameManager.Instance.CurrentUser.bgmVolume;
+        effectAudioSource.volume = GameManager.Instance.CurrentUser.effectSoundVolume;
+
         LobbyBackground();
         StartCoroutine(EffectSound());
     }
-
-    //private void Update()
-    //{
-    //    backgroundAudioSource.volume = 0f;
-    //}
 
     public void LobbyBackground()
     {
@@ -79,7 +77,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         yield return new WaitForSeconds(1.5f);
         backgroundAudioSource.clip = clip;
         backgroundAudioSource.Play();
-        backgroundAudioSource.DOFade(1f, 2f);
+        backgroundAudioSource.DOFade(GameManager.Instance.CurrentUser.bgmVolume, 2f);
     }
 
     private IEnumerator EffectSound()

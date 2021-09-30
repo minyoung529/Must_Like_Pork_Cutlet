@@ -5,7 +5,6 @@ using UnityEngine;
 [Serializable]
 public class User
 {
-    public string nickname;
     public ulong onClickMoney;
     public ulong money;
     public int diamond;
@@ -17,15 +16,12 @@ public class User
     public bool isTutorial;
     public int neighborFight;
 
+    public float bgmVolume;
+    public float effectSoundVolume;
 
     public List<Quest> Quests
     {
         get { return questLists; }
-    }
-
-    public string GetNickname()
-    {
-        return nickname;
     }
 
     public string UserHammer()

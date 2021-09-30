@@ -7,6 +7,7 @@ using DG.Tweening;
 public class MenuButton : MonoBehaviour, IPointerUpHandler
 {
     [SerializeField] private GameObject effect;
+    [SerializeField] private GameObject[] texts;
     List<RectTransform> children = new List<RectTransform>();
     private bool isActive = true;
     private BookButton bookButton;
@@ -45,11 +46,13 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         if (!isActive)
         {
             StartCoroutine(SetMenu());
+            ActiveTexts(true);
         }
 
         else
         {
             StartCoroutine(UnSetMenu());
+            ActiveTexts(false);
         }
     }
 
@@ -107,6 +110,14 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
         {
             children[illustratedBook].GetChild(0).gameObject.SetActive(false);
             return false;
+        }
+    }
+
+    private void ActiveTexts(bool isActive)
+    {
+        for(int i = 0; i<texts.Length; i++)
+        {
+            texts[i].SetActive(isActive);
         }
     }
 }

@@ -20,6 +20,7 @@ public class GameManager : MonoSingleton<GameManager>
     public QuestManager QuestManager { get; private set; }
     public TutorialManager TutorialManager { get; private set; }
     public bool isGoldCutlet { get; private set; }
+    public bool isGameStart;
 
 
     [SerializeField] private Transform poolTransform;
@@ -78,15 +79,26 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void EarnMoneyPerSecond()
     {
+        if (!isGameStart) return;
+
         mpsMoney = 0;
 
         foreach (PartTimer partTimer in user.partTimerList)
         {
             if (partTimer.GetIsSold())
             {
-                mpsMoney += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level);
-                AddMoney((ulong)partTimer.mps * (ulong)Mathf.RoundToInt((float)partTimer.level), true);
+                mpsMoney += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt(partTimer.level);
             }
+        }
+
+        if (isGoldCutlet)
+        {
+            AddMoney(mpsMoney * 2, true);
+        }
+
+        else
+        {
+            AddMoney(mpsMoney, true);
         }
 
         user.Quests[1].PlusCurValue(1);
@@ -187,7 +199,7 @@ public class GameManager : MonoSingleton<GameManager>
                 partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) + 9900
                     * Mathf.Pow(partTimer.code, partTimer.code * 0.5f) * partTimer.code * 2f + 9900 * 1.5f));
 
-                partTimer.SetMPS(Mathf.RoundToInt(partTimer.code * Mathf.Pow(partTimer.code + 1, 5f) + 1));
+                partTimer.SetMPS(Mathf.RoundToInt(partTimer.code * Mathf.Pow(partTimer.code + 1, 5.7f) + 1));
 
                 //=ROUND(POWER(E15+1,E15*0.2)+9900*POWER(E15+1,E15*0.3)*(E15*1.7) + 9900,0)
             }
@@ -226,7 +238,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         isGoldCutlet = true;
         SoundManager.Instance.SetBGMPitch(1.25f);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
         isGoldCutlet = false;
         SoundManager.Instance.SetBGMPitch(1f);
     }
@@ -234,5 +246,10 @@ public class GameManager : MonoSingleton<GameManager>
     public void OnClickGoldCutlet()
     {
         StartCoroutine(GoldCutlet());
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

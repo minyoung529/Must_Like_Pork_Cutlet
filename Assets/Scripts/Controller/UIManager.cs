@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject inGameCanvas;
 
     [Header("황금 돈가스")]
-    [SerializeField] private GameObject goldCutlet;
+    [SerializeField] private Image goldCutlet;
 
     private ErrorMessage message;
 
@@ -117,7 +117,14 @@ public class UIManager : MonoBehaviour
     {
         Hammer hammer = GameManager.Instance.CurrentUser.GetHammer();
 
-        GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
+        if (GameManager.Instance.isGoldCutlet)
+        {
+            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney * 2, true);
+        }
+        else
+        {
+            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
+        }
 
         if (GameManager.Instance.RandomSelecting(0.5f))
         {
@@ -159,7 +166,6 @@ public class UIManager : MonoBehaviour
             }
 
             GameManager.Instance.CurrentUser.Quests[0].PlusCurValue(1);
-            GameManager.Instance.QuestManager.UpdateQuest();
 
             SoundManager.Instance.MoneySound();
             UpdatePanel();
@@ -177,10 +183,22 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.ConvertMoneyText(GameManager.Instance.CurrentUser.money),
             GameManager.Instance.CurrentUser.diamond);
 
-        mpsAndCutletText.text = string.Format("돈가스 가격 {0} / 초당 {1} / 클릭당 {2}",
-            GameManager.Instance.ConvertMoneyText(GameManager.Instance.cutletMoney),
-            GameManager.Instance.ConvertMoneyText(GameManager.Instance.mpsMoney),
-            GameManager.Instance.ConvertMoneyText((ulong)GameManager.Instance.CurrentUser.GetHammer().clickPerMoney));
+        if (GameManager.Instance.isGoldCutlet)
+        {
+            mpsAndCutletText.text = string.Format("돈가스 가격 {0} x 2 / 초당 {1} x 2/ 클릭당 {2} x 2",
+    GameManager.Instance.ConvertMoneyText(GameManager.Instance.cutletMoney),
+    GameManager.Instance.ConvertMoneyText(GameManager.Instance.mpsMoney),
+    GameManager.Instance.ConvertMoneyText((ulong)GameManager.Instance.CurrentUser.GetHammer().clickPerMoney));
+
+        }
+        else
+        {
+            mpsAndCutletText.text = string.Format("돈가스 가격 {0} / 초당 {1} / 클릭당 {2}",
+    GameManager.Instance.ConvertMoneyText(GameManager.Instance.cutletMoney),
+    GameManager.Instance.ConvertMoneyText(GameManager.Instance.mpsMoney),
+    GameManager.Instance.ConvertMoneyText((ulong)GameManager.Instance.CurrentUser.GetHammer().clickPerMoney));
+
+        }
 
         foreach (PanelBase upgradePanels in upgradePanels)
         {
@@ -520,6 +538,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickStart()
     {
+        GameManager.Instance.isGameStart = true;
         Camera.main.transform.DOLocalMoveY(0f, 1f);
     }
 
@@ -617,9 +636,12 @@ public class UIManager : MonoBehaviour
     public void ActiveGoldCutlet()
     {
         if (GameManager.Instance.isGoldCutlet) return;
+        if (goldCutlet.gameObject.activeSelf) return;
 
         float rand = Random.Range(0, 100f);
-        if(rand < 0.05f)
+        Debug.Log(rand);
+
+        if (rand < 0.06f)
         {
             StartCoroutine(GoldCutlet());
         }
@@ -627,9 +649,10 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator GoldCutlet()
     {
-        goldCutlet.SetActive(true);
-        goldCutlet.transform.position = new Vector2(Random.Range(-1300f, 1300f), Random.Range(-580f, 580f));
+        goldCutlet.gameObject.SetActive(true);
+        goldCutlet.rectTransform.DOScale(1f,0.5f);
+        goldCutlet.rectTransform.localPosition = new Vector2(Random.Range(-1300f, 1300f), Random.Range(-580f, 580f));
         yield return new WaitForSeconds(7f);
-        goldCutlet.SetActive(false);
+        goldCutlet.rectTransform.DOScale(0f, 0.3f).OnComplete(() => goldCutlet.gameObject.SetActive(false));
     }
 }

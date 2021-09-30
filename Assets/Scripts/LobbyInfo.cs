@@ -4,7 +4,7 @@ using DG.Tweening;
 public class LobbyInfo : MonoBehaviour
 {
     [SerializeField] Transform info;
-    private bool isActive;
+    private bool isActive = true;
 
     public void OnClickInfo()
     {

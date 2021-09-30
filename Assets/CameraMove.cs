@@ -28,10 +28,12 @@ public class CameraMove : MonoBehaviour
 
     private IEnumerator RandomColor()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 80; i++)
         {
             mainCamera.DOColor(new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255), 0.5f);
             yield return new WaitForSeconds(0.25f);
         }
+
+        mainCamera.DOColor(new Color32(130, 106, 74, 255),1f);
     }
 }

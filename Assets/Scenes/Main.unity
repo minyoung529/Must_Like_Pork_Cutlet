@@ -8171,7 +8171,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 548.5, y: 332}
+  m_SizeDelta: {x: 321.3, y: 291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272364325
 MonoBehaviour:
@@ -25393,7 +25393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00000044354, y: 2994980}
+  m_AnchoredPosition: {x: 0.00000044354, y: 3020953.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &770925437
@@ -35809,6 +35809,7 @@ MonoBehaviour:
   fight: {fileID: 36383906}
   timerText: {fileID: 1385580284}
   enemyText: {fileID: 514990163}
+  fillImage: {fileID: 1927769030}
 --- !u!1 &1104092512
 GameObject:
   m_ObjectHideFlags: 0
@@ -53542,6 +53543,7 @@ MonoBehaviour:
   fightCountText: {fileID: 550552864}
   inGameCanvas: {fileID: 769256659}
   goldCutlet: {fileID: 1536492974}
+  exitPanel: {fileID: 149928728}
 --- !u!114 &1674924258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62706,7 +62708,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -63058,7 +63060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 48, y: -1047.9681}
+  m_AnchoredPosition: {x: 48, y: -1047.9673}
   m_SizeDelta: {x: -190.7, y: -152.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1957758104

@@ -52,6 +52,9 @@ public class UIManager : MonoBehaviour
     [Header("황금 돈가스")]
     [SerializeField] private Image goldCutlet;
 
+    [Header("나가기 패널")]
+    [SerializeField] private Image exitPanel;
+
     private ErrorMessage message;
 
     private HammerInformation hammerInformation;
@@ -78,6 +81,16 @@ public class UIManager : MonoBehaviour
     {
         FirstSetting();
         ActivePartTimers();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (fightPanel.activeSelf) return;
+            exitPanel.gameObject.SetActive(true);
+            exitPanel.transform.DOScale(1f, 0.4f);
+        }
     }
 
     private void SettingUpgradePanel()
@@ -490,7 +503,7 @@ public class UIManager : MonoBehaviour
 
         RandomHammer(num);
         GameManager.Instance.AddDiamond(-num * 10);
-        GameManager.Instance.CurrentUser.Quests[4].PlusCurValue(num);
+        GameManager.Instance.CurrentUser.Quests[5].PlusCurValue(num);
         StartCoroutine(WaitingRandom(num));
         UpdatePanel();
     }
@@ -641,7 +654,7 @@ public class UIManager : MonoBehaviour
         float rand = Random.Range(0, 100f);
         Debug.Log(rand);
 
-        if (rand < 0.06f)
+        if (rand < 0.005f)
         {
             StartCoroutine(GoldCutlet());
         }
@@ -650,7 +663,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator GoldCutlet()
     {
         goldCutlet.gameObject.SetActive(true);
-        goldCutlet.rectTransform.DOScale(1f,0.5f);
+        goldCutlet.rectTransform.DOScale(1f, 0.5f);
         goldCutlet.rectTransform.localPosition = new Vector2(Random.Range(-1300f, 1300f), Random.Range(-580f, 580f));
         yield return new WaitForSeconds(7f);
         goldCutlet.rectTransform.DOScale(0f, 0.3f).OnComplete(() => goldCutlet.gameObject.SetActive(false));

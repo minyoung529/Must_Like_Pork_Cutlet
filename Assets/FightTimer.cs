@@ -9,7 +9,7 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
     int maxTime = 360;
     int curTime = 0;
 
-    Image fillImage;
+    
     private bool isFight = false;
 
     CameraMove cameraMove;
@@ -17,11 +17,11 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
     [SerializeField] GameObject fight;
     [SerializeField] Text timerText;
     [SerializeField] Text enemyText;
+    [SerializeField] Image fillImage;
 
     void Start()
     {
         cameraMove = Camera.main.GetComponent<CameraMove>();
-        fillImage = transform.GetChild(0).GetComponent<Image>();
         StartCoroutine(Timer());
     }
 
@@ -50,7 +50,7 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
                 }
 
                 curTime--;
-                fillImage.fillAmount += 1 / maxTime;
+                fillImage.fillAmount += (float)(1f / maxTime);
 
                 if (curTime / 60 < 1)
                     timerText.text = string.Format("{0}ÃÊ", curTime % 60);
@@ -64,6 +64,7 @@ public class FightTimer : MonoBehaviour, IPointerUpHandler
             else
             {
                 fillImage.fillAmount = Mathf.Clamp(fillImage.fillAmount, 0, 1f);
+
                 if (!isFight)
                 {
                     timerText.gameObject.SetActive(false);

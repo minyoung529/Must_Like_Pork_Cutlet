@@ -42,6 +42,7 @@ public class TutorialManager : MonoBehaviour
         {
             index = tutorialScript.Count - 1;
             scriptIndex = tutorialScript[index].scripts.Count - 1;
+            GameManager.Instance.CurrentUser.isTutorial = true;
             Next();
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PartTimerPanel : PanelBase
 {
+    [SerializeField] private Text nextMPS;
     private PartTimer partTimer;
     private ParticleSystem particle;
 
@@ -23,6 +24,7 @@ public class PartTimerPanel : PanelBase
         nameText.text = partTimer?.name;
         priceText.text = GameManager.Instance.ConvertMoneyText(partTimer.price);
         levelText.text = string.Format("{0} Level",partTimer?.level);
+        nextMPS.text = string.Format("+ √ ¥Á {0}", GameManager.Instance.ConvertMoneyText((ulong) partTimer.GetNextMPS()));
     }
 
     protected override void SecretInfo()

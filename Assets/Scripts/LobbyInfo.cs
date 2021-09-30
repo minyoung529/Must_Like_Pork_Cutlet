@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LobbyInfo : MonoBehaviour
 {
-    [SerializeField] ActiveScale info;
+    [SerializeField] Transform info;
     private bool isActive;
 
     public void OnClickInfo()
@@ -12,13 +11,13 @@ public class LobbyInfo : MonoBehaviour
         if(isActive)
         {
             SoundManager.Instance.PaperSound();
-            info.Inactive();
+            info.DOScale(1, 0.3f);
             isActive = false;
         }
         else
         {
             SoundManager.Instance.PaperSound();
-            info.Active();
+            info.DOScale(0, 0.3f);
             isActive = true;
         }
     }

@@ -19,6 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     public UIManager UIManager { get; private set; }
     public QuestManager QuestManager { get; private set; }
     public TutorialManager TutorialManager { get; private set; }
+    public bool isGoldCutlet { get; private set; }
 
 
     [SerializeField] private Transform poolTransform;
@@ -26,8 +27,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        //SAVE_PATH = Application.persistentDataPath + "/Save";
-        SAVE_PATH = Application.dataPath + "/Save";
+        SAVE_PATH = Application.persistentDataPath + "/Save";
+        //SAVE_PATH = Application.dataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
@@ -35,12 +36,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         LoadFromJson();
 
-        if (user == null)
-        {
-            user.hammerList[0].amount++;
-            user.hammerList[0].SetIsSold(true);
-
-        }
     }
 
     public void Start()
@@ -48,8 +43,10 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager = GetComponent<UIManager>();
         QuestManager = GetComponent<QuestManager>();
         TutorialManager = GetComponent<TutorialManager>();
+
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         InvokeRepeating("SaveToJson", 1f, 60f);
+
         SetUser();
         SetCutletPrice();
 
@@ -95,6 +92,7 @@ public class GameManager : MonoSingleton<GameManager>
         user.Quests[1].PlusCurValue(1);
         QuestManager.UpdateQuest();
         UIManager.UpdatePanel();
+        UIManager.ActiveGoldCutlet();
     }
 
     public void SetCutletPrice()
@@ -124,6 +122,9 @@ public class GameManager : MonoSingleton<GameManager>
 
         else
         {
+            user.hammerList[0].amount++;
+            user.hammerList[0].SetIsSold(true);
+
             Debug.Log("Save, Load");
             SaveToJson();
             LoadFromJson();
@@ -184,9 +185,9 @@ public class GameManager : MonoSingleton<GameManager>
             if (!partTimer.GetIsSold())
             {
                 partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) + 9900
-                    * Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) * partTimer.code * 2f + 9900 * 1.5f));
+                    * Mathf.Pow(partTimer.code, partTimer.code * 0.5f) * partTimer.code * 2f + 9900 * 1.5f));
 
-                partTimer.SetMPS(Mathf.RoundToInt((partTimer.code - 1) * Mathf.Pow(partTimer.code + 1, 6f)) + 1);
+                partTimer.SetMPS(Mathf.RoundToInt(partTimer.code * Mathf.Pow(partTimer.code + 1, 5f) + 1));
 
                 //=ROUND(POWER(E15+1,E15*0.2)+9900*POWER(E15+1,E15*0.3)*(E15*1.7) + 9900,0)
             }
@@ -203,11 +204,9 @@ public class GameManager : MonoSingleton<GameManager>
     public string ConvertMoneyText(ulong money)
     {
         string moneyStr = "";
-        string[] unitStr = { "만", "억", "조", "경", "해" };
+        string[] unitStr = { "만", "억", "조", "경", "해", "자", "양" };
         ulong offset = 10000;
-        ulong extra = 0;
 
-        //20000
         if (money > offset)
         {
             for (int i = 4; i >= 0; i--)
@@ -221,5 +220,19 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         return string.Format("{0}{1}원", moneyStr, money);
+    }
+
+    private IEnumerator GoldCutlet()
+    {
+        isGoldCutlet = true;
+        SoundManager.Instance.SetBGMPitch(1.25f);
+        yield return new WaitForSeconds(10f);
+        isGoldCutlet = false;
+        SoundManager.Instance.SetBGMPitch(1f);
+    }
+
+    public void OnClickGoldCutlet()
+    {
+        StartCoroutine(GoldCutlet());
     }
 }

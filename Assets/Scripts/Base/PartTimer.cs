@@ -11,6 +11,7 @@ public class PartTimer
     public int level;
     public ulong price;
     public int mps;
+    public int mpsOffset;
     public bool isReward;
 
     public void LevelUp()
@@ -18,10 +19,7 @@ public class PartTimer
         level++;
         price += (ulong)Mathf.RoundToInt(Mathf.Pow(level, 2) * Mathf.Pow(code, 1.5f) - level + 22);
 
-        if (mps == 1)
-            mps++;
-        else
-            mps += (int)(mps * 0.7f);
+        mps += mpsOffset;
     }
 
     public bool GetIsSold()
@@ -31,12 +29,14 @@ public class PartTimer
 
     public int GetNextMPS()
     {
-        return mps + (int)(mps * 0.7f);
+        if (!GetIsSold()) return mps;
+        return mps + mpsOffset;
     }
 
     public void SetMPS(int mps)
     {
-        this.mps = mps;
+        mpsOffset = mps;
+        this.mps = mpsOffset;
     }
 
     public void SetPrice(ulong price)

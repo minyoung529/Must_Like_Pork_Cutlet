@@ -89,6 +89,11 @@ public class SoundManager : MonoSingleton<SoundManager>
         effectAudioSource.volume = 1f;
     }
 
+    public void SetBGMPitch(float pitch)
+    {
+        backgroundAudioSource.pitch = pitch;
+    }
+
     public void PopButton()
         => effectAudioSource.PlayOneShot(popButton);
 

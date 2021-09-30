@@ -12,9 +12,7 @@ public class MenuButton : MonoBehaviour, IPointerUpHandler
     private BookButton bookButton;
 
     private int illustratedBook = 0;
-    private int randomHammer = 1;
     private int quest = 2;
-    private int setting = 3;
 
     private void Start()
     {

@@ -14,7 +14,7 @@ public class User
     public List<Hammer> hammerList;
     public List<Cutlet> cutlets;
     [SerializeField] private List<Quest> questLists;
-    public bool isTutorial = false;
+    public bool isTutorial;
     public int neighborFight;
 
 

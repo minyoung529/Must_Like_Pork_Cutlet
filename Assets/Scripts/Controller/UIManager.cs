@@ -130,20 +130,22 @@ public class UIManager : MonoBehaviour
     {
         Hammer hammer = GameManager.Instance.CurrentUser.GetHammer();
 
-        if (GameManager.Instance.isGoldCutlet)
-        {
-            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney * 2, true);
-        }
-        else
-        {
-            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
-        }
-
         if (GameManager.Instance.RandomSelecting(0.5f))
         {
             cutlet.CriticalHit(1);
             return;
         }
+
+        if (GameManager.Instance.isGoldCutlet)
+        {
+            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney * 2, true);
+        }
+
+        else
+        {
+            GameManager.Instance.AddMoney((ulong)hammer.clickPerMoney, true);
+        }
+        
 
         if (GameManager.Instance.RandomSelecting(GameManager.Instance.CurrentUser.GetHammer().criticalHit))
         {
@@ -159,6 +161,7 @@ public class UIManager : MonoBehaviour
         countText.text = count.ToString();
         cutlet.Move();
         cutlet.SetSprite(count);
+        SoundManager.Instance.CutletClickSound();
 
         if (count > GameManager.Instance.maxCutletCnt - 1)
         {
@@ -242,7 +245,6 @@ public class UIManager : MonoBehaviour
 
         hammerInformation.gameObject.SetActive(false);
         partTimerInformation.gameObject.SetActive(false);
-        message.gameObject.SetActive(false);
 
         List<PartTimer> partTimers = GameManager.Instance.CurrentUser.partTimerList;
 
@@ -432,10 +434,9 @@ public class UIManager : MonoBehaviour
             rand = Random.Range(rareCnt, hammerList.Count);
         }
 
-        else if (rand < 3.5f)
+        else if (rand < 3.4f)
         {
             rand = Random.Range(commonCnt, rareCnt);
-            Debug.Log("레어레어레어");
         }
 
         else
@@ -600,6 +601,7 @@ public class UIManager : MonoBehaviour
             victoryPanel.transform.DOScale(1f, 0.3f);
             GameManager.Instance.CurrentUser.diamond += 10;
             SoundManager.Instance.VictorySound();
+            GameManager.Instance.CurrentUser.Quests[6].PlusCurValue(1);
         }
     }
 
@@ -652,9 +654,8 @@ public class UIManager : MonoBehaviour
         if (goldCutlet.gameObject.activeSelf) return;
 
         float rand = Random.Range(0, 100f);
-        Debug.Log(rand);
 
-        if (rand < 0.005f)
+        if (rand < 0.009f)
         {
             StartCoroutine(GoldCutlet());
         }

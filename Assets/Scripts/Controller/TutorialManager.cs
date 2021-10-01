@@ -36,16 +36,7 @@ public class TutorialManager : MonoBehaviour
             lobbyPanel.transform.DOScale(1f, 0f);
         }
     }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            index = tutorialScript.Count - 1;
-            scriptIndex = tutorialScript[index].scripts.Count - 1;
-            GameManager.Instance.CurrentUser.isTutorial = true;
-            Next();
-        }
-    }
+
     public void Next()
     {
         if (index == tutorialScript.Count - 1 && scriptIndex == tutorialScript[index].scripts.Count - 1)

@@ -30,6 +30,7 @@ public class Quest
     public void SetCurValue(int value)
     {
         currentValue = value;
+        GameManager.Instance.QuestManager.UpdateQuest();
     }
 
     public void PlusCurValue(int value)

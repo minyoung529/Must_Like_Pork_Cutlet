@@ -18,7 +18,6 @@ public class PartTimer
     {
         level++;
         price += (ulong)Mathf.RoundToInt(Mathf.Pow(level, 2) * Mathf.Pow(code, 1.5f) - level + 22);
-
         mps += mpsOffset;
     }
 

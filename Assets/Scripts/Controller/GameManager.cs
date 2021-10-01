@@ -26,8 +26,14 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private Transform poolTransform;
     public Transform Pool { get { return poolTransform; } }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     private void Awake()
     {
+
         SAVE_PATH = Application.persistentDataPath + "/Save";
         //SAVE_PATH = Application.dataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
@@ -61,21 +67,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetKey(KeyCode.R))
-        {
-            user.money += 100000;
-            UIManager.UpdatePanel();
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            user.diamond += 100;
-            UIManager.UpdatePanel();
-        }
-    }
-
     public void EarnMoneyPerSecond()
     {
         if (!isGameStart) return;
@@ -85,23 +76,16 @@ public class GameManager : MonoSingleton<GameManager>
         foreach (PartTimer partTimer in user.partTimerList)
         {
             if (partTimer.GetIsSold())
-            {
                 mpsMoney += (ulong)partTimer.mps * (ulong)Mathf.RoundToInt(partTimer.level);
-            }
         }
 
         if (isGoldCutlet)
-        {
             AddMoney(mpsMoney * 2, true);
-        }
 
         else
-        {
             AddMoney(mpsMoney, true);
-        }
 
         user.Quests[1].PlusCurValue(1);
-        QuestManager.UpdateQuest();
         UIManager.UpdatePanel();
         UIManager.ActiveGoldCutlet();
     }
@@ -113,20 +97,16 @@ public class GameManager : MonoSingleton<GameManager>
         foreach (Cutlet cutlet in user.cutlets)
         {
             if (cutlet.GetIsSold())
-            {
                 cutletMoney += (ulong)cutlet.addMoney;
-            }
         }
     }
 
     private void LoadFromJson()
     {
-        string json = "";
+        string json;
 
         if (File.Exists(SAVE_PATH + SAVE_FILENAME))
         {
-            Debug.Log("Load");
-
             json = File.ReadAllText(SAVE_PATH + SAVE_FILENAME);
             user = JsonUtility.FromJson<User>(json);
         }
@@ -136,17 +116,13 @@ public class GameManager : MonoSingleton<GameManager>
             user.hammerList[0].amount++;
             user.hammerList[0].SetIsSold(true);
 
-            Debug.Log("Save, Load");
             SaveToJson();
             LoadFromJson();
-
         }
     }
 
     private void SaveToJson()
     {
-        Debug.Log("SaveToJson");
-
         SAVE_PATH = Application.persistentDataPath + "/Save";
 
         if (user == null) return;
@@ -185,10 +161,11 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 plus = (cutlet.code > 0) ? 4390 * Mathf.Pow(cutlet.code, 1.2f) : 128;
                 cutlet.SetPrice((ulong)Mathf.Round
-                    (Mathf.Pow(cutlet.code + 3.3f, cutlet.code > 0 ? 0.8f * cutlet.code : 1)
-                    * Mathf.Pow(cutlet.code + 2, 4f) + plus));
+                    (Mathf.Pow(cutlet.code + 3f, cutlet.code > 0 ? 0.8f * cutlet.code : 1)
+                    * Mathf.Pow(cutlet.code + 3, 2f) + plus));
 
                 cutlet.SetAddMoney(Mathf.RoundToInt(Mathf.Pow(cutlet.code + 2, 5)));
+
             }
         }
 
@@ -197,9 +174,9 @@ public class GameManager : MonoSingleton<GameManager>
             if (!partTimer.GetIsSold())
             {
                 partTimer.SetPrice((ulong)Mathf.RoundToInt(Mathf.Pow(partTimer.code + 1, partTimer.code * 0.5f) + 9900
-                    * Mathf.Pow(partTimer.code, partTimer.code * 0.5f) * partTimer.code * 2f + 9900 * 1.5f));
+                    * Mathf.Pow(partTimer.code, partTimer.code * 0.5f) * partTimer.code + 9900));
 
-                partTimer.SetMPS(Mathf.RoundToInt(partTimer.code * Mathf.Pow(partTimer.code + 1, 5.7f) + 1));
+                partTimer.SetMPS(Mathf.RoundToInt(partTimer.code * Mathf.Pow(partTimer.code + 1.5f, 4f) + 1));
 
                 //=ROUND(POWER(E15+1,E15*0.2)+9900*POWER(E15+1,E15*0.3)*(E15*1.7) + 9900,0)
             }

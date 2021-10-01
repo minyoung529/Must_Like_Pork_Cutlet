@@ -28,7 +28,7 @@ public class Cutlet
             (code + 1) * 1.2f);
 
 
-        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1.2f, 1.65f) * Mathf.Pow(code + 1.2f, 1.7f));
+        addMoney += Mathf.RoundToInt(Mathf.Pow(level + 1.2f, 1.65f) * Mathf.Pow(code * 1.5f + 1.2f, 1.7f));
     }
 
     public int GetNextAddMoney()

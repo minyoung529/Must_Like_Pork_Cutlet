@@ -9,6 +9,10 @@ public class SoundManager : MonoSingleton<SoundManager>
     private AudioSource effectAudioSource;
 
     [SerializeField] private AudioClip[] lobbyBGMs;
+    [SerializeField] private AudioClip[] cutletClick;
+    [SerializeField] private AudioClip[] moneySound;
+
+    #region 오디오 클립
     [SerializeField] private AudioClip gameBGM;
     [SerializeField] private AudioClip fightBGM;
     [SerializeField] private AudioClip tutorialBGM;
@@ -18,7 +22,6 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip waterButton;
     [SerializeField] private AudioClip cancelButton;
 
-    [SerializeField] private AudioClip moneySound;
     [SerializeField] private AudioClip nyamSound;
     [SerializeField] private AudioClip paperSound;
     [SerializeField] private AudioClip rewardSound;
@@ -31,6 +34,10 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip defeatSound;
 
     [SerializeField] private AudioClip fightClick;
+
+    #endregion
+
+    private bool isCutletSound = true;
 
     private void Awake()
     {
@@ -47,7 +54,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void LobbyBackground()
     {
-        backgroundAudioSource.clip = RandomLobbyBGM();
+        backgroundAudioSource.clip = GetRandomSound(lobbyBGMs);
         backgroundAudioSource.pitch = 1;
         backgroundAudioSource.Play();
     }
@@ -108,7 +115,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     => effectAudioSource.PlayOneShot(cancelButton);
 
     public void MoneySound()
-        => effectAudioSource.PlayOneShot(moneySound);
+        => effectAudioSource.PlayOneShot(GetRandomSound(moneySound));
 
     public void NyamSound()
         => effectAudioSource.PlayOneShot(nyamSound);
@@ -137,8 +144,19 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void FightClickSound()
         => effectAudioSource.PlayOneShot(fightClick);
 
-    private AudioClip RandomLobbyBGM()
+    public void CutletClickSound()
     {
-        return lobbyBGMs[Random.Range(0, lobbyBGMs.Length)];
+        if (!isCutletSound) return;
+        effectAudioSource.PlayOneShot(GetRandomSound(cutletClick));
+    }
+
+    private AudioClip GetRandomSound(AudioClip[] sounds)
+    {
+        return sounds[Random.Range(0, sounds.Length)];
+    }
+
+    public void SetIsCutletSound(bool isCutletSound)
+    {
+        this.isCutletSound = isCutletSound;
     }
 }
